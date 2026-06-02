@@ -1,49 +1,407 @@
+/* Import Outfit and Noto Sans Telugu fonts */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;700&family=Outfit:wght@300;400;500;600;700&display=swap');
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Aged Paper Theme (Light Mode) */
+  --bg-base: #faf9f6;
+  --bg-card: #f3f1e9;
+  --bg-nav: rgba(250, 249, 246, 0.85);
+  --text-primary: #2d2620;
+  --text-secondary: #6e6153;
+  --accent: #b86214;
+  --accent-light: #f5ece1;
+  --border: #e8e2d4;
+  --shadow: rgba(45, 38, 32, 0.06);
+  --selection-bg: #f3e5d3;
+  --selection-color: #2d2620;
+  
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-telugu: 'Noto Sans Telugu', var(--font-sans);
+  
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+[data-theme="dark"] {
+  /* Charcoal & Gold Theme (Dark Mode) */
+  --bg-base: #111111;
+  --bg-card: #181818;
+  --bg-nav: rgba(17, 17, 17, 0.85);
+  --text-primary: #ece8dd;
+  --text-secondary: #9c9689;
+  --accent: #d4af37; /* Pure Gold */
+  --accent-light: #2d2919;
+  --border: #2c2820;
+  --shadow: rgba(0, 0, 0, 0.3);
+  --selection-bg: #3d351c;
+  --selection-color: #ece8dd;
 }
 
-html {
-  height: 100%;
-}
-
-html,
-body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  min-height: 100%;
-  display: flex;
-  flex-direction: column;
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
+/* Base resets */
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
 }
 
+html, body {
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  min-height: 100vh;
+  overflow-x: hidden;
+  transition: var(--transition-smooth);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom premium scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent);
+}
+
+/* Selection styles */
+::selection {
+  background-color: var(--selection-bg);
+  color: var(--selection-color);
+}
+
 a {
   color: inherit;
   text-decoration: none;
+  transition: var(--transition-smooth);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
+/* Layout Utilities */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Premium Typography styling */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-primary);
+}
+
+/* Header & Glassmorphic Elements */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: var(--bg-nav);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: var(--transition-smooth);
+}
+
+/* Button & interactive components */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: 0.95rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: transparent;
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--accent);
+  color: var(--bg-base);
+}
+.btn-primary:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+.btn-secondary {
+  background-color: var(--bg-card);
+  border-color: var(--border);
+}
+.btn-secondary:hover {
+  background-color: var(--border);
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background-color: var(--bg-card);
+  color: var(--text-primary);
+  transition: var(--transition-smooth);
+}
+.icon-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: scale(1.05);
+}
+
+/* Home view layout & Cards */
+.hero {
+  text-align: center;
+  padding: 5rem 0 3rem 0;
+}
+
+.hero-subtitle {
+  font-size: 1.2rem;
+  color: var(--text-secondary);
+  margin-top: 0.75rem;
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+  margin-bottom: 5rem;
+}
+
+.stotram-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 1.8rem;
+  box-shadow: 0 4px 6px var(--shadow);
+  transition: var(--transition-smooth);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.stotram-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--accent);
+  opacity: 0;
+  transition: var(--transition-smooth);
+}
+
+.stotram-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px var(--shadow);
+  border-color: var(--accent);
+}
+
+.stotram-card:hover::after {
+  opacity: 1;
+}
+
+.stotram-card-category {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.stotram-card-title-english {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.stotram-card-title-telugu {
+  font-family: var(--font-telugu);
+  font-size: 1.15rem;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.stotram-card-link {
+  margin-top: auto;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+  gap: 0.25rem;
+}
+
+/* Stotram Reader Typography & Centering */
+.reader-wrapper {
+  padding-block: 4rem;
+  min-height: 80vh;
+}
+
+.reader-container {
+  max-w: 640px; /* equivalent to max-w-2xl */
+  margin: 0 auto;
+  padding: 0 1.5rem;
+  text-align: center;
+}
+
+.reader-header {
+  margin-bottom: 3.5rem;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 2rem;
+}
+
+.reader-title-telugu {
+  font-family: var(--font-telugu);
+  font-size: 2.2rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.8rem;
+  color: var(--accent);
+}
+
+.reader-title-english {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.05em;
+}
+
+.stotram-content-body {
+  font-family: var(--font-telugu);
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem; /* space between verses */
+}
+
+.stotram-verse {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.stotram-line {
+  line-height: 2.0; /* leading-loose for readable Telugu scripts */
+  transition: font-size 0.2s ease;
+  word-wrap: break-word;
+  white-space: pre-wrap;
+}
+
+/* Dynamic Reading progress bar */
+.progress-bar-container {
+  position: fixed;
+  top: 61px; /* just below the header */
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 49;
+  background-color: transparent;
+}
+
+.progress-bar {
+  height: 100%;
+  background-color: var(--accent);
+  width: 0%;
+  transition: width 0.1s ease-out;
+}
+
+/* Floating reading controls panel */
+.floating-controls {
+  position: fixed;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 0.6rem 1.2rem;
+  border-radius: 40px;
+  box-shadow: 0 8px 30px var(--shadow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  transition: var(--transition-smooth);
+}
+
+.floating-controls:hover {
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
+  border-color: var(--accent);
+}
+
+.control-divider {
+  width: 1px;
+  height: 24px;
+  background-color: var(--border);
+}
+
+.font-size-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.size-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  user-select: none;
+}
+
+/* Distraction Free Overrides */
+body.distraction-free .header,
+body.distraction-free footer {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+}
+
+body.distraction-free .reader-header {
+  margin-top: 4rem;
+}
+
+body.distraction-free .floating-controls {
+  opacity: 0.15;
+}
+body.distraction-free .floating-controls:hover {
+  opacity: 1;
+}
+
+/* Responsive adjust */
+@media (max-width: 768px) {
+  .hero {
+    padding: 3rem 0 2rem 0;
+  }
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .reader-title-telugu {
+    font-size: 1.8rem;
+  }
+  .floating-controls {
+    bottom: 1rem;
+    padding: 0.5rem 1rem;
+    gap: 0.6rem;
   }
 }
