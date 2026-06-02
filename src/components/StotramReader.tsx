@@ -9,7 +9,7 @@ interface StotramReaderProps {
 }
 
 export default function StotramReader({ stotram }: StotramReaderProps) {
-  const [fontSizeScale, setFontSizeScale] = useState(1.0); // 1.0 = base (1.4rem)
+  const [fontSizeScale, setFontSizeScale] = useState(1.1); // Base scaled slightly larger for cinematic readability
   const [isDistractionFree, setIsDistractionFree] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
 
@@ -40,11 +40,11 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
   }, [isDistractionFree]);
 
   const decreaseFont = () => {
-    setFontSizeScale((prev) => Math.max(0.75, prev - 0.1));
+    setFontSizeScale((prev) => Math.max(0.8, prev - 0.1));
   };
 
   const increaseFont = () => {
-    setFontSizeScale((prev) => Math.min(1.75, prev + 0.1));
+    setFontSizeScale((prev) => Math.min(1.8, prev + 0.1));
   };
 
   const toggleDistractionFree = () => {
@@ -52,7 +52,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
   };
 
   // Base font size in rem for stotram reading text
-  const currentFontSize = `${1.4 * fontSizeScale}rem`;
+  const currentFontSize = `${1.3 * fontSizeScale}rem`;
 
   return (
     <div className="reader-wrapper">
@@ -67,16 +67,19 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
       <div className="reader-container">
         {/* Sacred Header */}
         <header className="reader-header">
-          <div style={{ marginBottom: "1rem" }}>
+          <div style={{ marginBottom: "1.25rem" }}>
             <Link 
               href="/" 
               style={{ 
                 fontSize: "0.85rem", 
-                fontWeight: "600", 
+                fontWeight: "700", 
                 textTransform: "uppercase", 
-                letterSpacing: "0.08em",
-                color: "var(--accent)"
+                letterSpacing: "0.1em",
+                color: "var(--accent)",
+                transition: "var(--transition-cinematic)"
               }}
+              onMouseOver={(e) => e.currentTarget.style.letterSpacing = "0.15em"}
+              onMouseOut={(e) => e.currentTarget.style.letterSpacing = "0.1em"}
             >
               ← Back to library
             </Link>
@@ -88,9 +91,9 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
         {/* Text Area */}
         <article className="stotram-content-body">
           {stotram.content_lines.map((line, index) => {
-            // Group verses roughly: two lines form a normal verse structure
-            const isSecondLineOfVerse = index % 2 === 1 || line.includes("||") || line.includes("||");
-            const isEndOfVerse = line.trim().endsWith("||") || line.trim().endsWith("|| 1 ||") || line.trim().endsWith("|| 2 ||") || line.trim().endsWith("|| 3 ||") || line.trim().endsWith("|| 4 ||") || line.trim().endsWith("|| 5 ||");
+            // Smart layout line splitting: Stotrams usually demarcate verses with || (double pipe)
+            // If the line contains a verse ending indicator (e.g. || 1 ||, or ||), add extra spacing
+            const isEndOfVerse = line.includes("॥") || line.includes("||") || line.trim().endsWith("1") || line.trim().endsWith("2") || line.trim().endsWith("3") || line.trim().endsWith("4") || line.trim().endsWith("5") || line.trim().endsWith("6") || line.trim().endsWith("7") || line.trim().endsWith("8");
             
             return (
               <p 
@@ -98,8 +101,9 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                 className="stotram-line"
                 style={{ 
                   fontSize: currentFontSize,
-                  marginBottom: isEndOfVerse ? "1.5rem" : "0.25rem",
-                  fontWeight: "400"
+                  marginBottom: isEndOfVerse ? "1.8rem" : "0.3rem",
+                  fontWeight: "400",
+                  color: isEndOfVerse ? "var(--text-primary)" : "rgba(244, 240, 230, 0.9)"
                 }}
               >
                 {line}
@@ -112,7 +116,18 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
       {/* Floating Control Toolbar */}
       <div className="floating-controls">
         {/* Back Link */}
-        <Link href="/" className="btn" style={{ padding: "0.4rem 0.6rem", borderRadius: "50%" }} title="Home">
+        <Link 
+          href="/" 
+          className="btn" 
+          style={{ 
+            padding: "0", 
+            borderRadius: "50%", 
+            width: "36px", 
+            height: "36px",
+            fontSize: "1rem" 
+          }} 
+          title="Return to Library"
+        >
           🏠
         </Link>
         
@@ -123,7 +138,14 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           <button 
             onClick={decreaseFont} 
             className="btn" 
-            style={{ padding: "0.2rem 0.5rem", minWidth: "32px", fontSize: "0.9rem" }}
+            style={{ 
+              padding: "0", 
+              borderRadius: "50%", 
+              width: "32px", 
+              height: "32px", 
+              fontSize: "0.85rem",
+              fontWeight: "600" 
+            }}
             title="Decrease Font Size"
           >
             A-
@@ -134,7 +156,14 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           <button 
             onClick={increaseFont} 
             className="btn" 
-            style={{ padding: "0.2rem 0.5rem", minWidth: "32px", fontSize: "1rem" }}
+            style={{ 
+              padding: "0", 
+              borderRadius: "50%", 
+              width: "32px", 
+              height: "32px", 
+              fontSize: "0.95rem",
+              fontWeight: "600" 
+            }}
             title="Increase Font Size"
           >
             A+
@@ -148,16 +177,20 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           onClick={toggleDistractionFree} 
           className="btn" 
           style={{ 
-            padding: "0.4rem 0.8rem", 
+            padding: "0.4rem 1rem", 
             borderRadius: "20px", 
             fontSize: "0.85rem",
+            fontWeight: "700",
+            letterSpacing: "0.05em",
+            textTransform: "uppercase",
             backgroundColor: isDistractionFree ? "var(--accent)" : "transparent",
-            color: isDistractionFree ? "var(--bg-base)" : "var(--text-primary)",
-            borderColor: isDistractionFree ? "var(--accent)" : "transparent"
+            color: isDistractionFree ? "#060606" : "var(--text-primary)",
+            borderColor: isDistractionFree ? "var(--accent)" : "var(--border)",
+            boxShadow: isDistractionFree ? "0 0 15px var(--accent-glow)" : "none"
           }}
           title={isDistractionFree ? "Exit Focus Mode" : "Enter Focus Mode"}
         >
-          {isDistractionFree ? "👓 Focused" : "👁️ Focus"}
+          {isDistractionFree ? "Focused" : "Focus"}
         </button>
       </div>
     </div>

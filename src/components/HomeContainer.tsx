@@ -25,27 +25,44 @@ export default function HomeContainer({ initialStotrams }: HomeContainerProps) {
     return matchesCategory && matchesSearch;
   });
 
+  // Awwwards-winning mouse-coordinate tracking for glowing border cards
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const card = e.currentTarget;
+    const rect = card.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    card.style.setProperty("--x", `${x}px`);
+    card.style.setProperty("--y", `${y}px`);
+  };
+
   return (
-    <div className="container" style={{ paddingBlock: "3rem" }}>
-      {/* Hero section */}
+    <div className="container" style={{ paddingBlock: "4rem" }}>
+      {/* Cinematic Hero */}
       <section className="hero">
-        <h1 style={{ fontSize: "2.8rem", fontWeight: "700", letterSpacing: "-0.02em" }}>
+        <h1 style={{ 
+          fontSize: "3.5rem", 
+          fontWeight: "700", 
+          letterSpacing: "-0.03em",
+          lineHeight: "1.15",
+          marginInline: "auto",
+          maxWidth: "800px"
+        }}>
           Sacred Stotram Library
         </h1>
         <p className="hero-subtitle">
-          Read stotrams in Telugu with translation, with premium distraction-free reading controls.
+          Read high-legibility sacred texts in clean Telugu script on top of an immersive aged-paper or charcoal dark-mode backdrop.
         </p>
       </section>
 
-      {/* Filter and Search Panel */}
+      {/* Glassmorphic Search & Filters Panel */}
       <div style={{
-        maxWidth: "600px",
-        margin: "0 auto 3rem auto",
+        maxWidth: "640px",
+        margin: "0 auto 4rem auto",
         display: "flex",
         flexDirection: "column",
-        gap: "1.25rem"
+        gap: "1.5rem"
       }}>
-        {/* Search input */}
+        {/* Glowing Search Bar */}
         <div style={{ position: "relative" }}>
           <input
             type="text"
@@ -54,46 +71,57 @@ export default function HomeContainer({ initialStotrams }: HomeContainerProps) {
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{
               width: "100%",
-              padding: "0.9rem 1.25rem",
+              padding: "1rem 1.4rem",
               borderRadius: "var(--radius-lg)",
               border: "1px solid var(--border)",
               backgroundColor: "var(--bg-card)",
               color: "var(--text-primary)",
-              fontSize: "1rem",
+              fontSize: "1.05rem",
               fontFamily: "var(--font-sans)",
               outline: "none",
-              transition: "var(--transition-smooth)",
-              boxShadow: "0 2px 4px var(--shadow)"
+              transition: "var(--transition-cinematic)",
+              boxShadow: "0 10px 25px rgba(0, 0, 0, 0.4)",
+              backdropFilter: "blur(12px)",
+              WebkitBackdropFilter: "blur(12px)"
             }}
-            onFocus={(e) => e.target.style.borderColor = "var(--accent)"}
-            onBlur={(e) => e.target.style.borderColor = "var(--border)"}
+            onFocus={(e) => {
+              e.target.style.borderColor = "var(--accent)";
+              e.target.style.boxShadow = "0 0 20px rgba(212, 175, 55, 0.15), 0 10px 25px rgba(0, 0, 0, 0.4)";
+            }}
+            onBlur={(e) => {
+              e.target.style.borderColor = "var(--border)";
+              e.target.style.boxShadow = "0 10px 25px rgba(0, 0, 0, 0.4)";
+            }}
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery("")}
               style={{
                 position: "absolute",
-                right: "15px",
+                right: "18px",
                 top: "50%",
                 transform: "translateY(-50%)",
                 background: "none",
                 border: "none",
                 color: "var(--text-secondary)",
                 cursor: "pointer",
-                fontSize: "1rem"
+                fontSize: "1.1rem",
+                transition: "var(--transition-fast)"
               }}
+              onMouseOver={(e) => e.currentTarget.style.color = "var(--accent)"}
+              onMouseOut={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
             >
               ✕
             </button>
           )}
         </div>
 
-        {/* Category Filter Pills */}
+        {/* Categories badging list */}
         <div style={{
           display: "flex",
           justifyContent: "center",
           flexWrap: "wrap",
-          gap: "0.5rem"
+          gap: "0.6rem"
         }}>
           {categories.map((category) => (
             <button
@@ -101,17 +129,16 @@ export default function HomeContainer({ initialStotrams }: HomeContainerProps) {
               onClick={() => setActiveCategory(category)}
               className="btn"
               style={{
-                padding: "0.4rem 1rem",
-                borderRadius: "20px",
+                padding: "0.45rem 1.25rem",
+                borderRadius: "24px",
                 fontSize: "0.85rem",
-                fontWeight: "600",
+                fontWeight: "700",
                 textTransform: "uppercase",
-                letterSpacing: "0.05em",
+                letterSpacing: "0.08em",
                 backgroundColor: activeCategory === category ? "var(--accent)" : "var(--bg-card)",
-                color: activeCategory === category ? "var(--bg-base)" : "var(--text-secondary)",
+                color: activeCategory === category ? "#060606" : "var(--text-secondary)",
                 borderColor: activeCategory === category ? "var(--accent)" : "var(--border)",
-                borderWidth: "1px",
-                borderStyle: "solid"
+                boxShadow: activeCategory === category ? "0 0 15px var(--accent-glow)" : "none"
               }}
             >
               {category}
@@ -120,11 +147,15 @@ export default function HomeContainer({ initialStotrams }: HomeContainerProps) {
         </div>
       </div>
 
-      {/* Grid displaying filtered stotrams */}
+      {/* Grid displaying stotrams */}
       {filteredStotrams.length > 0 ? (
         <div className="grid">
           {filteredStotrams.map((stotram) => (
-            <div key={stotram.id} className="stotram-card">
+            <div 
+              key={stotram.id} 
+              className="stotram-card"
+              onMouseMove={handleMouseMove}
+            >
               <span className="stotram-card-category">{stotram.category}</span>
               <h2 className="stotram-card-title-english">{stotram.title_english}</h2>
               <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
@@ -137,17 +168,21 @@ export default function HomeContainer({ initialStotrams }: HomeContainerProps) {
       ) : (
         <div style={{
           textAlign: "center",
-          padding: "4rem 2rem",
+          padding: "5rem 2rem",
           color: "var(--text-secondary)",
           backgroundColor: "var(--bg-card)",
           borderRadius: "var(--radius-lg)",
           border: "1px solid var(--border)",
+          backdropFilter: "blur(12px)",
           maxWidth: "600px",
-          margin: "0 auto 5rem auto"
+          margin: "0 auto 6rem auto",
+          boxShadow: "0 10px 30px var(--shadow)"
         }}>
-          <p style={{ fontSize: "1.2rem", fontWeight: "500" }}>No stotrams found</p>
-          <p style={{ fontSize: "0.9rem", marginTop: "0.5rem", opacity: 0.8 }}>
-            Try adjusting your search criteria or select another category.
+          <p style={{ fontSize: "1.3rem", fontWeight: "600", color: "var(--text-primary)" }}>
+            No stotrams found
+          </p>
+          <p style={{ fontSize: "0.95rem", marginTop: "0.6rem", opacity: 0.8 }}>
+            Try adjusting your search criteria or select another category filter.
           </p>
         </div>
       )}

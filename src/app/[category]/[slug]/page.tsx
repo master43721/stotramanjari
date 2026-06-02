@@ -1,7 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import stotramsData from "@/data/stotrams.json";
-import { Stotram } from "@/types";
+import { getAllStotrams } from "@/data/loader";
 import StotramReader from "@/components/StotramReader";
 
 interface PageProps {
@@ -14,7 +13,7 @@ interface PageProps {
 // Generate dynamic metadata for search engine optimization (SEO)
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, slug } = await params;
-  const stotrams: Stotram[] = stotramsData;
+  const stotrams = getAllStotrams();
   
   const stotram = stotrams.find(
     (s) => s.category === category && s.id === slug
@@ -42,7 +41,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // Pre-render static paths during building (Static Site Generation - SSG)
 export async function generateStaticParams() {
-  const stotrams: Stotram[] = stotramsData;
+  const stotrams = getAllStotrams();
   
   return stotrams.map((stotram) => ({
     category: stotram.category,
@@ -52,7 +51,7 @@ export async function generateStaticParams() {
 
 export default async function StotramPage({ params }: PageProps) {
   const { category, slug } = await params;
-  const stotrams: Stotram[] = stotramsData;
+  const stotrams = getAllStotrams();
   
   const stotram = stotrams.find(
     (s) => s.category === category && s.id === slug

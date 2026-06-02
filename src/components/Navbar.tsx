@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const [theme, setTheme] = useState<"light" | "dark">("light");
+  const [theme, setTheme] = useState<"light" | "dark">("dark"); // Default to dark first for cinematic vibe
   const pathname = usePathname();
 
   // Load theme preference on mount
@@ -15,10 +15,9 @@ export default function Navbar() {
       setTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
     } else {
-      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-      const initialTheme = prefersDark ? "dark" : "light";
-      setTheme(initialTheme);
-      document.documentElement.setAttribute("data-theme", initialTheme);
+      // Default to dark mode if no preference saved
+      setTheme("dark");
+      document.documentElement.setAttribute("data-theme", "dark");
     }
   }, []);
 
@@ -31,23 +30,24 @@ export default function Navbar() {
 
   return (
     <header className="header">
-      <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "60px" }}>
+      <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "64px" }}>
         <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
           <span style={{ 
-            fontSize: "1.5rem", 
+            fontSize: "1.45rem", 
             fontWeight: "700", 
             color: "var(--accent)", 
-            letterSpacing: "-0.02em",
-            fontFamily: "var(--font-sans)" 
+            letterSpacing: "-0.03em",
+            fontFamily: "var(--font-sans)",
+            textShadow: "0 0 15px rgba(212, 175, 55, 0.25)"
           }}>
             Stotra Manjari
           </span>
           <span style={{ 
-            fontSize: "1rem", 
+            fontSize: "0.95rem", 
             fontWeight: "500", 
             color: "var(--text-secondary)", 
             fontFamily: "var(--font-telugu)",
-            opacity: 0.8
+            opacity: 0.85
           }}>
             (స్తోత్ర మంజరి)
           </span>
@@ -58,18 +58,21 @@ export default function Navbar() {
             href="/" 
             style={{ 
               fontSize: "0.95rem", 
-              fontWeight: "500",
-              color: pathname === "/" ? "var(--accent)" : "var(--text-primary)" 
+              fontWeight: "600",
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              color: pathname === "/" ? "var(--accent)" : "var(--text-primary)",
+              textShadow: pathname === "/" ? "0 0 10px rgba(212, 175, 55, 0.3)" : "none"
             }}
           >
-            Home
+            Library
           </Link>
           
           <button 
             onClick={toggleTheme} 
             className="icon-btn" 
             aria-label="Toggle Theme"
-            style={{ fontSize: "1.2rem" }}
+            style={{ fontSize: "1.1rem" }}
           >
             {theme === "light" ? "🌙" : "📄"}
           </button>

@@ -1,9 +1,8 @@
-import stotramsData from "@/data/stotrams.json";
-import { Stotram } from "@/types";
+import { getAllStotrams } from "@/data/loader";
 import HomeContainer from "@/components/HomeContainer";
 
 export default function Home() {
-  const stotrams: Stotram[] = stotramsData;
+  const stotrams = getAllStotrams();
 
   return <HomeContainer initialStotrams={stotrams} />;
 }
