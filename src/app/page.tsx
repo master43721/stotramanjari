@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { getAllStotrams } from "@/data/loader";
 import { Stotram } from "@/types";
+import categoryMappings from "@/data/category-mappings.json";
 
 // Defined Vignanam Category list
 const VIGNANAM_CATEGORIES = [
@@ -12,137 +13,15 @@ const VIGNANAM_CATEGORIES = [
   { id: 'upanishads', name: 'Upanishads' },
   { id: 'shiva', name: 'Shiva Stotrams' },
   { id: 'vishnu', name: 'Vishnu Stotrams' },
-  { id: 'rama', name: 'Sri Rama Stotrams' },
-  { id: 'krishna', name: 'Sri Krishna Stotrams' },
-  { id: 'venkateswara', name: 'Sri Venkateswara Swamy Stotrams' },
-  { id: 'devi', name: 'Devi Stotrams' },
-  { id: 'durga', name: 'Durga Stotrams' },
-  { id: 'lakshmi', name: 'Lakshmi Stotrams' },
-  { id: 'ganesha', name: 'Ganesha Stotrams' },
-  { id: 'hanuma', name: 'Hanuma Stotrams' },
-  { id: 'surya', name: 'Surya Bhagavan Stotrams' },
-  { id: 'saraswati', name: 'Saraswati Stotrams' },
-  { id: 'subrahmanya', name: 'Subrahmanya Swamy Stotrams' },
-  { id: 'ganga', name: 'Ganga Stotrams' },
-  { id: 'dattatreya', name: 'Dattatreya Stotrams' },
-  { id: 'navagraha', name: 'Navagraha Stotrams' },
-  { id: 'guru', name: 'Guru Stotrams' },
-  { id: 'ashtottara-namavali', name: 'Ashtottara Sata Namavali' },
-  { id: 'ashtottara-stotram', name: 'Ashtottara Sata Nama Stotram' },
-  { id: 'kavacha', name: 'Kavacha Stotras' },
-  { id: 'pancha-ratna', name: 'Pancha Ratna Stotras' },
-  { id: 'sahasra-nama', name: 'Sahasra Nama Stotrams' },
-  { id: 'ashtakams', name: 'Ashtakams' },
-  { id: 'shatakams', name: 'Shatakams' },
-  { id: 'adi-shankaracharya', name: 'Adi Shankaracharya Stotrams' }
+  { id: 'rama', name: 'Sri Rama Stotrams' }
 ];
 
-// Helper to classify stotrams into categories
+// Helper to classify stotrams into categories using exact mappings from vignanam.org
 function matchesCategory(stotram: Stotram, catId: string): boolean {
-  const cat = (stotram.category || '').toLowerCase();
-  const slug = (stotram.slug || stotram.id || '').toLowerCase();
-  const title = (stotram.title_english || '').toLowerCase();
-  
-  switch(catId) {
-    case 'shiva':
-      return cat === 'shiva' || 
-             ['sri-rudram', 'chandrasekhara', 'kasi', 'nirvana', 'dakshina-murthy', 'kalabhairava', 'uma-maheswara', 'ardha-naareeswara', 'sree-kaala-hastiswara-satakam', 'sree-mallikarjuna', 'ardha-nareeswara', 'maha-mrutyunjaya-stotram-rudram', 'sri-kashi-viswanatha', 'vaidyanatha', 'nataraja-stotram-patanjali', 'mahanyasam', 'sharabhesha', 'sri-srisaila-mallikarjuna', 'parvati-vallabha', 'sri-veerabhadra-ashtottara-sata', 'arunachala', 'arunachala-akshara-mani-mala', 'pashupati', 'srisaila-ragada', 'sri-kala-bhairava', 'kashi', 'sri-medha-dakshina-murthy', 'sri-mrutyunjaya-ashtottara-sata', 'sri-rudra', 'dakshina-murthy-dwadasha-nama', 'sri-maha-kalabhairava', 'sri-batuka-bhairava', 'sri-batuka-bhairava-ashtottara-sata', 'sri-dakshina-murthy-ashtottara-sata', 'sri-dakshina-murthy-ashtottara-sata-nama', 'sri-dakshina-murthy-sahasra-nama', 'sri-dakshina-murthy-sahasra', 'medha-dakshina-murthy-trishati', 'teekshna-danshtra-kalabhairava-ashtakam-maha-kalabhairava', 'sri-bhairava', 'sri-dakshina-murthy-kavacham', 'thiruneetru-pathikam', 'margabandhu', 'sata'].includes(cat) ||
-             slug.includes('shiva') || title.includes('shiva') || slug.includes('rudram') || title.includes('rudram') || slug.includes('linga') || title.includes('linga') || slug.includes('bhairava') || title.includes('bhairava') || slug.includes('dakshinamurthy') || title.includes('dakshinamurthy') || slug.includes('mrutyunjaya') || title.includes('mrutyunjaya') || slug.includes('mallikarjuna') || title.includes('mallikarjuna') || slug.includes('viswanatha') || title.includes('viswanatha') || slug.includes('nataraja') || title.includes('nataraja') || slug.includes('margabandhu') || slug.includes('thiruneetru');
-             
-    case 'vishnu':
-      return cat === 'vishnu' || ['dhati'].includes(cat) ||
-             slug.includes('vishnu') || title.includes('vishnu') || slug.includes('narayana') || title.includes('narayana') || slug.includes('achyuta') || title.includes('achyuta') || slug.includes('hari') || title.includes('hari') || slug.includes('sudarshana') || title.includes('sudarshana') || slug.includes('ranganatha') || title.includes('ranganatha') || slug.includes('venkateswara') || title.includes('venkateswara') || slug.includes('rama') || title.includes('rama') || slug.includes('krishna') || title.includes('krishna') || slug.includes('narasimha') || title.includes('narasimha') || slug.includes('nrusimha') || title.includes('nrusimha') || slug.includes('panduranga') || title.includes('panduranga') || slug.includes('dhati');
-             
-    case 'rama':
-      return cat === 'rama' || slug.includes('rama') || title.includes('rama') || slug.includes('ramayana') || title.includes('ramayana');
-      
-    case 'krishna':
-      return cat === 'krishna' || slug.includes('krishna') || title.includes('krishna') || slug.includes('achutashtakam') || title.includes('achutashtakam') || slug.includes('madhurashtakam') || title.includes('madhurashtakam') || slug.includes('gopala') || title.includes('gopala') || slug.includes('radha') || title.includes('radha') || slug.includes('nanda-kumara') || title.includes('nanda-kumara');
-      
-    case 'venkateswara':
-      return slug.includes('venkateswara') || title.includes('venkateswara') || slug.includes('venkatesa') || title.includes('venkatesa');
-      
-    case 'devi':
-      return cat === 'devi' || 
-             ['bhavani', 'annapurna', 'sri-raja-rajeswari', 'tripura-sundari-ashtakam', 'kanakadhara', 'soundarya', 'sree-annapurna-stotram-sri-annapurna', 'kalyana-vrishti'].includes(cat) ||
-             slug.includes('devi') || title.includes('devi') || slug.includes('lalitha') || title.includes('lalitha') || slug.includes('soundarya-lahari') || title.includes('soundarya-lahari') || slug.includes('annapurna') || title.includes('annapurna') || slug.includes('tripurasundari') || title.includes('tripurasundari') || slug.includes('shyamala') || title.includes('shyamala') || slug.includes('rajarejeswari') || title.includes('rajarejeswari') || slug.includes('bhavani') || title.includes('bhavani');
-             
-    case 'durga':
-      return slug.includes('durga') || title.includes('durga') || slug.includes('mahisasura') || title.includes('mahisasura') || slug.includes('mishasura-mardini') || title.includes('mishasura-mardini') || slug.includes('kalika') || title.includes('kalika');
-      
-    case 'lakshmi':
-      return ['maha-lakshmi', 'kanakadhara'].includes(cat) || slug.includes('lakshmi') || title.includes('lakshmi') || slug.includes('kanakadhara') || title.includes('kanakadhara') || slug.includes('astalakshmi') || title.includes('astalakshmi');
-      
-    case 'ganesha':
-      return cat === 'ganesha' || 
-             ['ganapati-prarthana', 'vighnesvara-ashtottara-sata-nama', 'ganapati-atharva', 'ganapati-gakara-ashtottara-satanama', 'ganapati-gakara-ashtottara-sata', 'sri-maha-ganapati-sahasranama', 'vatapi-ganapatim', 'sri-vighnesvara-ashtottara-sata', 'santhana-ganapathi', 'sri-ganapathi', 'dhundhiraja-bhujanga-prayata', 'chintamani', 'daridrya-dahana-ganapati', 'runa-vimochana-ganapathi', 'maha-ganapati-mula-mantra-pada-mala', 'ganapati-mala', 'maha-ganapati-mantra-vigraha', 'bahuroopa-ganapathi-dwatrimshat-ganapati', 'carnatic-music-geethams-sree-gananatha'].includes(cat) ||
-             slug.includes('ganesha') || title.includes('ganesha') || slug.includes('ganapati') || title.includes('ganapati') || slug.includes('vinayaka') || title.includes('vinayaka') || slug.includes('vighneswara') || title.includes('vighneswara');
-             
-    case 'hanuma':
-      return cat === 'hanuman-pancha' || slug.includes('hanuman') || title.includes('hanuman') || slug.includes('hanuma') || title.includes('hanuma') || slug.includes('anjaneya') || title.includes('anjaneya');
-      
-    case 'surya':
-      return slug.includes('surya') || title.includes('surya') || slug.includes('aditya') || title.includes('aditya') || slug.includes('bhaskar') || title.includes('bhaskar');
-      
-    case 'saraswati':
-      return slug.includes('saraswati') || title.includes('saraswati') || slug.includes('sharada') || title.includes('sharada');
-      
-    case 'subrahmanya':
-      return cat === 'subrahmanya-bhujanga' || slug.includes('subrahmanya') || title.includes('subrahmanya') || slug.includes('kartikeya') || title.includes('kartikeya') || slug.includes('muruga') || title.includes('muruga') || slug.includes('shanmukha') || title.includes('shanmukha');
-      
-    case 'ganga':
-      return cat === 'ganga' || slug.includes('ganga') || title.includes('ganga');
-      
-    case 'dattatreya':
-      return slug.includes('dattatreya') || title.includes('dattatreya') || slug.includes('datta') || title.includes('datta');
-      
-    case 'navagraha':
-      return slug.includes('navagraha') || title.includes('navagraha') || slug.includes('shani') || title.includes('shani') || slug.includes('rahu') || title.includes('rahu') || slug.includes('ketu') || title.includes('ketu');
-      
-    case 'guru':
-      return ['guru-paduka', 'sri-guru-stotram-guru', 'sadguru'].includes(cat) || slug.includes('guru') || title.includes('guru');
-      
-    case 'ashtottara-namavali':
-      return slug.includes('namavali') || title.includes('namavali') || (slug.includes('ashtottara') && !slug.includes('stotram') && !slug.includes('shatakam'));
-      
-    case 'ashtottara-stotram':
-      return slug.includes('ashtottara-sata-nama-stotram') || title.includes('ashtottara-sata-nama-stotram') || slug.includes('ashtottara-shata-nama-stotram');
-      
-    case 'kavacha':
-      return cat.includes('kavach') || slug.includes('kavacham') || title.includes('kavacham') || slug.includes('kavach') || title.includes('kavach');
-      
-    case 'pancha-ratna':
-      return cat.includes('pancha-ratna') || cat.includes('pancharatna') || slug.includes('pancharatnam') || title.includes('pancharatnam') || slug.includes('pancha-ratna') || title.includes('pancha-ratna');
-      
-    case 'sahasra-nama':
-      return cat.includes('sahasranama') || slug.includes('sahasranama') || title.includes('sahasranama') || slug.includes('sahasra-nama') || title.includes('sahasra-nama');
-      
-    case 'ashtakams':
-      return cat.includes('ashtakam') || slug.includes('ashtakam') || title.includes('ashtakam') || slug.includes('ashtaka') || title.includes('ashtaka');
-      
-    case 'shatakams':
-      return cat.includes('satakam') || cat.includes('shatakam') || slug.includes('satakam') || title.includes('satakam') || slug.includes('shatakam') || title.includes('shatakam');
-      
-    case 'adi-shankaracharya':
-      return cat.includes('sri-sankaracharya') || cat.includes('sri-shankaracharya') || cat.includes('sankaracharya') ||
-             ['nirguna-manasa', 'nirvaana', 'maya', 'margabandhu'].includes(cat) ||
-             slug.includes('sankaracharya') || title.includes('sankaracharya') || slug.includes('shankaracharya') || title.includes('shankaracharya') ||
-             slug.includes('bhaja-govindam') || title.includes('bhaja-govindam') || slug.includes('soundarya-lahari') || title.includes('soundarya-lahari') ||
-             slug.includes('kanakadhara') || title.includes('kanakadhara') || slug.includes('nirvana-shatkam') || title.includes('nirvana-shatkam');
-             
-    case 'vedic-chants':
-      return ['sri-rudram', 'nakshatra-suktam', 'manyu', 'mahanyasam', 'sri-rudra', 'udaka-shanti-punyaha'].includes(cat) ||
-             slug.includes('suktam') || title.includes('suktam') || slug.includes('sukta') || title.includes('sukta') ||
-             slug.includes('rudram') || title.includes('rudram') || slug.includes('nyasam') || title.includes('nyasam') ||
-             slug.includes('mantra') || title.includes('mantra');
-             
-    case 'upanishads':
-      return cat.includes('opanishad') || cat.includes('upanishad') || cat === 'kathopanishad-chapter' || slug.includes('upanishad') || title.includes('upanishad');
-      
-    case 'nitya-parayana':
-      return ['udaka-shanti-punyaha'].includes(cat) || slug.includes('pratasmarana') || title.includes('pratasmarana') || slug.includes('nitya') || title.includes('nitya') || slug.includes('daily') || title.includes('daily') || slug.includes('prarthana') || title.includes('prarthana');
-  }
-  return false;
+  const mappings = categoryMappings as Record<string, string[]>;
+  const slugs = mappings[catId];
+  if (!slugs) return false;
+  return slugs.includes(stotram.slug || stotram.id);
 }
 
 export default function Home() {
@@ -159,16 +38,18 @@ export default function Home() {
 
   const stotrams: Stotram[] = getAllStotrams();
 
-  // Compute category counts
+  // Filter database to only include stotrams that belong to our 6 target categories
+  const targetStotrams = stotrams.filter(s => 
+    VIGNANAM_CATEGORIES.some(cat => matchesCategory(s, cat.id))
+  );
+
+  // Compute category counts based on target stotrams
   const categoryCounts = VIGNANAM_CATEGORIES.reduce((acc, cat) => {
-    acc[cat.id] = stotrams.filter(s => matchesCategory(s, cat.id)).length;
+    acc[cat.id] = targetStotrams.filter(s => matchesCategory(s, cat.id)).length;
     return acc;
   }, {} as Record<string, number>);
 
-  // Only show categories that have at least 1 stotram matching
-  const activeCategories = VIGNANAM_CATEGORIES.filter(cat => categoryCounts[cat.id] > 0);
-
-  const filteredStotrams = stotrams.filter((stotram) => {
+  const filteredStotrams = targetStotrams.filter((stotram) => {
     const matchesCat = activeCategory === "all" || matchesCategory(stotram, activeCategory);
     const searchLower = searchQuery.toLowerCase();
     const matchesSearch =
@@ -412,9 +293,9 @@ export default function Home() {
                     borderBottom: "1px solid var(--border)"
                   }}
                 >
-                  ALL CHANTS ({stotrams.length})
+                  ALL CHANTS ({targetStotrams.length})
                 </div>
-                {activeCategories.map((category) => (
+                {VIGNANAM_CATEGORIES.map((category) => (
                   <div
                     key={category.id}
                     onClick={() => {
