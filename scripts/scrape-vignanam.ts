@@ -17,59 +17,80 @@ function cleanText(text: string): string {
 
 const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 
-async function crawlCategory(categoryUrl: string) {
+const SEED_URLS = [
+  "https://vignanam.org/telugu/lingashtakam.html",
+  "https://vignanam.org/telugu/sankata-nashana-ganesha-stotram.html",
+  "https://vignanam.org/telugu/sri-venkateswara-suprabhatam.html",
+  "https://vignanam.org/telugu/kanakadhara-stotram.html",
+  "https://vignanam.org/telugu/subrahmanya-ashtakam-karavalamba-stotram.html",
+  "https://vignanam.org/telugu/hanuman-chalisa.html",
+  "https://vignanam.org/telugu/aditya-hrudayam.html",
+  "https://vignanam.org/telugu/sri-suktam.html"
+];
+
+async function crawlDatabase(customSeeds?: string[]) {
   try {
     console.log("====================================================================");
-    console.log("Vignanam.org Category Crawler");
+    console.log("Resilient Vignanam.org Deep Crawler");
     console.log("====================================================================");
-    console.log(`[Crawler] Fetching category index page: ${categoryUrl}...`);
 
-    // Fetch the main category list page
-    const indexResponse = await axios.get(categoryUrl, {
-      headers: {
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-        "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
-        "Accept-Language": "en-US,en;q=0.9",
-        "Cache-Control": "no-cache",
-        "Pragma": "no-cache"
-      },
-      timeout: 15000
-    });
+    const seedsToUse = customSeeds && customSeeds.length > 0 ? customSeeds : SEED_URLS;
+    const stotramUrlsSet = new Set<string>();
 
-    const $index = cheerio.load(indexResponse.data);
-    const stotramLinks: string[] = [];
+    // Step 1: Harvest all unique stotram links from seed sidebars
+    for (let s = 0; s < seedsToUse.length; s++) {
+      const seed = seedsToUse[s];
+      console.log(`[Crawler] Harvesting links from seed [${s + 1}/${seedsToUse.length}]: ${seed}...`);
+      try {
+        const response = await axios.get(seed, {
+          headers: {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
+            "Accept-Language": "en-US,en;q=0.9",
+            "Cache-Control": "no-cache"
+          },
+          timeout: 15000
+        });
 
-    // Extract all category stotram links from the sidebar tree (class .link4)
-    $index("a.link4").each((_, element) => {
-      const href = $index(element).attr("href");
-      if (!href) return;
+        const $ = cheerio.load(response.data);
+        let count = 0;
 
-      const cleanHref = href.trim();
-      // Ensure it is a relative HTML file or paths
-      const isHtml = cleanHref.endsWith(".html");
-      const isNotBoilerplate = 
-        !cleanHref.includes("index.html") &&
-        !cleanHref.includes("about.html") &&
-        !cleanHref.includes("contact.html") &&
-        !cleanHref.startsWith("http://") &&
-        !cleanHref.startsWith("https://");
+        $("a.link4").each((_, element) => {
+          const href = $(element).attr("href");
+          if (!href) return;
 
-      if (isHtml && isNotBoilerplate) {
-        try {
-          const resolvedUrl = new URL(cleanHref, categoryUrl).href;
-          if (!stotramLinks.includes(resolvedUrl)) {
-            stotramLinks.push(resolvedUrl);
+          const cleanHref = href.trim();
+          const isHtml = cleanHref.endsWith(".html");
+          const isNotBoilerplate = 
+            !cleanHref.includes("index.html") &&
+            !cleanHref.includes("about.html") &&
+            !cleanHref.includes("contact.html") &&
+            !cleanHref.startsWith("http://") &&
+            !cleanHref.startsWith("https://");
+
+          if (isHtml && isNotBoilerplate) {
+            try {
+              const resolvedUrl = new URL(cleanHref, seed).href;
+              stotramUrlsSet.add(resolvedUrl);
+              count++;
+            } catch (e) {
+              // ignore URL resolution errors
+            }
           }
-        } catch (e) {
-          console.warn(`[Crawler] Failed to resolve URL for href: ${cleanHref}`);
-        }
-      }
-    });
+        });
 
-    console.log(`[Crawler] Discovered ${stotramLinks.length} category stotram links from sidebar menu.`);
+        console.log(`[Crawler] Discovered ${count} links on seed page. Cumulative unique links: ${stotramUrlsSet.size}`);
+        await sleep(1500); // safety gap
+      } catch (err: any) {
+        console.error(`[Crawler] Failed to harvest from seed: ${seed}. Error: ${err.message || err}`);
+      }
+    }
+
+    const stotramLinks = Array.from(stotramUrlsSet);
+    console.log(`[Crawler] Finished link harvesting. Total unique URLs to crawl: ${stotramLinks.length}`);
 
     if (stotramLinks.length === 0) {
-      console.log("[Crawler] No stotram links found. Please verify sidebar tree selectors.");
+      console.log("[Crawler] No links collected. Exiting.");
       return;
     }
 
@@ -89,22 +110,30 @@ async function crawlCategory(categoryUrl: string) {
         database = JSON.parse(fileContent);
         console.log(`[Crawler] Loaded existing database with ${database.length} entries.`);
       } catch (err) {
-        console.log("[Crawler] Warning: Existing database corrupt. Starting fresh...");
+        console.log("[Crawler] Warning: Existing database corrupt or empty. Starting fresh...");
       }
     }
 
-    // Iterate through links with 2000ms delay to prevent rate-limiting
+    // Step 2: Iterate through links with 1500ms safety delay
     for (let i = 0; i < stotramLinks.length; i++) {
       const url = stotramLinks[i];
-      console.log(`\n------------------------------------------------------------`);
-      console.log(`[Crawler] Processing ${i + 1}/${stotramLinks.length}: ${url}`);
-      console.log(`------------------------------------------------------------`);
+
+      // Derive slug to check existing item
+      const urlParts = url.split("/");
+      const lastSegment = urlParts[urlParts.length - 1] || "";
+      const urlSlug = lastSegment.replace(/\.html?$/, "");
+
+      // Check if stotram is already fully scraped in the JSON database
+      const existingIdx = database.findIndex((item) => item.slug === urlSlug || item.id === urlSlug);
+      if (existingIdx > -1 && database[existingIdx].contentLines && database[existingIdx].contentLines.length > 0) {
+        console.log(`[Scraped ${i + 1}/${stotramLinks.length}] Skip (Already in DB): "${database[existingIdx].title}"`);
+        continue;
+      }
+
+      console.log(`[Scraped ${i + 1}/${stotramLinks.length}] Crawling: ${url}...`);
 
       // Rate limit safety sleep
-      if (i > 0) {
-        console.log("[Crawler] Safety delay: sleeping for 2000ms...");
-        await sleep(2000);
-      }
+      await sleep(1500);
 
       try {
         const response = await axios.get(url, {
@@ -112,16 +141,20 @@ async function crawlCategory(categoryUrl: string) {
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8",
             "Accept-Language": "en-US,en;q=0.9",
-            "Cache-Control": "no-cache",
-            "Pragma": "no-cache"
+            "Cache-Control": "no-cache"
           },
-          timeout: 10000
+          timeout: 12000
         });
 
         const $page = cheerio.load(response.data);
 
         // 1. Extract Title
-        let rawTitle = cleanText($page("h1").first().text() || $page(".title").first().text() || $page(".stotram-title").first().text() || $page("title").text());
+        let rawTitle = cleanText(
+          $page("h1").first().text() || 
+          $page(".title").first().text() || 
+          $page(".stotram-title").first().text() || 
+          $page("title").text()
+        );
         if (!rawTitle) rawTitle = "Scraped Stotram";
 
         let titleTelugu = "";
@@ -160,22 +193,45 @@ async function crawlCategory(categoryUrl: string) {
         titleTelugu = cleanText(titleTelugu);
         titleEnglish = cleanText(titleEnglish);
 
-        // Double check English fallback from URL slug
-        if (!titleEnglish || titleEnglish.trim().length < 2) {
-          const urlParts = url.split("/");
-          const lastSegment = urlParts[urlParts.length - 1] || "";
-          const slug = lastSegment.replace(/\.html?$/, "").replace(/[-_]/g, " ");
-          titleEnglish = slug.charAt(0).toUpperCase() + slug.slice(1);
+        // Fallback for English title from URL slug
+        if (!titleEnglish || titleEnglish.trim().length < 2 || titleEnglish.toLowerCase() === "stotram") {
+          const slugText = urlSlug.replace(/[-_]/g, " ");
+          titleEnglish = slugText.charAt(0).toUpperCase() + slugText.slice(1);
         }
 
         // 2. Extract Lines
+        // Clean out layout elements, scripts, ads
+        $page("script, style, iframe, header, footer, nav, .sidebar, #sidebar, .menu, #menu, .comment, #comment, .advertisement, #advertisement").remove();
+
         const contentLines: string[] = [];
-        $page("p, div.lyrics, div.content, div.stotram-content, pre").each((_, element) => {
-          const text = $page(element).text();
+
+        // Check potential main content containers
+        const mainSelectors = ["#content", ".stotram", ".lyrics", ".content", ".stotram-content", "article", "main"];
+        let mainContent: any = $page("body");
+        
+        for (const selector of mainSelectors) {
+          const found = $page(selector);
+          if (found.length > 0) {
+            mainContent = found;
+            break;
+          }
+        }
+
+        // Extract paragraphs or divs containing Telugu lyrics
+        mainContent.find("p, div, pre, blockquote, td").each((_: number, element: any) => {
+          const $el = $page(element);
+          
+          // Prevent duplicate capturing of nested text containers
+          if ($el.find("p, div").length > 0) {
+            return;
+          }
+          
+          const text = $el.text();
           const subLines = text.split(/\r?\n/);
           
           subLines.forEach((subLine) => {
             const cleaned = cleanText(subLine);
+            // Verify it has Telugu glyphs and is of readable length
             if (isTelugu(cleaned) && cleaned.length > 3) {
               if (!contentLines.includes(cleaned)) {
                 contentLines.push(cleaned);
@@ -184,26 +240,24 @@ async function crawlCategory(categoryUrl: string) {
           });
         });
 
-        // Cheerio Fallback for child text nodes
+        // Fallback to text node matching if container parsing returns nothing
         if (contentLines.length === 0) {
-          $page("*").each((_, element) => {
-            $page(element).contents().each((_, node) => {
-              if (node.type === "text") {
-                const text = cleanText($page(node).text());
-                if (isTelugu(text) && text.length > 3 && !contentLines.includes(text)) {
-                  contentLines.push(text);
-                }
+          $page("body").find("*").contents().each((_, node) => {
+            if (node.type === "text") {
+              const text = cleanText($page(node).text());
+              if (isTelugu(text) && text.length > 3 && !contentLines.includes(text)) {
+                contentLines.push(text);
               }
-            });
+            }
           });
         }
 
         if (contentLines.length === 0) {
-          console.log(`[Crawler] Skip: Failed to parse Telugu lyrics content for ${url}`);
+          console.warn(`[Crawler] Warning: No Telugu lyrics content extracted for ${url}`);
           continue;
         }
 
-        // Promote first line if Telugu Title is generic
+        // Format Telugu title if generic
         let finalTitleTelugu = titleTelugu;
         let finalContentLines = [...contentLines];
         if (finalTitleTelugu.toLowerCase() === "telugu" && finalContentLines.length > 0) {
@@ -215,90 +269,84 @@ async function crawlCategory(categoryUrl: string) {
         let category = "devotional";
         const lowerTitleEnglish = titleEnglish.toLowerCase();
         
-        if (lowerTitleEnglish.includes("ganesha") || lowerTitleEnglish.includes("vinayaka") || finalTitleTelugu.includes("గణేశ") || finalTitleTelugu.includes("వినాయక")) {
+        if (
+          lowerTitleEnglish.includes("ganesha") || 
+          lowerTitleEnglish.includes("vinayaka") || 
+          finalTitleTelugu.includes("గణేశ") || 
+          finalTitleTelugu.includes("వినాయక")
+        ) {
           category = "ganesha";
-        } else if (lowerTitleEnglish.includes("shiva") || lowerTitleEnglish.includes("linga") || lowerTitleEnglish.includes("tandava") || finalTitleTelugu.includes("శివ") || finalTitleTelugu.includes("లింగ")) {
+        } else if (
+          lowerTitleEnglish.includes("shiva") || 
+          lowerTitleEnglish.includes("linga") || 
+          lowerTitleEnglish.includes("tandava") || 
+          finalTitleTelugu.includes("శివ") || 
+          finalTitleTelugu.includes("లింగ")
+        ) {
           category = "shiva";
-        } else if (lowerTitleEnglish.includes("devi") || lowerTitleEnglish.includes("lalitha") || lowerTitleEnglish.includes("durga") || finalTitleTelugu.includes("దేవి") || finalTitleTelugu.includes("లలితా")) {
+        } else if (
+          lowerTitleEnglish.includes("devi") || 
+          lowerTitleEnglish.includes("lalitha") || 
+          lowerTitleEnglish.includes("durga") || 
+          finalTitleTelugu.includes("దేవి") || 
+          finalTitleTelugu.includes("లలితా")
+        ) {
           category = "devi";
         } else if (lowerTitleEnglish.includes("rama") || finalTitleTelugu.includes("రామ")) {
           category = "rama";
         } else if (lowerTitleEnglish.includes("krishna") || finalTitleTelugu.includes("కృష్ణ")) {
           category = "krishna";
         } else {
-          // Deduce from URL slug path
+          // Deduce from URL path category matches
           const match = url.match(/\/telugu\/([a-z-]+)-/i) || url.match(/\/([a-z-]+)\/[a-z-]+\.html/i);
           if (match && match[1]) {
             category = match[1];
           }
         }
 
-        const slugId = titleEnglish
-          .toLowerCase()
-          .replace(/[^a-z0-9\s-]/g, "")
-          .trim()
-          .replace(/\s+/g, "-");
-
-        // Format structured object matching request
         const stotramItem = {
-          id: slugId,
-          slug: slugId,
+          id: urlSlug,
+          slug: urlSlug,
           title: titleEnglish,
           title_telugu: finalTitleTelugu,
           category: category,
           contentLines: finalContentLines,
-          pdfLink: null // Reserved for Google Drive links
+          pdfLink: null
         };
 
-        // Merge back into memory array
-        const existingIdx = database.findIndex((item) => item.id === stotramItem.id);
+        // Merge back into database in-memory array
         if (existingIdx > -1) {
           database[existingIdx] = stotramItem;
-          console.log(`[Crawler] Updated in-memory: "${stotramItem.title}"`);
         } else {
           database.push(stotramItem);
-          console.log(`[Crawler] Added in-memory: "${stotramItem.title}"`);
         }
 
-        // Periodically write to disk to preserve data in case of crashes
+        // Write to database incrementally to protect progress in case of crash/kill
         fs.writeFileSync(filePath, JSON.stringify(database, null, 2), "utf-8");
-        console.log(`[Crawler] Saved progress successfully.`);
+        console.log(`[Crawler] Saved successfully: "${stotramItem.title}"`);
 
       } catch (err: any) {
-        console.error(`[Crawler] Failed to crawl page: ${url}`);
-        console.error(err.message || err);
+        console.error(`[Crawler] Error crawling page: ${url}. Reason: ${err.message || err}`);
       }
     }
 
     console.log(`\n====================================================================`);
-    console.log(`[Crawler] SUCCESS! Finished category crawl.`);
+    console.log(`[Crawler] SUCCESS! Finished deep crawler run.`);
     console.log(`[Crawler] Total database entries: ${database.length}`);
     console.log(`====================================================================`);
 
   } catch (error: any) {
-    console.error(`[Crawler] Fatal error running crawler:`);
-    console.error(error.message || error);
+    console.error(`[Crawler] Fatal error running crawler:`, error.message || error);
     process.exit(1);
   }
 }
 
-// Entry Point parsing CLI arguments
-const seedUrl = process.argv[2];
-
-if (!seedUrl) {
-  console.log("====================================================================");
-  console.log("Vignanam.org Category List Crawler");
-  console.log("====================================================================");
-  console.log("Usage:");
-  console.log("  npx tsx scripts/scrape-vignanam.ts <CATEGORY_INDEX_URL>");
-  console.log("\nExample:");
-  console.log("  npx tsx scripts/scrape-vignanam.ts https://vignanam.org/telugu/shiva-stotrams.html");
-  console.log("====================================================================");
-  
-  // Default seed URL if none is provided
-  const defaultCategory = "https://vignanam.org/telugu/lingashtakam.html";
-  console.log(`\n[Crawler] No seed URL provided. Running crawl check on default Shiva stotram page:\n  ${defaultCategory}\n`);
-  crawlCategory(defaultCategory);
+// Entry Point
+const argSeed = process.argv[2];
+if (argSeed) {
+  console.log(`[Crawler] Launching single custom seed crawl: ${argSeed}`);
+  crawlDatabase([argSeed]);
 } else {
-  crawlCategory(seedUrl);
+  console.log("[Crawler] Launching full deep crawl over all seed categories...");
+  crawlDatabase();
 }
