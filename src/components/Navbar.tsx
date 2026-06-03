@@ -5,7 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const [theme, setTheme] = useState<"light" | "dark">("dark"); // Default to dark first for cinematic vibe
+  const [theme, setTheme] = useState<"light" | "dark">("light"); // Default to light
   const pathname = usePathname();
 
   // Load theme preference on mount
@@ -15,9 +15,9 @@ export default function Navbar() {
       setTheme(savedTheme);
       document.documentElement.setAttribute("data-theme", savedTheme);
     } else {
-      // Default to dark mode if no preference saved
-      setTheme("dark");
-      document.documentElement.setAttribute("data-theme", "dark");
+      // Default to light mode if no preference saved
+      setTheme("light");
+      document.documentElement.setAttribute("data-theme", "light");
     }
   }, []);
 

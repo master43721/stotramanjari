@@ -86,6 +86,30 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           </div>
           <h1 className="reader-title-telugu">{stotram.title_telugu}</h1>
           <h2 className="reader-title-english">{stotram.title_english}</h2>
+          
+          {stotram.pdfLink && (
+            <div style={{ marginTop: "2rem" }}>
+              <a
+                href={stotram.pdfLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn"
+                style={{
+                  borderColor: "var(--accent)",
+                  color: "var(--accent)",
+                  backgroundColor: "var(--accent-light)",
+                  fontSize: "0.85rem",
+                  fontWeight: "600",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.08em",
+                  padding: "0.5rem 1.25rem",
+                  borderRadius: "20px"
+                }}
+              >
+                📄 View Original PDF
+              </a>
+            </div>
+          )}
         </header>
 
         {/* Text Area */}
@@ -103,7 +127,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                   fontSize: currentFontSize,
                   marginBottom: isEndOfVerse ? "1.8rem" : "0.3rem",
                   fontWeight: "400",
-                  color: isEndOfVerse ? "var(--text-primary)" : "rgba(244, 240, 230, 0.9)"
+                  color: isEndOfVerse ? "var(--text-primary)" : "var(--text-secondary)"
                 }}
               >
                 {line}
