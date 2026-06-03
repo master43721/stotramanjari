@@ -13,7 +13,9 @@ const VIGNANAM_CATEGORIES = [
   { id: 'upanishads', name: 'Upanishads' },
   { id: 'shiva', name: 'Shiva Stotrams' },
   { id: 'vishnu', name: 'Vishnu Stotrams' },
-  { id: 'rama', name: 'Sri Rama Stotrams' }
+  { id: 'rama', name: 'Sri Rama Stotrams' },
+  { id: 'ashtottara-namavali', name: 'Ashtottara Sata Namavali' },
+  { id: 'ashtottara-stotram', name: 'Ashtottara Sata Nama Stotram' }
 ];
 
 // Helper to classify stotrams into categories using exact mappings from vignanam.org
