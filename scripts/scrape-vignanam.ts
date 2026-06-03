@@ -149,54 +149,32 @@ async function crawlDatabase(customSeeds?: string[]) {
         const $page = cheerio.load(response.data);
 
         // 1. Extract Title
-        let rawTitle = cleanText(
-          $page("h1").first().text() || 
-          $page(".title").first().text() || 
-          $page(".stotram-title").first().text() || 
-          $page("title").text()
-        );
-        if (!rawTitle) rawTitle = "Scraped Stotram";
+        const pageTitleText = $page("title").text() || "";
+        const bodyTitleText = $page("#stitle").first().text() || $page(".stotramtitle").first().text() || "";
 
-        let titleTelugu = "";
+        let titleTelugu = isTelugu(bodyTitleText) ? cleanText(bodyTitleText) : "";
         let titleEnglish = "";
 
-        const splitTitleParts = rawTitle.split(/[-–|]/);
-        if (splitTitleParts.length >= 2) {
-          const part1 = cleanText(splitTitleParts[0]);
-          const part2 = cleanText(splitTitleParts[1]);
-
-          if (isTelugu(part1)) {
-            titleTelugu = part1;
-            titleEnglish = part2;
-          } else {
-            titleTelugu = part2;
-            titleEnglish = part1;
+        const titleParts = pageTitleText.split(/[-–|]/).map(p => cleanText(p));
+        if (titleParts.length > 0) {
+          const nonTeluguPart = titleParts.find(p => !isTelugu(p) && p.toLowerCase() !== "telugu" && !p.toLowerCase().includes("vaidika vignanam"));
+          if (nonTeluguPart) {
+            titleEnglish = nonTeluguPart;
           }
-        } else {
-          const words = rawTitle.split(/\s+/);
-          const teluguWords: string[] = [];
-          const englishWords: string[] = [];
-
-          words.forEach((word) => {
-            if (isTelugu(word)) {
-              teluguWords.push(word);
-            } else {
-              englishWords.push(word);
-            }
-          });
-
-          titleTelugu = teluguWords.join(" ") || rawTitle;
-          titleEnglish = englishWords.join(" ") || "Scraped Stotram";
         }
 
-        // Clean up titles
-        titleTelugu = cleanText(titleTelugu);
-        titleEnglish = cleanText(titleEnglish);
-
-        // Fallback for English title from URL slug
-        if (!titleEnglish || titleEnglish.trim().length < 2 || titleEnglish.toLowerCase() === "stotram") {
+        if (!titleEnglish) {
           const slugText = urlSlug.replace(/[-_]/g, " ");
           titleEnglish = slugText.charAt(0).toUpperCase() + slugText.slice(1);
+        }
+
+        if (!titleTelugu) {
+          const teluguPart = titleParts.find(p => isTelugu(p));
+          if (teluguPart) {
+            titleTelugu = teluguPart;
+          } else {
+            titleTelugu = titleEnglish;
+          }
         }
 
         // 2. Extract Lines
@@ -204,6 +182,16 @@ async function crawlDatabase(customSeeds?: string[]) {
         $page("script, style, iframe, header, footer, nav, .sidebar, #sidebar, .menu, #menu, .comment, #comment, .advertisement, #advertisement").remove();
 
         const contentLines: string[] = [];
+
+        const isBannerText = (text: string): boolean => {
+          const lower = text.toLowerCase();
+          return (
+            lower.includes("simplified anusvaras") ||
+            lower.includes("correct anusvaras marked") ||
+            lower.includes("సరళ తెలుగు") ||
+            lower.includes("శుద్ధ తెలుగు")
+          );
+        };
 
         // Check potential main content containers
         const mainSelectors = ["#content", ".stotram", ".lyrics", ".content", ".stotram-content", "article", "main"];
@@ -232,7 +220,7 @@ async function crawlDatabase(customSeeds?: string[]) {
           subLines.forEach((subLine) => {
             const cleaned = cleanText(subLine);
             // Verify it has Telugu glyphs and is of readable length
-            if (isTelugu(cleaned) && cleaned.length > 3) {
+            if (isTelugu(cleaned) && cleaned.length > 3 && !isBannerText(cleaned)) {
               if (!contentLines.includes(cleaned)) {
                 contentLines.push(cleaned);
               }
@@ -245,7 +233,7 @@ async function crawlDatabase(customSeeds?: string[]) {
           $page("body").find("*").contents().each((_, node) => {
             if (node.type === "text") {
               const text = cleanText($page(node).text());
-              if (isTelugu(text) && text.length > 3 && !contentLines.includes(text)) {
+              if (isTelugu(text) && text.length > 3 && !isBannerText(text) && !contentLines.includes(text)) {
                 contentLines.push(text);
               }
             }

@@ -35,61 +35,37 @@ async function scrapeStotram(targetUrl: string) {
     const $ = cheerio.load(response.data);
 
     // 1. Extract and split Title
-    let rawTitle = cleanText($("h1").first().text() || $(".title").first().text() || $(".stotram-title").first().text() || $("title").text());
-    
-    // Fallback if title is still empty
-    if (!rawTitle) {
-      rawTitle = "Scraped Stotram";
-    }
+    const pageTitleText = $("title").text() || "";
+    const bodyTitleText = $("#stitle").first().text() || $(".stotramtitle").first().text() || "";
 
-    console.log(`[Scraper] Extracted raw title: "${rawTitle}"`);
+    const urlParts = targetUrl.split("/");
+    const lastSegment = urlParts[urlParts.length - 1] || "";
+    const urlSlug = lastSegment.replace(/\.html?$/, "");
 
-    // Smart splitting of titles: often titles are of the format "శ్రీ వినాయక స్తోత్రం - Sri Vinayaka Stotram"
-    let titleTelugu = "";
+    let titleTelugu = isTelugu(bodyTitleText) ? cleanText(bodyTitleText) : "";
     let titleEnglish = "";
 
-    const splitTitleParts = rawTitle.split(/[-–|]/);
-    if (splitTitleParts.length >= 2) {
-      // Find which part contains Telugu
-      const part1 = cleanText(splitTitleParts[0]);
-      const part2 = cleanText(splitTitleParts[1]);
-
-      if (isTelugu(part1)) {
-        titleTelugu = part1;
-        titleEnglish = part2;
-      } else {
-        titleTelugu = part2;
-        titleEnglish = part1;
+    const titleParts = pageTitleText.split(/[-–|]/).map(p => cleanText(p));
+    if (titleParts.length > 0) {
+      const nonTeluguPart = titleParts.find(p => !isTelugu(p) && p.toLowerCase() !== "telugu" && !p.toLowerCase().includes("vaidika vignanam"));
+      if (nonTeluguPart) {
+        titleEnglish = nonTeluguPart;
       }
-    } else {
-      // If no separator, scan words to extract Telugu and English segments
-      const words = rawTitle.split(/\s+/);
-      const teluguWords: string[] = [];
-      const englishWords: string[] = [];
-
-      words.forEach((word) => {
-        if (isTelugu(word)) {
-          teluguWords.push(word);
-        } else {
-          englishWords.push(word);
-        }
-      });
-
-      titleTelugu = teluguWords.join(" ") || rawTitle;
-      titleEnglish = englishWords.join(" ") || "Scraped Stotram";
     }
 
-    // Double check that English title is not purely numbers or weird chars
-    if (!titleEnglish || titleEnglish.trim().length < 2) {
-      // Fallback English title from URL slug
-      const urlParts = targetUrl.split("/");
-      const lastSegment = urlParts[urlParts.length - 1] || "";
-      const slug = lastSegment.replace(/\.html?$/, "").replace(/[-_]/g, " ");
-      titleEnglish = slug.charAt(0).toUpperCase() + slug.slice(1);
+    if (!titleEnglish) {
+      const slugText = urlSlug.replace(/[-_]/g, " ");
+      titleEnglish = slugText.charAt(0).toUpperCase() + slugText.slice(1);
     }
 
-    titleTelugu = cleanText(titleTelugu);
-    titleEnglish = cleanText(titleEnglish);
+    if (!titleTelugu) {
+      const teluguPart = titleParts.find(p => isTelugu(p));
+      if (teluguPart) {
+        titleTelugu = teluguPart;
+      } else {
+        titleTelugu = titleEnglish;
+      }
+    }
 
     console.log(`[Scraper] Parsed Titles:`);
     console.log(`  - Telugu:  "${titleTelugu}"`);
@@ -123,6 +99,16 @@ async function scrapeStotram(targetUrl: string) {
     console.log("[Scraper] Extracting Telugu content lines...");
     const contentLines: string[] = [];
 
+    const isBannerText = (text: string): boolean => {
+      const lower = text.toLowerCase();
+      return (
+        lower.includes("simplified anusvaras") ||
+        lower.includes("correct anusvaras marked") ||
+        lower.includes("సరళ తెలుగు") ||
+        lower.includes("శుద్ధ తెలుగు")
+      );
+    };
+
     // Traverse all elements that might hold lines (p, div, td, span, pre)
     // We look primarily for <p> tags first as they hold narrative lyrics
     $("p, div.lyrics, div.content, div.stotram-content, pre").each((_, element) => {
@@ -135,7 +121,7 @@ async function scrapeStotram(targetUrl: string) {
         const cleaned = cleanText(subLine);
         
         // Ensure it contains Telugu script, is not empty, and isn't a header menu
-        if (isTelugu(cleaned) && cleaned.length > 3) {
+        if (isTelugu(cleaned) && cleaned.length > 3 && !isBannerText(cleaned)) {
           // Avoid adding duplicate lines
           if (!contentLines.includes(cleaned)) {
             contentLines.push(cleaned);
@@ -152,7 +138,7 @@ async function scrapeStotram(targetUrl: string) {
         $(element).contents().each((_, node) => {
           if (node.type === "text") {
             const text = cleanText($(node).text());
-            if (isTelugu(text) && text.length > 3 && !contentLines.includes(text)) {
+            if (isTelugu(text) && text.length > 3 && !isBannerText(text) && !contentLines.includes(text)) {
               contentLines.push(text);
             }
           }
