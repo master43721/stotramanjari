@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import vignanamData from "@/data/vignanam-data.json";
 
@@ -18,6 +18,14 @@ interface ScrapedStotram {
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    if (!isDropdownOpen) return;
+    const handleClose = () => setIsDropdownOpen(false);
+    window.addEventListener("click", handleClose);
+    return () => window.removeEventListener("click", handleClose);
+  }, [isDropdownOpen]);
 
   const stotrams: ScrapedStotram[] = vignanamData as ScrapedStotram[];
   const categories = ["all", ...Array.from(new Set(stotrams.map((s) => s.category)))];
@@ -169,34 +177,107 @@ export default function Home() {
             )}
           </div>
 
-          {/* Category Filter Pills */}
-          <div style={{
-            display: "flex",
-            justifyContent: "center",
-            flexWrap: "wrap",
-            gap: "0.6rem"
-          }}>
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className="btn"
+          {/* Custom Dropdown Selector */}
+          <div style={{ position: "relative", width: "100%", maxWidth: "28rem", marginInline: "auto" }}>
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsDropdownOpen(!isDropdownOpen);
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = "#ffffff";
+                e.currentTarget.style.borderColor = "rgba(212, 175, 55, 0.3)";
+                e.currentTarget.style.boxShadow = "0 0 15px rgba(212, 175, 55, 0.08)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.color = "rgba(255, 255, 255, 0.8)";
+                e.currentTarget.style.borderColor = "rgba(255, 255, 255, 0.08)";
+                e.currentTarget.style.boxShadow = "none";
+              }}
+              style={{
+                width: "100%",
+                backgroundColor: "rgba(255, 255, 255, 0.02)",
+                border: "1px solid rgba(255, 255, 255, 0.08)",
+                backdropFilter: "blur(24px)",
+                WebkitBackdropFilter: "blur(24px)",
+                borderRadius: "1rem",
+                padding: "0.875rem 1.5rem",
+                color: "rgba(255, 255, 255, 0.8)",
+                fontSize: "0.95rem",
+                fontWeight: "500",
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
+                cursor: "pointer",
+                transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
+                outline: "none"
+              }}
+            >
+              <span style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                {activeCategory === "all" ? "Select Sacred Chants / Text" : activeCategory.replace(/-/g, " ")}
+              </span>
+              <span style={{ 
+                fontSize: "0.75rem", 
+                transition: "transform 0.3s ease",
+                transform: isDropdownOpen ? "rotate(180deg)" : "rotate(0deg)"
+              }}>
+                ▼
+              </span>
+            </button>
+
+            {isDropdownOpen && (
+              <div 
+                onClick={(e) => e.stopPropagation()}
                 style={{
-                  padding: "0.45rem 1.35rem",
-                  borderRadius: "24px",
-                  fontSize: "0.85rem",
-                  fontWeight: "700",
-                  textTransform: "uppercase",
-                  letterSpacing: "0.1em",
-                  backgroundColor: activeCategory === category ? "var(--accent)" : "var(--bg-card)",
-                  color: activeCategory === category ? "#050505" : "var(--text-secondary)",
-                  borderColor: activeCategory === category ? "var(--accent)" : "var(--border)",
-                  boxShadow: activeCategory === category ? "0 0 15px var(--accent-glow)" : "none"
+                  position: "absolute",
+                  top: "100%",
+                  left: 0,
+                  right: 0,
+                  backgroundColor: "rgba(10, 10, 10, 0.95)",
+                  backdropFilter: "blur(40px)",
+                  WebkitBackdropFilter: "blur(40px)",
+                  border: "1px solid rgba(255, 255, 255, 0.06)",
+                  borderRadius: "1rem",
+                  boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
+                  overflowY: "auto",
+                  maxHeight: "20rem",
+                  marginTop: "0.5rem",
+                  zIndex: 50
                 }}
               >
-                {category}
-              </button>
-            ))}
+                {categories.map((category) => (
+                  <div
+                    key={category}
+                    onClick={() => {
+                      setActiveCategory(category);
+                      setIsDropdownOpen(false);
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.backgroundColor = "rgba(255, 255, 255, 0.03)";
+                      e.currentTarget.style.color = "#D4AF37";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.backgroundColor = "transparent";
+                      e.currentTarget.style.color = activeCategory === category ? "#D4AF37" : "rgba(255, 255, 255, 0.8)";
+                    }}
+                    style={{
+                      padding: "0.75rem 1.25rem",
+                      cursor: "pointer",
+                      textAlign: "left",
+                      fontSize: "0.85rem",
+                      fontWeight: activeCategory === category ? "600" : "400",
+                      letterSpacing: "0.05em",
+                      color: activeCategory === category ? "#D4AF37" : "rgba(255, 255, 255, 0.8)",
+                      backgroundColor: activeCategory === category ? "rgba(255, 255, 255, 0.02)" : "transparent",
+                      transition: "all 0.2s ease",
+                      borderBottom: "1px solid rgba(255, 255, 255, 0.02)"
+                    }}
+                  >
+                    {category === "all" ? "ALL CHANTS" : category.replace(/-/g, " ").toUpperCase()}
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
