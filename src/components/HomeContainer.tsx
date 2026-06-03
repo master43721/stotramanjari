@@ -159,7 +159,7 @@ export default function HomeContainer({ initialStotrams }: HomeContainerProps) {
               <span className="stotram-card-category">{stotram.category}</span>
               <h2 className="stotram-card-title-english">{stotram.title_english}</h2>
               <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
-              <Link href={`/${stotram.category}/${stotram.id}`} className="stotram-card-link">
+              <Link href={`/readings/${stotram.slug || stotram.id}`} className="stotram-card-link">
                 Read Stotram <span>→</span>
               </Link>
             </div>
