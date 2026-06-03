@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Stotra Manjari | Distraction-Free Stotram Reading",
@@ -32,6 +33,19 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-D1RV3K86RW"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-D1RV3K86RW');
+          `}
+        </Script>
         <Navbar />
         <main style={{ flex: 1, minHeight: "calc(100vh - 120px)" }}>{children}</main>
         <footer style={{ 
