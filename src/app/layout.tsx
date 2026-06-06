@@ -6,7 +6,7 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "Stotra Manjari | Distraction-Free Stotram Reading",
   description: "A beautiful, distraction-free, ultra-minimalist reading interface for sacred stotrams in Telugu and English. Blazing fast, SEO optimized, and premium designed.",
-  keywords: ["stotram", "telugu stotram", "stotrams", "devotional", "vignanam", "shiva stotram", "ganesha stotram", "stotra manjari"],
+  keywords: ["stotram", "telugu stotram", "stotrams", "devotional", "shiva stotram", "ganesha stotram", "stotra manjari"],
 };
 
 export default function RootLayout({

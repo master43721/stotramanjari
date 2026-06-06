@@ -6,8 +6,8 @@ import { getAllStotrams } from "@/data/loader";
 import { Stotram } from "@/types";
 import categoryMappings from "@/data/category-mappings.json";
 
-// Defined Vignanam Category list
-const VIGNANAM_CATEGORIES = [
+// Defined Category list
+const SACRED_CATEGORIES = [
   { "id": "nitya-parayana", "name": "Nitya Parayana Slokas / Daily Prayers" },
   { "id": "vedic-chants", "name": "Vedic Chants" },
   { "id": "upanishads", "name": "Upanishads" },
@@ -75,7 +75,7 @@ const VIGNANAM_CATEGORIES = [
   { "id": "yajurveda-samhita-7", "name": "Krishna Yajurveda Taittiriya Samhita - Kanda 7" }
 ];
 
-// Helper to classify stotrams into categories using exact mappings from vignanam.org
+// Helper to classify stotrams into categories using exact mappings
 function matchesCategory(stotram: Stotram, catId: string): boolean {
   const mappings = categoryMappings as Record<string, string[]>;
   const slugs = mappings[catId];
@@ -97,13 +97,13 @@ export default function Home() {
 
   const stotrams: Stotram[] = getAllStotrams();
 
-  // Filter database to only include stotrams that belong to our 6 target categories
+  // Filter database to only include stotrams that belong to our target categories
   const targetStotrams = stotrams.filter(s => 
-    VIGNANAM_CATEGORIES.some(cat => matchesCategory(s, cat.id))
+    SACRED_CATEGORIES.some(cat => matchesCategory(s, cat.id))
   );
 
   // Compute category counts based on target stotrams
-  const categoryCounts = VIGNANAM_CATEGORIES.reduce((acc, cat) => {
+  const categoryCounts = SACRED_CATEGORIES.reduce((acc, cat) => {
     acc[cat.id] = targetStotrams.filter(s => matchesCategory(s, cat.id)).length;
     return acc;
   }, {} as Record<string, number>);
@@ -295,7 +295,7 @@ export default function Home() {
               }}
             >
               <span style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                {activeCategory === "all" ? "Select Sacred Chants / Text" : VIGNANAM_CATEGORIES.find(c => c.id === activeCategory)?.name || activeCategory}
+                {activeCategory === "all" ? "Select Sacred Chants / Text" : SACRED_CATEGORIES.find(c => c.id === activeCategory)?.name || activeCategory}
               </span>
               <span style={{ 
                 fontSize: "0.75rem", 
@@ -354,7 +354,7 @@ export default function Home() {
                 >
                   ALL CHANTS ({targetStotrams.length})
                 </div>
-                {VIGNANAM_CATEGORIES.map((category) => (
+                {SACRED_CATEGORIES.map((category) => (
                   <div
                     key={category.id}
                     onClick={() => {
@@ -400,7 +400,7 @@ export default function Home() {
                 onMouseMove={handleMouseMove}
               >
                 <span className="stotram-card-category">
-                  {VIGNANAM_CATEGORIES.find(c => matchesCategory(stotram, c.id))?.name || stotram.category}
+                  {SACRED_CATEGORIES.find(c => matchesCategory(stotram, c.id))?.name || stotram.category}
                 </span>
                 <h2 className="stotram-card-title-english">{stotram.title_english}</h2>
                 <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
