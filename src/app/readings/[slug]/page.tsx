@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { getAllStotrams } from "@/data/loader";
+import { getStotramBySlug, getStotramsIndex } from "@/data/loader";
 import StotramReader from "@/components/StotramReader";
 
 interface PageProps {
@@ -12,10 +12,8 @@ interface PageProps {
 // Generate dynamic metadata for advanced SEO indexing
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const stotrams = getAllStotrams();
+  const stotram = getStotramBySlug(slug);
   
-  const stotram = stotrams.find((s) => (s.slug || s.id) === slug);
-
   if (!stotram) {
     return {
       title: "Stotram Not Found | Stotra Manjari",
@@ -38,18 +36,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // SSG Pre-render static paths during next build
 export async function generateStaticParams() {
-  const stotrams = getAllStotrams();
+  const index = getStotramsIndex();
   
-  return stotrams.map((stotram) => ({
+  return index.map((stotram) => ({
     slug: stotram.slug || stotram.id,
   }));
 }
 
 export default async function ReadingsPage({ params }: PageProps) {
   const { slug } = await params;
-  const stotrams = getAllStotrams();
-  
-  const stotram = stotrams.find((s) => (s.slug || s.id) === slug);
+  const stotram = getStotramBySlug(slug);
 
   if (!stotram) {
     notFound();

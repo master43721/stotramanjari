@@ -2,9 +2,10 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import { getAllStotrams } from "@/data/loader";
-import { Stotram } from "@/types";
+import { getStotramsIndex } from "@/data/loader";
+import { StotramIndexItem } from "@/types";
 import categoryMappings from "@/data/category-mappings.json";
+import PanchangWidget from "@/components/PanchangWidget";
 
 // Defined Category list
 const SACRED_CATEGORIES = [
@@ -76,7 +77,7 @@ const SACRED_CATEGORIES = [
 ];
 
 // Helper to classify stotrams into categories using exact mappings
-function matchesCategory(stotram: Stotram, catId: string): boolean {
+function matchesCategory(stotram: StotramIndexItem, catId: string): boolean {
   const mappings = categoryMappings as Record<string, string[]>;
   const slugs = mappings[catId];
   if (!slugs) return false;
@@ -95,7 +96,7 @@ export default function Home() {
     return () => window.removeEventListener("click", handleClose);
   }, [isDropdownOpen]);
 
-  const stotrams: Stotram[] = getAllStotrams();
+  const stotrams: StotramIndexItem[] = getStotramsIndex();
 
   // Filter database to only include stotrams that belong to our target categories
   const targetStotrams = stotrams.filter(s => 
@@ -167,6 +168,9 @@ export default function Home() {
       }} />
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
+        {/* Vedic Panchang & Routine Banner */}
+        <PanchangWidget />
+
         {/* Massive Gold Hero */}
         <section className="hero" style={{ textAlign: "center", paddingBottom: "4rem" }}>
           <h1 style={{ 

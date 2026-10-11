@@ -1,7 +1,6 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
-import Link from "next/link";
+import { useState, useRef } from "react";
 import initialVignanamData from "@/data/vignanam-data.json";
 import { Stotram } from "@/types";
 
@@ -12,41 +11,41 @@ interface AdminStotram extends Stotram {
   contentLines: string[];
 }
 
+function formatRawItem(item: Record<string, unknown>): AdminStotram {
+  const lines = ((item.contentLines || item.content_lines || []) as string[]);
+  return {
+    id: (item.id as string) || (item.slug as string) || "",
+    slug: (item.slug as string) || (item.id as string) || "",
+    title_english: (item.title as string) || (item.title_english as string) || "",
+    title_telugu: (item.title_telugu as string) || "",
+    category: (item.category as string) || "devotional",
+    contentLines: lines,
+    content_lines: lines,
+    pdfLink: (item.pdfLink as string) || null,
+  };
+}
+
 export default function AdminPage() {
-  const [stotrams, setStotrams] = useState<AdminStotram[]>([]);
+  const [stotrams, setStotrams] = useState<AdminStotram[]>(() => {
+    return (initialVignanamData as Record<string, unknown>[]).map(formatRawItem);
+  });
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedStotram, setSelectedStotram] = useState<AdminStotram | null>(null);
+  const [selectedStotram, setSelectedStotram] = useState<AdminStotram | null>(() => {
+    const list = (initialVignanamData as Record<string, unknown>[]).map(formatRawItem);
+    return list.length > 0 ? list[0] : null;
+  });
   
   // Form States
-  const [editId, setEditId] = useState("");
-  const [editSlug, setEditSlug] = useState("");
-  const [editTitleEnglish, setEditTitleEnglish] = useState("");
-  const [editTitleTelugu, setEditTitleTelugu] = useState("");
-  const [editCategory, setEditCategory] = useState("");
-  const [editPdfLink, setEditPdfLink] = useState("");
-  const [editContentText, setEditContentText] = useState("");
+  const [editId, setEditId] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).id);
+  const [editSlug, setEditSlug] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).slug);
+  const [editTitleEnglish, setEditTitleEnglish] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).title_english);
+  const [editTitleTelugu, setEditTitleTelugu] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).title_telugu);
+  const [editCategory, setEditCategory] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).category);
+  const [editPdfLink, setEditPdfLink] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).pdfLink || "");
+  const [editContentText, setEditContentText] = useState(() => formatRawItem((initialVignanamData as Record<string, unknown>[])[0]).contentLines.join("\n"));
   
   const [statusMessage, setStatusMessage] = useState<{ text: string; isError: boolean } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
-
-  // Load initial data
-  useEffect(() => {
-    // Standardize vignanam data layout
-    const formattedData = (initialVignanamData as any[]).map((item) => ({
-      id: item.id || item.slug || "",
-      slug: item.slug || item.id || "",
-      title_english: item.title || item.title_english || "",
-      title_telugu: item.title_telugu || "",
-      category: item.category || "devotional",
-      contentLines: item.contentLines || item.content_lines || [],
-      content_lines: item.contentLines || item.content_lines || [],
-      pdfLink: item.pdfLink || null
-    }));
-    setStotrams(formattedData);
-    if (formattedData.length > 0) {
-      selectStotram(formattedData[0]);
-    }
-  }, []);
 
   const selectStotram = (item: AdminStotram) => {
     setSelectedStotram(item);
@@ -138,7 +137,7 @@ export default function AdminPage() {
       } else {
         throw new Error(data.error || "Failed to save.");
       }
-    } catch (err: any) {
+    } catch (err: unknown) {
       console.warn("[Admin] Save failed. Check if local server is running.", err);
       setStatusMessage({ 
         text: "Notice: Unable to write directly to disk. If running locally, make sure to start the admin server with:\n'npx tsx scripts/admin-server.ts'\n\nYou can also download the JSON file using 'Export JSON' and replace vignanam-data.json manually.", 
@@ -172,24 +171,16 @@ export default function AdminPage() {
           throw new Error("Uploaded file must be a JSON array of stotrams.");
         }
 
-        const formatted = json.map((item: any) => ({
-          id: item.id || item.slug || Date.now().toString(),
-          slug: item.slug || item.id || "slug",
-          title_english: item.title || item.title_english || "Imported Stotram",
-          title_telugu: item.title_telugu || "",
-          category: item.category || "devotional",
-          contentLines: item.contentLines || item.content_lines || [],
-          content_lines: item.contentLines || item.content_lines || [],
-          pdfLink: item.pdfLink || null
-        }));
+        const formatted = json.map((item: Record<string, unknown>) => formatRawItem(item));
 
         setStotrams(formatted);
         if (formatted.length > 0) {
           selectStotram(formatted[0]);
         }
         setStatusMessage({ text: `Successfully imported ${formatted.length} stotrams. Click 'Save Database' to store them.`, isError: false });
-      } catch (err: any) {
-        setStatusMessage({ text: "Failed to parse JSON file: " + err.message, isError: true });
+      } catch (err: unknown) {
+        const msg = err instanceof Error ? err.message : String(err);
+        setStatusMessage({ text: "Failed to parse JSON file: " + msg, isError: true });
       }
     };
     reader.readAsText(file);

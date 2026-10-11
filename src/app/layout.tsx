@@ -2,6 +2,55 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Script from "next/script";
+import {
+  Outfit,
+  Noto_Sans_Telugu,
+  Noto_Serif_Telugu,
+  Tiro_Devanagari_Sanskrit,
+  Noto_Sans_Kannada,
+  Noto_Sans_Tamil,
+} from "next/font/google";
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
+
+const notoSansTelugu = Noto_Sans_Telugu({
+  subsets: ["telugu"],
+  weight: ["400", "700"],
+  variable: "--font-noto-sans-telugu",
+  display: "swap",
+});
+
+const notoSerifTelugu = Noto_Serif_Telugu({
+  subsets: ["telugu"],
+  weight: ["400", "700"],
+  variable: "--font-noto-serif-telugu",
+  display: "swap",
+});
+
+const tiroDevanagariSanskrit = Tiro_Devanagari_Sanskrit({
+  subsets: ["devanagari"],
+  weight: "400",
+  variable: "--font-tiro-devanagari",
+  display: "swap",
+});
+
+const notoSansKannada = Noto_Sans_Kannada({
+  subsets: ["kannada"],
+  weight: ["400", "700"],
+  variable: "--font-noto-kannada",
+  display: "swap",
+});
+
+const notoSansTamil = Noto_Sans_Tamil({
+  subsets: ["tamil"],
+  weight: ["400", "700"],
+  variable: "--font-noto-tamil",
+  display: "swap",
+});
 
 export const metadata: Metadata = {
   title: "Stotra Manjari | Distraction-Free Stotram Reading",
@@ -24,15 +73,25 @@ export default function RootLayout({
               (function() {
                 try {
                   var saved = localStorage.getItem('theme');
-                  var theme = saved || 'light';
+                  var theme = saved || 'dark';
                   document.documentElement.setAttribute('data-theme', theme);
                 } catch (e) {}
-              })()
+              })();
+              if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function() {
+                  var basePath = window.location.pathname.startsWith('/stotramanjari') ? '/stotramanjari' : '';
+                  navigator.serviceWorker.register(basePath + '/sw.js').catch(function(e) {});
+                });
+              }
             `,
           }}
         />
+        <link rel="apple-touch-icon" href="/stotramanjari/icon-192.png" />
+        <meta name="theme-color" content="#070707" />
       </head>
-      <body>
+      <body
+        className={`${outfit.variable} ${notoSansTelugu.variable} ${notoSerifTelugu.variable} ${tiroDevanagariSanskrit.variable} ${notoSansKannada.variable} ${notoSansTamil.variable}`}
+      >
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-D1RV3K86RW"
           strategy="afterInteractive"

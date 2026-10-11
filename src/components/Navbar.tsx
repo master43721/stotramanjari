@@ -5,27 +5,30 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 export default function Navbar() {
-  const [theme, setTheme] = useState<"light" | "dark">("light"); // Default to light
+  type ThemeType = "dark" | "sepia" | "clean-light";
+  const [theme, setTheme] = useState<ThemeType>(() => {
+    if (typeof window === "undefined") return "dark";
+    const saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "sepia") return "sepia";
+    if (saved === "clean-light") return "clean-light";
+    return "dark";
+  });
   const pathname = usePathname();
 
-  // Load theme preference on mount
+  // Sync theme attribute to document on mount
   useEffect(() => {
-    const savedTheme = localStorage.getItem("theme") as "light" | "dark" | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute("data-theme", savedTheme);
-    } else {
-      // Default to light mode if no preference saved
-      setTheme("light");
-      document.documentElement.setAttribute("data-theme", "light");
-    }
-  }, []);
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   const toggleTheme = () => {
-    const newTheme = theme === "light" ? "dark" : "light";
-    setTheme(newTheme);
-    localStorage.setItem("theme", newTheme);
-    document.documentElement.setAttribute("data-theme", newTheme);
+    let nextTheme: ThemeType = "dark";
+    if (theme === "dark") nextTheme = "sepia";
+    else if (theme === "sepia") nextTheme = "clean-light";
+    else nextTheme = "dark";
+
+    setTheme(nextTheme);
+    localStorage.setItem("theme", nextTheme);
+    document.documentElement.setAttribute("data-theme", nextTheme);
   };
 
   return (
@@ -72,9 +75,10 @@ export default function Navbar() {
             onClick={toggleTheme} 
             className="icon-btn" 
             aria-label="Toggle Theme"
+            title={`Current Theme: ${theme === "dark" ? "Midnight Gold" : theme === "sepia" ? "Aged Sepia" : "Clean Light"} (Click to cycle)`}
             style={{ fontSize: "1.1rem" }}
           >
-            {theme === "light" ? "🌙" : "📄"}
+            {theme === "dark" ? "🌙" : theme === "sepia" ? "📜" : "☀️"}
           </button>
         </nav>
       </div>

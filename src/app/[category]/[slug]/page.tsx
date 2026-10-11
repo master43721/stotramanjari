@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
-import { getAllStotrams } from "@/data/loader";
+import { getStotramBySlug, getStotramsIndex } from "@/data/loader";
 import StotramReader from "@/components/StotramReader";
 
 interface PageProps {
@@ -13,13 +13,9 @@ interface PageProps {
 // Generate dynamic metadata for search engine optimization (SEO)
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { category, slug } = await params;
-  const stotrams = getAllStotrams();
+  const stotram = getStotramBySlug(slug);
   
-  const stotram = stotrams.find(
-    (s) => s.category === category && s.id === slug
-  );
-
-  if (!stotram) {
+  if (!stotram || stotram.category !== category) {
     return {
       title: "Stotram Not Found | Stotra Manjari",
     };
@@ -41,9 +37,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 // Pre-render static paths during building (Static Site Generation - SSG)
 export async function generateStaticParams() {
-  const stotrams = getAllStotrams();
+  const index = getStotramsIndex();
   
-  return stotrams.map((stotram) => ({
+  return index.map((stotram) => ({
     category: stotram.category,
     slug: stotram.id,
   }));
@@ -51,13 +47,9 @@ export async function generateStaticParams() {
 
 export default async function StotramPage({ params }: PageProps) {
   const { category, slug } = await params;
-  const stotrams = getAllStotrams();
-  
-  const stotram = stotrams.find(
-    (s) => s.category === category && s.id === slug
-  );
+  const stotram = getStotramBySlug(slug);
 
-  if (!stotram) {
+  if (!stotram || stotram.category !== category) {
     notFound();
   }
 
