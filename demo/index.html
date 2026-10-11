@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stotra Manjari - Architecture Demo (5 Core Features)</title>
+
+  <!-- PWA & Mobile Web Capabilities -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#d4af37">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <link rel="apple-touch-icon" href="./icons/icon-192.svg">
+  <link rel="icon" type="image/svg+xml" href="./icons/icon-192.svg">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+
+  <!-- =========================================================================
+       Top Header Navigation
+       ========================================================================= -->
+  <header class="site-header">
+    <div class="container">
+      <div class="nav-row">
+        <!-- Brand & Sacred Om Icon -->
+        <a href="#" class="brand-wrapper">
+          <div class="brand-icon-box">
+            <svg viewBox="0 0 192 192" width="24" height="24">
+              <defs>
+                <linearGradient id="goldOm" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fff0aa"/>
+                  <stop offset="100%" stop-color="#d4af37"/>
+                </linearGradient>
+              </defs>
+              <path d="M72 70 C72 58 84 52 96 52 C108 52 116 60 116 70 C116 80 106 88 98 94 C112 94 126 104 126 120 C126 136 110 146 92 146 C76 146 64 136 64 124 C64 116 70 110 78 110 C86 110 90 116 90 122 C90 128 84 132 78 132 C82 136 88 138 94 138 C106 138 114 130 114 118 C114 104 100 98 88 98 L82 98 L82 90 L88 90 C98 90 106 82 106 72 C106 64 100 60 94 60 C86 60 82 66 82 72 Z" fill="url(#goldOm)"/>
+              <path d="M110 50 C122 50 132 58 134 68 C130 64 124 62 118 62 C114 62 110 63 106 66 C107 58 110 50 110 50 Z" fill="url(#goldOm)"/>
+              <circle cx="126" cy="48" r="4.5" fill="url(#goldOm)"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1>Stotra Manjari</h1>
+            <span class="brand-subtitle">Architecture Demo</span>
+          </div>
+        </a>
+
+        <!-- Header Actions: Offline Badge, PWA Install, Themes, Architecture Guide -->
+        <div class="nav-actions">
+          <div id="offline-badge" class="badge-status" title="App status">
+            <span class="pulse-dot"></span> Offline Ready
+          </div>
+
+          <button id="install-app-btn" class="btn btn-sm btn-primary" style="display: none;">
+            📲 Install PWA
+          </button>
+
+          <!-- Configurable Theme Switcher -->
+          <div class="toggle-group" role="group" aria-label="Theme selector">
+            <button id="theme-dark-btn" class="toggle-group-btn active" title="Cinematic Dark Theme">🌙 Dark</button>
+            <button id="theme-sepia-btn" class="toggle-group-btn" title="Aged Manuscript Sepia Theme">📜 Sepia</button>
+            <button id="theme-light-btn" class="toggle-group-btn" title="Daylight Clean Theme">☀️ Light</button>
+          </div>
+
+          <button id="open-arch-modal-btn" class="btn btn-sm" title="Inspect GitHub Actions & App Architecture">
+            🏛️ Architecture Guide
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =========================================================================
+       Main Content Container
+       ========================================================================= -->
+  <main class="container">
+
+    <!-- Feature Demo Banner -->
+    <section class="demo-banner">
+      <div class="banner-header">
+        <div>
+          <h2 class="banner-title">🕉️ Production Architecture Prototype</h2>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.25rem;">
+            A complete self-contained demo implementing all 5 requested features with zero runtime dependencies. Designed for seamless GitHub Pages deployment via GitHub Actions.
+          </p>
+        </div>
+      </div>
+
+      <div class="features-pill-list">
+        <span class="feature-pill active">✓ 1. Dynamic Typography & Themes</span>
+        <span class="feature-pill active">✓ 2. Multi-Script Transliteration (Sanscript.js)</span>
+        <span class="feature-pill active">✓ 3. Audio & Visual Karaoke Pacing</span>
+        <span class="feature-pill active">✓ 4. Vedic Panchang & Daily Puja Routine</span>
+        <span class="feature-pill active">✓ 5. PWA Offline Caching & GitHub Actions CI</span>
+      </div>
+    </section>
+
+    <!-- Everyday Features Two-Column Grid: Panchang & Daily Puja Routine -->
+    <div class="everyday-grid">
+
+      <!-- Vedic Panchang Card -->
+      <section class="card">
+        <div class="card-header">
+          <h3 class="card-title">📅 Vedic Panchang (Daily Muhurtam)</h3>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Real-time Astro Computation</span>
+        </div>
+
+        <div id="panchang-status" class="panchang-status-banner gold">
+          <span>🌟 Abhijit Muhurtam Active</span>
+          <span style="font-size: 0.72rem; opacity: 0.8">Auspicious Chanting Window</span>
+        </div>
+
+        <div class="panchang-details">
+          <div class="panchang-item">
+            <span class="panchang-item-label">Vara (విహంగ/వారం)</span>
+            <span id="panchang-vara" class="panchang-item-value">Budhavasara (Wednesday)</span>
+          </div>
+          <div class="panchang-item">
+            <span class="panchang-item-label">Tithi & Paksha (తిథి)</span>
+            <span id="panchang-tithi" class="panchang-item-value">Shukla Dashami</span>
+          </div>
+          <div class="panchang-item">
+            <span class="panchang-item-label">Nakshatra (నక్షత్రం)</span>
+            <span id="panchang-nakshatra" class="panchang-item-value">Rohini (రోహిణి)</span>
+          </div>
+          <div class="panchang-item">
+            <span class="panchang-item-label">Rahu Kalam (రాహుకాలం)</span>
+            <span id="panchang-rahu" class="panchang-item-value">12:00 PM - 1:30 PM</span>
+          </div>
+        </div>
+
+        <!-- Stotra of the Day Recommendation -->
+        <div class="stotra-recommendation">
+          <div class="rec-info">
+            <span style="font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); font-weight: 700;">
+              ✨ Recommended Stotra of the Day
+            </span>
+            <h4 id="rec-stotra-title">Sri Ganesha Pancharatnam</h4>
+            <p id="rec-stotra-reason">Presiding deity of Wednesday (Budhavasara)</p>
+          </div>
+          <button id="rec-stotra-load-btn" class="btn btn-sm btn-primary">
+            Load & Read
+          </button>
+        </div>
+      </section>
+
+      <!-- Daily Puja Routine Sequence Card -->
+      <section class="card">
+        <div class="card-header">
+          <h3 class="card-title">📿 My Daily Puja Routine</h3>
+          <span style="font-size: 0.75rem; color: var(--text-muted);">Saved in localStorage</span>
+        </div>
+
+        <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem;">
+          Configure your personal sequential chanting routine. Steps advance automatically with verse repeat counts.
+        </p>
+
+        <div id="puja-list-container" class="puja-list">
+          <!-- Rendered via JS -->
+        </div>
+
+        <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+          <button id="start-puja-btn" class="btn btn-sm btn-primary">
+            ▶ Start Guided Puja
+          </button>
+          <button id="add-current-to-puja-btn" class="btn btn-sm">
+            + Add Current Stotram
+          </button>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- =========================================================================
+         Main Stotram Reader
+         ========================================================================= -->
+    <section class="reader-section">
+
+      <!-- Sticky Floating Control Toolbar -->
+      <div class="reader-toolbar">
+        <!-- Script Selector -->
+        <div class="toolbar-group">
+          <span class="toolbar-label">Script:</span>
+          <select id="script-select" class="custom-select" aria-label="Select reading script">
+            <option value="telugu">తెలుగు (Telugu)</option>
+            <option value="devanagari">देवनागरी (Devanagari)</option>
+            <option value="kannada">ಕನ್ನಡ (Kannada)</option>
+            <option value="tamil">தமிழ் (Tamil)</option>
+            <option value="iast">English (IAST Roman)</option>
+          </select>
+        </div>
+
+        <!-- Stotram Selector -->
+        <div class="toolbar-group">
+          <span class="toolbar-label">Stotram:</span>
+          <select id="stotra-select" class="custom-select" aria-label="Select stotram">
+            <option value="ganesha-pancharatnam">Sri Ganesha Pancharatnam</option>
+            <option value="shiva-panchakshari">Sri Shiva Panchakshari Stotram</option>
+          </select>
+        </div>
+
+        <!-- Typography Resizer -->
+        <div class="toolbar-group">
+          <span class="toolbar-label">Text Size:</span>
+          <div class="font-resizer">
+            <button id="font-decrease-btn" class="font-btn" title="Decrease Font (A-)">A-</button>
+            <span id="font-percent-label" class="font-indicator">100%</span>
+            <button id="font-increase-btn" class="font-btn" title="Increase Font (A+)">A+</button>
+            <button id="font-reset-btn" class="font-btn" title="Reset Font" style="font-size: 0.7rem;">↺</button>
+          </div>
+        </div>
+
+        <!-- Additional Reader Actions -->
+        <div class="toolbar-group">
+          <button id="line-height-btn" class="btn btn-sm" title="Toggle line spacing">↕ Normal</button>
+          <button id="focus-mode-btn" class="btn btn-sm" title="Distraction-Free Immersion Mode">🧘 Sacred Focus</button>
+          <button id="toggle-all-meanings-btn" class="btn btn-sm" title="Expand/Collapse all meanings">📖 Meanings ▾</button>
+        </div>
+
+        <!-- Auto-scroll checkbox -->
+        <div class="toolbar-group" style="margin-left: auto;">
+          <label style="font-size: 0.75rem; color: var(--text-secondary); display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+            <input type="checkbox" id="auto-scroll-toggle" checked style="accent-color: var(--accent);">
+            Auto-Scroll Karaoke
+          </label>
+        </div>
+      </div>
+
+      <!-- Sacred Reader Header -->
+      <header class="reader-header">
+        <div id="reader-deity-badge" class="reader-deity-badge">🕉️ Lord Ganesha</div>
+        <h2 id="reader-title-script" class="reader-title-script script-telugu">శ్రీ గణేశ పంచరత్న స్తోత్రం</h2>
+        <h3 id="reader-title-english" class="reader-title-english">Sri Ganesha Pancharatnam</h3>
+        <div class="reader-meta-row">
+          <span id="reader-composer">Composer: Adi Shankaracharya</span>
+          <span>•</span>
+          <span id="reader-verse-count">6 Sacred Verses</span>
+          <span>•</span>
+          <span>Tap any verse to sync audio playback</span>
+        </div>
+      </header>
+
+      <!-- Stotram Verses List -->
+      <div id="verses-container" class="verses-container">
+        <!-- Verses rendered dynamically via app.js -->
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- =========================================================================
+       Sticky Bottom Audio Dock (Synthesizer & Sync Player)
+       ========================================================================= -->
+  <footer class="audio-dock">
+    <div class="audio-dock-container">
+
+      <!-- Track Thumbnail & Title -->
+      <div class="dock-track-info">
+        <div class="dock-stotra-thumb">🕉️</div>
+        <div class="dock-meta">
+          <h4 id="dock-track-title">Sri Ganesha Pancharatnam</h4>
+          <p id="dock-track-subtitle">Web Audio Tanpura & Chant Synth</p>
+        </div>
+      </div>
+
+      <!-- Center Controls & Scrubber -->
+      <div class="dock-center">
+        <div class="dock-transport-buttons">
+          <button id="audio-prev-btn" class="btn btn-icon-only" title="Previous Verse">⏮</button>
+          <button id="audio-play-btn" class="play-main-btn" title="Start Sacred Chanting">▶</button>
+          <button id="audio-next-btn" class="btn btn-icon-only" title="Next Verse">⏭</button>
+        </div>
+
+        <div class="dock-scrub-row">
+          <span id="time-current" class="dock-time-label">0:00</span>
+          <div id="scrubber-wrap" class="scrubber-bar-wrap">
+            <div id="scrubber-fill" class="scrubber-fill">
+              <div class="scrubber-thumb"></div>
+            </div>
+          </div>
+          <span id="time-total" class="dock-time-label">1:26</span>
+        </div>
+      </div>
+
+      <!-- Options: Speed, Japa Loop Counter -->
+      <div class="dock-options">
+        <select id="audio-speed-select" class="custom-select" style="padding: 0.25rem 0.6rem; font-size: 0.75rem;" title="Playback Tempo">
+          <option value="0.75">0.75x</option>
+          <option value="1.0" selected>1.0x</option>
+          <option value="1.25">1.25x</option>
+          <option value="1.5">1.5x</option>
+        </select>
+
+        <button id="audio-loop-pill" class="loop-pill" title="Japa Chanting Loop Mode (Click to cycle)">
+          🔁 Loop: Off
+        </button>
+      </div>
+
+    </div>
+  </footer>
+
+  <!-- =========================================================================
+       Architecture & GitHub Actions Guide Modal
+       ========================================================================= -->
+  <div id="arch-modal" class="modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="arch-modal-title">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 id="arch-modal-title" class="modal-title">🏛️ Stotra Manjari Application Architecture</h2>
+        <button id="close-arch-modal-btn" class="btn btn-sm btn-icon-only" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button class="modal-tab-btn active" data-tab="tab-overview">Overview</button>
+        <button class="modal-tab-btn" data-tab="tab-typography">1. Typography & Themes</button>
+        <button class="modal-tab-btn" data-tab="tab-scripts">2. Multi-Script Transliteration</button>
+        <button class="modal-tab-btn" data-tab="tab-audio">3. Web Audio & Karaoke Sync</button>
+        <button class="modal-tab-btn" data-tab="tab-panchang">4. Panchang & Puja</button>
+        <button class="modal-tab-btn" data-tab="tab-github">5. GitHub Actions & PWA</button>
+      </div>
+
+      <!-- Tab 1: Overview -->
+      <div id="tab-overview" class="tab-content active">
+        <h3>Design Philosophy & Layered Architecture</h3>
+        <p>
+          Stotra Manjari is designed as a sacred digital temple for reading and chanting Vedic hymns. The architecture balances
+          pure visual aesthetics (cinematic gold accents, aged parchment sepia, deep obsidian dark) with robust engineering:
+        </p>
+        <ul>
+          <li><strong>Zero-Dependency Static Client:</strong> Can be served entirely from any static CDN or GitHub Pages with instantaneous loading.</li>
+          <li><strong>Offline-First Resilience:</strong> Full PWA manifest and Service Worker pre-caching all scripts, fonts, and data assets.</li>
+          <li><strong>Declarative State Synchronization:</strong> React / Modern JS architecture synchronizing typography, script rendering, and audio karaoke timestamps.</li>
+        </ul>
+      </div>
+
+      <!-- Tab 2: Typography -->
+      <div id="tab-typography" class="tab-content">
+        <h3>1. Typography & Readability Architecture</h3>
+        <p>
+          Indic languages require specialized Unicode typography rules to prevent conjunct clipping, improper vowel placement,
+          or awkward line wrapping.
+        </p>
+        <pre><code>/* Dynamic font scaling via CSS custom properties */
+:root {
+  --reader-font-size: 1.35rem; /* Dynamic: scaled via A+/A- buttons */
+  --reader-line-height: 1.95;  /* Tuned for Indic vowel diacritics */
+  --font-telugu: 'Noto Sans Telugu', sans-serif;
+  --font-devanagari: 'Noto Serif Devanagari', serif;
+}
+
+/* Theme Switching with CSS variables and data-theme */
+[data-theme="sepia"] {
+  --bg-base: #f5efe3; /* Palm-leaf manuscript parchment */
+  --text-primary: #2a2116; /* Sandalwood dark amber */
+  --accent: #b56b14;
+}</code></pre>
+      </div>
+
+      <!-- Tab 3: Multi-Script -->
+      <div id="tab-scripts" class="tab-content">
+        <h3>2. Multi-Script Transliteration & Word Breakdown</h3>
+        <p>
+          Uses Brahmic phonetic mapping. Because Sanskrit in Indian scripts shares identical phonetic phonemes,
+          transliteration from Telugu to Devanagari, Kannada, Tamil, or IAST Roman happens client-side with zero latency:
+        </p>
+        <pre><code>// Instantaneous Transliteration
+const textDevanagari = Sanscript.t(verseTelugu, 'telugu', 'devanagari');
+const textIAST = Sanscript.t(verseTelugu, 'telugu', 'iast');
+
+// Padaccheda (Word-by-word) Schema
+{
+  word: 'ముదా-కర-ఆత్త-మోదకం',
+  meaning: 'Holding the delicious sweet modaka in hand with pure joy'
+}</code></pre>
+      </div>
+
+      <!-- Tab 4: Web Audio -->
+      <div id="tab-audio" class="tab-content">
+        <h3>3. Web Audio API Synthesis & Karaoke Sync</h3>
+        <p>
+          Instead of relying on large MP3 files that fail to load offline, the demo employs a Web Audio API synthesizer
+          generating a polyphonic Tanpura drone at 136.1Hz (the sacred Om pitch), resonant temple bell chimes, and Vedic chant cadences:
+        </p>
+        <pre><code>// Tanpura Drone Fundamental Pitch (136.1 Hz)
+const baseSa = 136.1; // C#3
+osc.frequency.setValueAtTime(baseSa, audioCtx.currentTime);
+
+// Karaoke Timestamp Synchronization
+audioEngine.onVerseChange((activeIdx) => {
+  document.querySelectorAll('.verse-card')[activeIdx].classList.add('active');
+  card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+});</code></pre>
+      </div>
+
+      <!-- Tab 5: Panchang -->
+      <div id="tab-panchang" class="tab-content">
+        <h3>4. Vedic Panchang & Daily Puja Routine</h3>
+        <p>
+          Computes accurate lunar-solar variables (Julian Day, lunar elongation for 30 Tithis, sidereal moon for 27 Nakshatras,
+          and traditional 8-part diurnal diurnal division for Rahu Kalam and Abhijit Muhurtam). Daily Puja sequences are persisted in <code>localStorage</code>.
+        </p>
+        <pre><code>// Rahu Kalam Diurnal calculation based on weekday
+const RAHU_PARTS = [8, 2, 7, 5, 6, 4, 3]; // Sunday=Part 8, Monday=Part 2...
+const timeWindow = formatTimeWindow(RAHU_PARTS[dayOfWeek], sunriseHour, sunsetHour);</code></pre>
+      </div>
+
+      <!-- Tab 6: GitHub Actions -->
+      <div id="tab-github" class="tab-content">
+        <h3>5. GitHub Actions & GitHub Pages Deployment</h3>
+        <p>
+          This demo is structured with relative paths (<code>./</code>) ensuring full compatibility with GitHub Pages
+          and GitHub Actions workflows:
+        </p>
+        <pre><code># .github/workflows/deploy.yml
+name: Deploy Static Site to GitHub Pages
+on:
+  push:
+    branches: [ master ]
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      # The demo directory is uploaded alongside static exports
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./out
+      - uses: actions/deploy-pages@v4</code></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- Application Scripts in Order -->
+  <script src="./data/stotrams.js"></script>
+  <script src="./sanscript.js"></script>
+  <script src="./panchang.js"></script>
+  <script src="./audio-engine.js"></script>
+  <script src="./app.js"></script>
+
+</body>
+</html>

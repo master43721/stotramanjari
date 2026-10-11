@@ -1,0 +1,42 @@
+{
+  "name": "Stotra Manjari - Sacred Stotram Reader",
+  "short_name": "StotraManjari",
+  "description": "Vedic Stotram chanting and reading sanctuary with multi-script transliteration, synchronized karaoke audio, and daily Vedic Panchang.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060606",
+  "theme_color": "#d4af37",
+  "categories": ["lifestyle", "books", "education"],
+  "icons": [
+    {
+      "src": "./icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "./icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Daily Puja Routine",
+      "short_name": "Daily Puja",
+      "description": "Start today's selected devotional chanting sequence",
+      "url": "./index.html?view=puja",
+      "icons": [{ "src": "./icons/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Vedic Panchang",
+      "short_name": "Panchang",
+      "description": "View today's Tithi, Nakshatra, and Rahu Kalam",
+      "url": "./index.html?view=panchang",
+      "icons": [{ "src": "./icons/icon-192.svg", "sizes": "192x192" }]
+    }
+  ]
+}
