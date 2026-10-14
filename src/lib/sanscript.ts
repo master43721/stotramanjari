@@ -3,6 +3,8 @@
  * Supports Telugu, Devanagari, Kannada, Tamil, and IAST (Roman)
  */
 
+import { sanitizeTeluguText } from "./sanitizeTelugu";
+
 export type SupportedScript = "telugu" | "devanagari" | "kannada" | "tamil" | "iast";
 
 // Canonical token maps
@@ -400,7 +402,6 @@ function devanagariToIAST(text: string): string {
   return result.join("");
 }
 
-import { sanitizeTeluguText } from "./sanitizeTelugu";
 
 /**
  * Transliterate input text from source script (auto-detected if omitted) to targetScript
