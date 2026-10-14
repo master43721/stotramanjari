@@ -4,6 +4,7 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { Stotram, DailyPujaItem } from "@/types";
 import { SupportedScript, transliterate } from "@/lib/sanscript";
+import Breadcrumbs from "@/components/Breadcrumbs";
 
 interface StotramReaderProps {
   stotram: Stotram;
@@ -176,6 +177,16 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
       ? "var(--font-iast)"
       : "var(--font-telugu)";
 
+  const categoryLabel = stotram.category
+    ? stotram.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
+    : "Sacred Chants";
+
+  const breadcrumbs = [
+    { label: "Home", href: "/" },
+    { label: categoryLabel, href: `/${stotram.category}/${stotram.slug || stotram.id}` },
+    { label: stotram.title_english },
+  ];
+
   return (
     <div
       className="reader-wrapper"
@@ -192,6 +203,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
       <div className="reader-container">
         {/* Sacred Header */}
         <header className="reader-header">
+          <Breadcrumbs items={breadcrumbs} />
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem" }}>
             <Link
               href="/"

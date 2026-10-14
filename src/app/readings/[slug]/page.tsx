@@ -22,13 +22,39 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   return {
     title: `${stotram.title_english} - ${stotram.title_telugu} | Stotramani`,
-    description: `Read ${stotram.title_english} (${stotram.title_telugu}) online. Clean layout with adjustable typography and original PDF links on stotramani.app.`,
+    description: `Read and chant ${stotram.title_english} (${stotram.title_telugu}) online. Clean layout with multi-script support (Telugu, Sanskrit, Kannada, Tamil, IAST), adjustable typography, and offline support on stotramani.app.`,
+    alternates: {
+      canonical: `https://stotramani.app/readings/${slug}`,
+    },
+    openGraph: {
+      title: `${stotram.title_english} (${stotram.title_telugu}) | Stotramani`,
+      description: `Sacred recitation of ${stotram.title_english} with multi-script support and distraction-free mode on Stotramani.`,
+      url: `https://stotramani.app/readings/${slug}`,
+      siteName: "Stotramani",
+      images: [
+        {
+          url: "/og-image.png",
+          width: 1200,
+          height: 630,
+          alt: `${stotram.title_english} - Sacred Telugu & Sanskrit Devotional Library`,
+        },
+      ],
+      locale: "te_IN",
+      type: "article",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${stotram.title_english} (${stotram.title_telugu}) | Stotramani`,
+      description: `Read and chant ${stotram.title_english} distraction-free on Stotramani.`,
+      images: ["/og-image.png"],
+    },
     keywords: [
       stotram.id, 
       stotram.category, 
       stotram.title_english.toLowerCase(), 
       "telugu stotram", 
       "stotram lyrics", 
+      "sanskrit hymns",
       "stotramani",
       "sudheendra sripada"
     ],

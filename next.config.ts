@@ -34,6 +34,7 @@ const nextConfig: NextConfig = {
   },
   basePath: "",
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
 };
 
 export default nextConfig;

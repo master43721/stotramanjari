@@ -1,0 +1,8 @@
+# Robots.txt for Stotramani (https://stotramani.app)
+# Created by Sudheendra Sripada
+
+User-agent: *
+Allow: /
+
+Sitemap: https://stotramani.app/sitemap.xml
+Host: https://stotramani.app

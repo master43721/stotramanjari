@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import initialVignanamData from "@/data/vignanam-data.json";
 import { Stotram } from "@/types";
 
@@ -46,6 +46,10 @@ export default function AdminPage() {
   
   const [statusMessage, setStatusMessage] = useState<{ text: string; isError: boolean } | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    document.title = "Stotram Curation Console | Stotramani";
+  }, []);
 
   const selectStotram = (item: AdminStotram) => {
     setSelectedStotram(item);

@@ -1,0 +1,51 @@
+# Stotramani (స్తోత్రమణి)
+> A pure, distraction-free digital sanctuary for sacred Telugu & Sanskrit stotrams, Vedic chants, and devotional literature.
+
+## Project Information
+- Name: Stotramani (స్తోత్రమణి)
+- Official Domain: https://stotramani.app
+- Founder & Curator: Sudheendra Sripada
+- Primary Language: Telugu (తెలుగు), Sanskrit (संस्कृतम्), English
+- Contact: contact@stotramani.app
+
+## Mission & Philosophy
+Stotramani is designed to offer a distraction-free, privacy-preserving digital library of sacred devotional hymns (stotrams, ashtakams, sahasranamavalis, suktams, and upanishads). It eliminates commercial clutter, popups, intrusive ads, and third-party trackers, focusing purely on high-legibility sacred recitation and spiritual contemplation.
+
+## Key Features
+1. Multi-Script Transliteration: Dynamic real-time script conversion supporting Telugu (తెలుగు), Devanagari (देवनागरी), Kannada (ಕನ್ನಡ), Tamil (தமிழ்), and Roman/IAST.
+2. Devotional Typography & Themes: Optimized reading contrast with three handcrafted themes:
+   - Midnight Gold (Cinematic obsidian dark mode)
+   - Aged-Paper Sepia (Traditional palm-leaf/parchment warmth)
+   - Clean Light (High-clarity day mode)
+3. Vedic Panchang & Daily Nitya Archana: Real-time astronomical calculations of Tithi, Nakshatra, Yoga, Karana, and Rahu Kalam, along with daily deity guidance.
+4. Daily Puja Routine: Personal devotional chanting organizer allowing practitioners to star and sequentially chant daily slokas with localStorage persistence.
+5. Offline-First PWA: Progressive Web Application with client-side caching for chanting without an active internet connection.
+6. Zero Ads & Data Minimization: Strictly no commercial ads, no selling of user data, and complete respect for user privacy.
+
+## Canonical URL Structure
+- Homepage / Sacred Library: https://stotramani.app/
+- Individual Stotram Reader: https://stotramani.app/readings/{slug}
+- Categorized Reader: https://stotramani.app/{category}/{slug}
+- Devotional Support & Contact: https://stotramani.app/contact
+- Privacy Policy: https://stotramani.app/privacy
+- Terms of Service: https://stotramani.app/terms
+- Cookie Policy: https://stotramani.app/cookies
+- Sitemap: https://stotramani.app/sitemap.xml
+
+## Sacred Deities & Categories Indexed
+- Sri Ganesha Stotrams
+- Shiva Stotrams & Sri Rudram
+- Vishnu Stotrams & Sahasranama
+- Sri Rama Stotrams & Keerthanas
+- Sri Krishna Stotrams & Gita Govindam
+- Sri Venkateshwara Swami Stotrams & Annamayya Keerthanas
+- Devi, Durga & Lakshmi Stotrams
+- Hanuman Stotrams & Chalisa
+- Vedic Chants, Upanishads & Taittiriya Samhita
+- Ashtottara Sata Namavali (108 names) & Kavacha Stotrams
+
+## Technical Architecture
+- Framework: Next.js (App Router, TypeScript)
+- Deployment: Static Site Generation (SSG, output: export) on custom apex domain stotramani.app
+- Styling: Zero-dependency CSS custom properties with hardware-accelerated transitions
+- Transliteration Engine: Client-side rule-based phonetic Sanscript mapping

@@ -24,10 +24,14 @@ if (fs.existsSync(fontFileTarget)) {
   const replacement = `const geistPath = require("path").resolve(__dirname, "../../../../../next-devtools/server/font/geist-latin.woff2");
         if (node_fs_1.default.existsSync(geistPath)) return node_fs_1.default.readFileSync(geistPath);
         return Buffer.from(url);`;
-  if (fontContent.includes(needle)) {
-    fontContent = fontContent.replace(needle, replacement);
-    fs.writeFileSync(fontFileTarget, fontContent, "utf8");
-    console.log("[patch-next] Successfully patched fetchFontFile in @next/font");
+  if (!fontContent.includes("const geistPath =")) {
+    if (fontContent.includes(needle)) {
+      fontContent = fontContent.replace(needle, replacement);
+      fs.writeFileSync(fontFileTarget, fontContent, "utf8");
+      console.log("[patch-next] Successfully patched fetchFontFile in @next/font");
+    }
+  } else {
+    console.log("[patch-next] fetchFontFile in @next/font already patched");
   }
 }
 

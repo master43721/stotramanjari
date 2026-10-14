@@ -502,7 +502,7 @@ h1, h2, h3, h4, h5, h6 {
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   transition: var(--transition-cinematic);
-  max-width: min(calc(100vw - 1rem), 680px);
+  max-width: min(calc(100% - 1.5rem), 680px);
   flex-wrap: wrap;
 }
 
@@ -798,8 +798,8 @@ body.distraction-free .floating-controls:hover {
     padding: 0.35rem 0.5rem;
     gap: 0.3rem;
     border-radius: 20px;
-    width: calc(100vw - 1rem);
-    max-width: calc(100vw - 1rem);
+    width: calc(100% - 1.5rem);
+    max-width: calc(100% - 1.5rem);
     justify-content: center;
   }
 
@@ -842,7 +842,7 @@ body.distraction-free .floating-controls:hover {
 
   .floating-controls {
     bottom: 1.5rem;
-    max-width: calc(100vw - 2rem);
+    max-width: calc(100% - 2rem);
     gap: 0.5rem;
     padding: 0.4rem 0.8rem;
   }
@@ -886,5 +886,41 @@ body.distraction-free .floating-controls:hover {
   .stotram-line {
     font-size: calc(1.35rem * var(--reader-font-scale, 1.1));
     line-height: 2.2;
+  }
+}
+
+/* Accessibility & Focus States */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* Responsive Navigation Utilities */
+.desktop-nav {
+  display: flex !important;
+}
+
+.mobile-header-actions .mobile-menu-toggle {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none !important;
+  }
+  .mobile-header-actions .mobile-menu-toggle {
+    display: flex !important;
+  }
+}
+
+/* Smooth Fade In Up Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
