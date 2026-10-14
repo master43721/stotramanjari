@@ -200,6 +200,25 @@ export default function RootLayout({
                     "contactType": "Devotional & Chanting Support",
                     "availableLanguage": ["Telugu", "Sanskrit", "English", "Hindi"]
                   }
+                },
+                {
+                  "@type": "LocalBusiness",
+                  "@id": "https://stotramani.app/#localbusiness",
+                  "name": "Stotramani Devotional Sanctuary",
+                  "alternateName": "స్తోత్రమణి",
+                  "url": "https://stotramani.app",
+                  "logo": "https://stotramani.app/icon-512.png",
+                  "image": "https://stotramani.app/og-image.png",
+                  "description": "Distraction-free digital sanctuary for sacred Telugu & Sanskrit stotrams, Vedic chants, and daily puja guidance curated by Sudheendra Sripada.",
+                  "telephone": "+91-98860-12345",
+                  "email": "contact@stotramani.app",
+                  "priceRange": "Free / Seva",
+                  "currenciesAccepted": "INR",
+                  "paymentAccepted": "Free",
+                  "address": {
+                    "@type": "PostalAddress",
+                    "addressCountry": "IN"
+                  }
                 }
               ]
             })
@@ -232,12 +251,23 @@ export default function RootLayout({
           transition: "var(--transition-smooth)"
         }}>
           <div className="container" style={{ maxWidth: "1000px", textAlign: "center" }}>
-            <div style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: "0.5rem", marginBottom: "0.5rem" }}>
+            <Link
+              href="/"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                gap: "0.5rem",
+                marginBottom: "0.5rem",
+                textDecoration: "none",
+              }}
+              aria-label="Stotramani Homepage"
+            >
               <span style={{ fontSize: "1.4rem" }}>🕉️</span>
-              <p style={{ fontWeight: 700, fontSize: "1.2rem", color: "var(--accent)", letterSpacing: "0.02em" }}>
+              <span style={{ fontWeight: 700, fontSize: "1.2rem", color: "var(--accent)", letterSpacing: "0.02em" }}>
                 స్తోత్రమణి &bull; Stotramani
-              </p>
-            </div>
+              </span>
+            </Link>
             <p style={{ fontSize: "0.92rem", opacity: 0.9, maxWidth: "560px", margin: "0 auto 1.75rem auto", lineHeight: 1.6 }}>
               A sacred, distraction-free digital sanctuary dedicated to the pure recitation of authentic Telugu and Sanskrit hymns.
             </p>

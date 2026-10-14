@@ -16,14 +16,22 @@ export default function Breadcrumbs({ items }: BreadcrumbsProps) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: items.map((item, index) => ({
-      "@type": "ListItem",
-      position: index + 1,
-      name: item.label,
-      item: item.href
-        ? `https://stotramani.app${item.href.startsWith("/") ? item.href : `/${item.href}`}`
-        : "https://stotramani.app",
-    })),
+    itemListElement: items.map((item, index) => {
+      const element: {
+        "@type": string;
+        position: number;
+        name: string;
+        item?: string;
+      } = {
+        "@type": "ListItem",
+        position: index + 1,
+        name: item.label,
+      };
+      if (item.href) {
+        element.item = `https://stotramani.app${item.href.startsWith("/") ? item.href : `/${item.href}`}`;
+      }
+      return element;
+    }),
   };
 
   return (

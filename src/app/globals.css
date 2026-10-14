@@ -900,7 +900,7 @@ body.distraction-free .floating-controls:hover {
   display: flex !important;
 }
 
-.mobile-header-actions .mobile-menu-toggle {
+.mobile-header-actions {
   display: none !important;
 }
 
@@ -908,7 +908,7 @@ body.distraction-free .floating-controls:hover {
   .desktop-nav {
     display: none !important;
   }
-  .mobile-header-actions .mobile-menu-toggle {
+  .mobile-header-actions {
     display: flex !important;
   }
 }

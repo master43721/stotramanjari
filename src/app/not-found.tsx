@@ -10,8 +10,8 @@ export default function NotFound() {
   const quickLinks = [
     { title: "Sri Ganesha Stotrams", href: "/readings/ganesha-pancharatnam" },
     { title: "Shiva Panchakshari", href: "/readings/shiva-panchakshari-stotram" },
-    { title: "Sri Rudram Namakam", href: "/readings/sri-rudram-namakam-telugu" },
-    { title: "Vishnu Sahasranamam", href: "/readings/sri-vishnu-sahasranama-stotram" },
+    { title: "Sri Rudram Namakam", href: "/readings/sri-rudram-namakam" },
+    { title: "Vishnu Sahasranamam", href: "/readings/sree-vishnu-sahasra-nama-stotram" },
     { title: "Hanuman Chalisa", href: "/readings/hanuman-chalisa" },
   ];
 
