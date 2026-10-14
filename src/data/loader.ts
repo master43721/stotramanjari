@@ -1,5 +1,6 @@
 import { Stotram, StotramIndexItem } from "@/types";
 import indexData from "./stotrams-index.json";
+import { sanitizeLines, sanitizeTeluguText } from "@/lib/sanitizeTelugu";
 
 interface RawStotramItem {
   id?: string;
@@ -19,7 +20,10 @@ let cachedSlugMap: Map<string, Stotram> | null = null;
 
 // Return lightweight ~120KB index for fast homepage search, filters, and panchang
 export function getStotramsIndex(): StotramIndexItem[] {
-  return indexData as StotramIndexItem[];
+  return (indexData as StotramIndexItem[]).map((item) => ({
+    ...item,
+    title_telugu: sanitizeTeluguText(item.title_telugu || ""),
+  }));
 }
 
 export function getAllStotrams(): Stotram[] {
@@ -39,10 +43,10 @@ export function getAllStotrams(): Stotram[] {
   const mapItem = (item: RawStotramItem): Stotram => ({
     id: item.id || "",
     slug: item.slug || item.id,
-    title_telugu: item.title_telugu || "",
+    title_telugu: sanitizeTeluguText(item.title_telugu || ""),
     title_english: item.title_english || item.title || "",
     category: item.category || "devotional",
-    content_lines: item.content_lines || item.contentLines || [],
+    content_lines: sanitizeLines(item.content_lines || item.contentLines || []),
     pdfLink: item.pdfLink || null
   });
 
@@ -70,6 +74,21 @@ export function getAllStotrams(): Stotram[] {
       stotrams.push(mapped);
     }
   });
+
+  // 4. Load and merge Brihat Stotra Ratnakar stotrams
+  try {
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    const brihatStotrams = require("./brihat-stotrams.json") as RawStotramItem[];
+    brihatStotrams.forEach((item) => {
+      const existingIndex = stotrams.findIndex((s) => s.id === item.id);
+      const mapped = mapItem(item);
+      if (existingIndex > -1) {
+        stotrams[existingIndex] = mapped;
+      } else {
+        stotrams.push(mapped);
+      }
+    });
+  } catch {}
 
   stotrams.forEach((s) => {
     if (s.slug) slugMap.set(s.slug, s);

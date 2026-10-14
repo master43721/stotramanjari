@@ -17,20 +17,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!stotram || stotram.category !== category) {
     return {
-      title: "Stotram Not Found | Stotra Manjari",
+      title: "Stotram Not Found | Stotramani",
     };
   }
 
   return {
-    title: `${stotram.title_english} - ${stotram.title_telugu} | Stotra Manjari`,
-    description: `Read ${stotram.title_english} (${stotram.title_telugu}) in clean Telugu script. Features comfortable off-white aged paper theme, scaling fonts, and distraction-free mode.`,
+    title: `${stotram.title_english} - ${stotram.title_telugu} | Stotramani`,
+    description: `Read ${stotram.title_english} (${stotram.title_telugu}) in clean Telugu script on stotramani.app. Features comfortable off-white aged paper theme, scaling fonts, and distraction-free mode.`,
     keywords: [
       stotram.id, 
       stotram.category, 
       stotram.title_english.toLowerCase(), 
       "telugu stotram", 
       "stotram lyrics", 
-      "stotra manjari"
+      "stotramani",
+      "sudheendra sripada"
     ],
   };
 }

@@ -1,14 +1,14 @@
 /**
- * Stotra Manjari Offline Service Worker
+ * Stotramani Offline Service Worker
  * Ensures devotees can chant and read stotras inside puja rooms or temples without cellular connectivity.
  */
 
-const CACHE_NAME = "stotramanjari-v1";
+const CACHE_NAME = "stotramani-v2";
 
-// Resolve scope/base path dynamically so sw works seamlessly on both /stotramanjari and root
+// Resolve scope/base path dynamically so sw works seamlessly on root domain stotramani.app
 const scopeUrl = new URL(self.registration.scope);
 const scopePath = scopeUrl.pathname.endsWith("/") ? scopeUrl.pathname.slice(0, -1) : scopeUrl.pathname;
-const BASE_PATH = scopePath || "/stotramanjari";
+const BASE_PATH = scopePath || "";
 
 // Core assets to pre-cache on install
 const PRECACHE_ASSETS = [

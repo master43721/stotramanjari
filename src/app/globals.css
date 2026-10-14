@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;500;600;700&family=Noto+Serif+Telugu:wght@400;700&family=Outfit:wght@400;500;600;700&family=Tiro+Devanagari+Sanskrit&display=swap");
+
 :root {
   /* Cinematic Dark Theme (Default) */
   --bg-base: #070707;
@@ -16,7 +18,7 @@
   --selection-color: #f4f0e6;
   
   --font-sans: var(--font-sans), 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-telugu: var(--font-noto-sans-telugu), var(--font-noto-serif-telugu), 'Noto Sans Telugu', 'Noto Serif Telugu', 'Gautami', 'Vani', var(--font-sans);
+  --font-telugu: 'Noto Sans Telugu', 'Noto Serif Telugu', var(--font-noto-sans-telugu), var(--font-noto-serif-telugu), 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', 'Gautami', 'Vani', sans-serif;
   --font-devanagari: var(--font-tiro-devanagari), 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', 'Mangal', serif;
   --font-kannada: var(--font-noto-kannada), 'Noto Sans Kannada', 'Tunga', sans-serif;
   --font-tamil: var(--font-noto-tamil), 'Noto Sans Tamil', 'Latha', sans-serif;
@@ -159,9 +161,9 @@ a {
 /* Layout Utilities */
 .container {
   width: 100%;
-  max-width: 1200px;
+  max-width: min(94vw, 1400px);
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(0.75rem, 3.5vw, 2rem);
 }
 
 /* Premium Typography styling with text glows */
@@ -175,15 +177,15 @@ h1, h2, h3, h4, h5, h6 {
 /* Header & Glassmorphic Elements */
 .header {
   position: sticky;
-  top: 1rem;
+  top: clamp(0.35rem, 1.5vw, 1rem);
   z-index: 50;
   background-color: var(--bg-nav);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border);
-  border-radius: 30px;
-  max-width: 1160px;
-  margin: 1rem auto 0 auto;
+  border-radius: clamp(16px, 3vw, 30px);
+  max-width: min(94vw, 1200px);
+  margin: clamp(0.35rem, 1.5vw, 1rem) auto 0 auto;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
   transition: var(--transition-cinematic);
 }
@@ -273,10 +275,10 @@ h1, h2, h3, h4, h5, h6 {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-  gap: 2rem;
-  margin-top: 3.5rem;
-  margin-bottom: 6rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: clamp(1rem, 2.5vw, 2rem);
+  margin-top: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: clamp(3rem, 6vw, 6rem);
 }
 
 .stotram-card {
@@ -285,13 +287,14 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
-  padding: 2.2rem;
+  padding: clamp(1.2rem, 3vw, 2.2rem);
   box-shadow: 0 10px 30px var(--shadow);
   transition: var(--transition-cinematic);
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  min-width: 0;
 }
 
 .stotram-card::before {
@@ -400,26 +403,27 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .reader-container {
-  max-width: 680px; /* Constrained width so eyes don't scan too wide */
+  max-width: min(92vw, 760px); /* Constrained width so eyes don't scan too wide */
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 clamp(0.75rem, 3vw, 2rem);
   text-align: center;
 }
 
 .reader-header {
-  margin-bottom: 4.5rem;
+  margin-bottom: clamp(2rem, 5vw, 4.5rem);
   border-bottom: 1px solid var(--border);
-  padding-bottom: 2.5rem;
+  padding-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .reader-title-telugu {
   font-family: var(--font-telugu);
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 5vw, 2.5rem);
   font-weight: 700;
   line-height: 1.3;
   margin-bottom: 1rem;
   color: var(--text-primary);
   text-shadow: 0 0 20px rgba(244, 240, 230, 0.15);
+  word-break: break-word;
 }
 
 [data-theme="dark"] .reader-title-telugu {
@@ -430,11 +434,12 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .reader-title-english {
-  font-size: 1.35rem;
+  font-size: clamp(0.95rem, 3vw, 1.35rem);
   color: var(--text-secondary);
   font-weight: 400;
   letter-spacing: 0.08em;
   text-transform: uppercase;
+  word-break: break-word;
 }
 
 .stotram-content-body {
@@ -451,8 +456,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .stotram-line {
-  font-size: calc(1.25rem * var(--reader-font-scale, 1.1));
-  line-height: 2.0; /* leading-loose for Telugu scripts */
+  font-size: calc(clamp(1.05rem, 2.5vw, 1.25rem) * var(--reader-font-scale, 1.1));
+  line-height: clamp(1.8, 3.5vw, 2.1); /* leading-loose for Telugu scripts */
   transition: font-size 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   word-wrap: break-word;
   white-space: pre-wrap;
@@ -481,21 +486,24 @@ h1, h2, h3, h4, h5, h6 {
 /* Floating reading controls panel */
 .floating-controls {
   position: fixed;
-  bottom: 2.5rem;
+  bottom: clamp(4.5rem, 8vh, 5.5rem);
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(20, 20, 20, 0.7);
+  background-color: rgba(20, 20, 20, 0.88);
   border: 1px solid var(--border);
-  padding: 0.7rem 1.6rem;
+  padding: clamp(0.35rem, 1.2vw, 0.65rem) clamp(0.5rem, 2vw, 1.4rem);
   border-radius: 40px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6), 0 0 15px var(--accent-light);
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  justify-content: center;
+  gap: clamp(0.35rem, 1vw, 1rem);
   z-index: 100;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
   transition: var(--transition-cinematic);
+  max-width: min(calc(100vw - 1rem), 680px);
+  flex-wrap: wrap;
 }
 
 [data-theme="sepia"] .floating-controls,
@@ -570,169 +578,136 @@ body.distraction-free .floating-controls:hover {
 /* Responsive configurations */
 @media (max-width: 768px) {
   .header {
-    margin: 0.5rem;
+    margin: 0.5rem auto 0 auto;
     top: 0.5rem;
   }
   .hero {
-    padding: 4rem 0 2.5rem 0;
+    padding: clamp(2rem, 5vw, 4rem) 0 2rem 0;
   }
   .hero h1 {
-    font-size: 2.2rem;
+    font-size: clamp(2rem, 6vw, 3rem);
   }
   .grid {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 1.25rem;
   }
   .reader-title-telugu {
-    font-size: 2rem;
+    font-size: clamp(1.6rem, 5vw, 2.2rem);
   }
   .floating-controls {
     bottom: 1.5rem;
-    padding: 0.5rem 1.2rem;
-    gap: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    gap: 0.4rem;
   }
 }
 
 /* ==========================================================================
-   5 Added Feature Styles: Karaoke halo, Audio Dock, Accordions, Panchang
+   Telugu Typography & Ligature Enhancements
    ========================================================================== */
+.stotram-content-body,
+.reader-title-telugu,
+.stotram-card-title-telugu,
+.navbar-subtitle {
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-/* Active Karaoke Verse Golden Glow Halo */
+/* Stotram Verse Block */
 .stotram-verse-block {
   border-radius: var(--radius-md);
-  padding: 1rem 1.25rem;
-  margin-bottom: 1.5rem;
+  padding: 0.85rem 1.25rem;
+  margin-bottom: 1.25rem;
   border: 1px solid transparent;
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: all 0.3s ease;
   position: relative;
 }
 
-.stotram-verse-block.karaoke-active {
-  background: var(--accent-light);
-  border-color: var(--accent);
-  box-shadow: 0 0 30px var(--accent-glow), inset 0 0 15px var(--accent-light);
-  transform: scale(1.015);
+/* ==========================================================================
+   Skeleton Shimmer Loader Styles
+   ========================================================================== */
+
+@keyframes shimmerSweep {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
 }
 
-.stotram-verse-block.karaoke-active .stotram-line {
-  color: var(--text-primary);
-  font-weight: 600;
-  text-shadow: 0 0 15px var(--accent-glow);
-}
-
-/* Padaccheda & Meaning Accordion */
-.meaning-accordion {
-  margin-top: 0.85rem;
+.skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-card) 0%,
+    rgba(212, 175, 55, 0.08) 25%,
+    rgba(212, 175, 55, 0.22) 50%,
+    rgba(212, 175, 55, 0.08) 75%,
+    var(--bg-card) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmerSweep 1.8s infinite linear;
   border-radius: var(--radius-sm);
+  display: block;
+}
+
+[data-theme="sepia"] .skeleton-shimmer,
+[data-theme="light"] .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(235, 230, 218, 0.6) 0%,
+    rgba(196, 123, 28, 0.1) 25%,
+    rgba(196, 123, 28, 0.25) 50%,
+    rgba(196, 123, 28, 0.1) 75%,
+    rgba(235, 230, 218, 0.6) 100%
+  );
+  background-size: 200% 100%;
+}
+
+[data-theme="clean-light"] .skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.8) 0%,
+    rgba(180, 83, 9, 0.08) 25%,
+    rgba(180, 83, 9, 0.2) 50%,
+    rgba(180, 83, 9, 0.08) 75%,
+    rgba(240, 240, 240, 0.8) 100%
+  );
+  background-size: 200% 100%;
+}
+
+.stotram-card-skeleton {
   background-color: var(--bg-card);
   border: 1px solid var(--border);
-  overflow: hidden;
-  text-align: left;
-  transition: var(--transition-fast);
-}
-
-.meaning-toggle-btn {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.5rem 0.85rem;
-  background: none;
-  border: none;
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 600;
-  cursor: pointer;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.meaning-content {
-  padding: 1rem;
-  border-top: 1px solid var(--border);
-  background: rgba(0, 0, 0, 0.15);
-  font-size: 0.95rem;
-  line-height: 1.6;
-}
-
-[data-theme="light"] .meaning-content,
-[data-theme="clean-light"] .meaning-content {
-  background: rgba(0, 0, 0, 0.02);
-}
-
-.padaccheda-list {
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
-  margin-bottom: 0.75rem;
+  gap: 0.85rem;
+  min-height: 190px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 20px var(--shadow);
 }
 
-.padaccheda-item {
-  display: flex;
-  gap: 0.75rem;
-  align-items: baseline;
-  font-size: 0.92rem;
-}
-
-.padaccheda-word {
-  font-weight: 700;
-  color: var(--accent);
-  white-space: nowrap;
-}
-
-.padaccheda-meaning {
-  color: var(--text-secondary);
-}
-
-/* Docked Audio Player */
-.audio-dock-container {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: rgba(10, 10, 10, 0.88);
-  border-top: 1px solid var(--border);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  padding: 0.75rem 1.5rem;
-  z-index: 95;
-  box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.5);
-  transition: var(--transition-cinematic);
-}
-
-[data-theme="light"] .audio-dock-container,
-[data-theme="sepia"] .audio-dock-container {
-  background-color: rgba(246, 242, 232, 0.92);
-}
-
-[data-theme="clean-light"] .audio-dock-container {
-  background-color: rgba(255, 255, 255, 0.94);
-}
-
-.audio-dock-inner {
-  max-width: 900px;
+.reader-skeleton {
+  max-width: 780px;
   margin: 0 auto;
+  padding: 2rem 1rem 4rem 1rem;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1.25rem;
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 2rem;
 }
 
-.audio-scrubber-row {
+.reader-skeleton-stanza {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
   display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex: 1;
-  min-width: 200px;
-}
-
-.audio-slider {
-  flex: 1;
-  height: 5px;
-  border-radius: 4px;
-  accent-color: var(--accent);
-  cursor: pointer;
+  flex-direction: column;
+  gap: 0.85rem;
 }
 
 /* Panchang & Puja Styles */
@@ -757,4 +732,159 @@ body.distraction-free .floating-controls:hover {
   width: 4px;
   height: 100%;
   background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
+}
+
+/* ==========================================================================
+   Comprehensive Screen Resolution Optimizations:
+   Mobile (320px–480px), Tablet (768px), Laptop (1024px–1440px), Ultra-Wide (1920px+)
+   ========================================================================== */
+
+/* 1. Mobile Extra Small & Small Devices (320px to 480px) */
+@media (max-width: 480px) {
+  html, body {
+    font-size: 15px;
+    overflow-x: hidden;
+  }
+
+  .container {
+    padding: 0 0.85rem;
+  }
+
+  .header {
+    margin: 0.35rem auto 0 auto;
+    top: 0.35rem;
+    border-radius: 16px;
+    padding: 0 0.25rem;
+  }
+
+  .btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.82rem;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin-top: 1.75rem;
+    margin-bottom: 4rem;
+  }
+
+  .stotram-card {
+    padding: 1.25rem 1rem;
+    border-radius: 16px;
+  }
+
+  .reader-container {
+    padding: 0 0.5rem;
+  }
+
+  .reader-header {
+    margin-bottom: 2rem;
+    padding-bottom: 1.25rem;
+  }
+
+  .stotram-verse-block {
+    padding: 0.75rem 0.85rem;
+    margin-bottom: 1rem;
+  }
+
+  .stotram-line {
+    font-size: calc(1.1rem * var(--reader-font-scale, 1.1));
+    line-height: 1.85;
+  }
+
+  .floating-controls {
+    bottom: 1.25rem;
+    padding: 0.35rem 0.5rem;
+    gap: 0.3rem;
+    border-radius: 20px;
+    width: calc(100vw - 1rem);
+    max-width: calc(100vw - 1rem);
+    justify-content: center;
+  }
+
+  .floating-controls .control-divider {
+    display: none;
+  }
+
+  .floating-controls select {
+    max-width: 105px;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.4rem;
+  }
+
+  .floating-controls .btn {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.78rem;
+  }
+
+  .floating-controls .font-size-controls {
+    gap: 0.25rem;
+  }
+
+  .panchang-banner {
+    padding: 1rem;
+    border-radius: 16px;
+    margin-bottom: 2rem;
+  }
+}
+
+/* 2. Tablet Portrait & Landscape (481px to 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container {
+    padding: 0 1.25rem;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+    gap: 1.25rem;
+  }
+
+  .floating-controls {
+    bottom: 1.5rem;
+    max-width: calc(100vw - 2rem);
+    gap: 0.5rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* 3. Laptops & Desktops (769px to 1440px) */
+@media (min-width: 769px) and (max-width: 1440px) {
+  .container {
+    max-width: 1200px;
+  }
+}
+
+/* 4. Ultra-Wide & 4K Displays (1920px and above) */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1600px;
+    padding: 0 3rem;
+  }
+
+  .header {
+    max-width: 1560px;
+  }
+
+  .grid {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .stotram-card {
+    padding: 2.5rem;
+  }
+
+  .reader-container {
+    max-width: 880px;
+  }
+
+  .hero h1 {
+    font-size: 4.5rem;
+  }
+
+  .stotram-line {
+    font-size: calc(1.35rem * var(--reader-font-scale, 1.1));
+    line-height: 2.2;
+  }
 }

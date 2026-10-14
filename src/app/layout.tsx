@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Script from "next/script";
@@ -10,6 +10,34 @@ import {
   Noto_Sans_Kannada,
   Noto_Sans_Tamil,
 } from "next/font/google";
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+  themeColor: "#070707",
+};
+
+export const metadata: Metadata = {
+  metadataBase: new URL("https://stotramani.app"),
+  title: "Stotramani (స్తోత్రమణి) | Sacred Telugu & Sanskrit Stotrams",
+  description: "A beautiful, distraction-free reading interface for sacred Telugu and Sanskrit stotrams. Blazing fast, SEO optimized, created and curated by Sudheendra Sripada.",
+  keywords: ["stotram", "telugu stotram", "stotrams", "devotional", "shiva stotram", "ganesha stotram", "stotramani", "stotra mani", "sudheendra sripada"],
+  authors: [{ name: "Sudheendra Sripada" }],
+  creator: "Sudheendra Sripada",
+  publisher: "Sudheendra Sripada",
+  alternates: {
+    canonical: "https://stotramani.app",
+  },
+  openGraph: {
+    title: "Stotramani (స్తోత్రమణి) | Sacred Telugu Stotrams",
+    description: "Distraction-free, lightning-fast devotional library by Sudheendra Sripada.",
+    url: "https://stotramani.app",
+    siteName: "Stotramani",
+    locale: "te_IN",
+    type: "website",
+  },
+};
 
 const outfit = Outfit({
   subsets: ["latin"],
@@ -52,12 +80,6 @@ const notoSansTamil = Noto_Sans_Tamil({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Stotra Manjari | Distraction-Free Stotram Reading",
-  description: "A beautiful, distraction-free, ultra-minimalist reading interface for sacred stotrams in Telugu and English. Blazing fast, SEO optimized, and premium designed.",
-  keywords: ["stotram", "telugu stotram", "stotrams", "devotional", "shiva stotram", "ganesha stotram", "stotra manjari"],
-};
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -79,14 +101,15 @@ export default function RootLayout({
               })();
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  var basePath = window.location.pathname.startsWith('/stotramanjari') ? '/stotramanjari' : '';
-                  navigator.serviceWorker.register(basePath + '/sw.js').catch(function(e) {});
+                  navigator.serviceWorker.register('/sw.js').catch(function(e) {});
                 });
               }
             `,
           }}
         />
-        <link rel="apple-touch-icon" href="/stotramanjari/icon-192.png" />
+        <link rel="apple-touch-icon" href="/icon-192.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#070707" />
       </head>
       <body
@@ -109,7 +132,7 @@ export default function RootLayout({
         <main style={{ flex: 1, minHeight: "calc(100vh - 120px)" }}>{children}</main>
         <footer style={{ 
           borderTop: "1px solid var(--border)", 
-          padding: "2rem 0", 
+          padding: "2.5rem 0", 
           textAlign: "center",
           backgroundColor: "var(--bg-card)",
           color: "var(--text-secondary)",
@@ -117,9 +140,14 @@ export default function RootLayout({
           transition: "var(--transition-smooth)"
         }}>
           <div className="container">
-            <p style={{ fontWeight: 500 }}>స్తోత్ర మంజరి — Stotra Manjari</p>
-            <p style={{ marginTop: "0.5rem", fontSize: "0.85rem", opacity: 0.8 }}>
-              Built for a pure, distraction-free reading experience.
+            <p style={{ fontWeight: 600, fontSize: "1.05rem", color: "var(--accent)", letterSpacing: "0.02em" }}>
+              స్తోత్రమణి — Stotramani
+            </p>
+            <p style={{ marginTop: "0.4rem", fontSize: "0.85rem", opacity: 0.9 }}>
+              Dedicated to pure, distraction-free devotional chanting.
+            </p>
+            <p style={{ marginTop: "0.5rem", fontSize: "0.8rem", color: "var(--text-secondary)", opacity: 0.85 }}>
+              Created with devotion by <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sudheendra Sripada</span> &bull; <a href="https://stotramani.app" style={{ color: "var(--accent)", textDecoration: "none" }}>stotramani.app</a>
             </p>
           </div>
         </footer>

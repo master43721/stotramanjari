@@ -9774,5 +9774,3141 @@
     "title_english": "KYTS Jata 7.5 Gaavo Vaa Etathsatramaasata",
     "category": "yajurveda-samhita-7",
     "deity": "krishna"
+  },
+  {
+    "id": "brihat-mangalacaranam",
+    "slug": "brihat-mangalacaranam",
+    "title_telugu": "మఙ్గలాచరణమ్",
+    "title_english": "Maṅgalācaraṇam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mangalastakam",
+    "slug": "brihat-mangalastakam",
+    "title_telugu": "మఙ్గలాష్టకమ్",
+    "title_english": "Maṅgalāṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ganesanyasah",
+    "slug": "brihat-ganesanyasah",
+    "title_telugu": "గణేశన్యాసః",
+    "title_english": "Gaṇeśanyāsaḥ",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-sankastaharanam-ganesastakam",
+    "slug": "brihat-sankastaharanam-ganesastakam",
+    "title_telugu": "సఙ్కష్టహరణం గణేశాష్టకమ్",
+    "title_english": "Saṅkaṣṭaharaṇaṃ Gaṇeśāṣṭakam",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesastakam-2",
+    "slug": "brihat-ganesastakam-2",
+    "title_telugu": "గణేశాష్టకమ్ ౨",
+    "title_english": "Gaṇeśāṣṭakam 2",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesastakam-3",
+    "slug": "brihat-ganesastakam-3",
+    "title_telugu": "గణేశాష్టకమ్ ౩",
+    "title_english": "Gaṇeśāṣṭakam 3",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-sankatanasanam-ganesastotram",
+    "slug": "brihat-sankatanasanam-ganesastotram",
+    "title_telugu": "సఙ్కటనాశనం గణేశస్తోత్రమ్",
+    "title_english": "Saṅkaṭanāśanaṃ Gaṇeśastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesamahimnah-stotram",
+    "slug": "brihat-ganesamahimnah-stotram",
+    "title_telugu": "గణేశమహిమ్నః స్తోత్రమ్",
+    "title_english": "Gaṇeśamahimnaḥ Stotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesastottarasatanamastotram",
+    "slug": "brihat-ganesastottarasatanamastotram",
+    "title_telugu": "గణేశాష్టోత్తరశతనామస్తోత్రమ్",
+    "title_english": "Gaṇeśāṣṭottaraśatanāmastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesasahasranamastotram",
+    "slug": "brihat-ganesasahasranamastotram",
+    "title_telugu": "గణేశసహస్రనామస్తోత్రమ్",
+    "title_english": "Gaṇeśasahasranāmastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesastotram",
+    "slug": "brihat-ganesastotram",
+    "title_telugu": "గణేశస్తోత్రమ్",
+    "title_english": "Gaṇeśastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesapancaratnastotram",
+    "slug": "brihat-ganesapancaratnastotram",
+    "title_telugu": "గణేశపఞ్చరత్నస్తోత్రమ్",
+    "title_english": "Gaṇeśapañcaratnastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesapancacamarastotram",
+    "slug": "brihat-ganesapancacamarastotram",
+    "title_telugu": "గణేశపఞ్చచామరస్తోత్రమ్",
+    "title_english": "Gaṇeśapañcacāmarastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganapatistavah",
+    "slug": "brihat-ganapatistavah",
+    "title_telugu": "గణపతిస్తవః",
+    "title_english": "Gaṇapatistavaḥ",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesastavarajah",
+    "slug": "brihat-ganesastavarajah",
+    "title_telugu": "గణేశస్తవరాజః",
+    "title_english": "Gaṇeśastavarājaḥ",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-mahaganapatistotram",
+    "slug": "brihat-mahaganapatistotram",
+    "title_telugu": "మహాగణపతిస్తోత్రమ్",
+    "title_english": "Mahāgaṇapatistotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ekadantaganesastotram",
+    "slug": "brihat-ekadantaganesastotram",
+    "title_telugu": "ఏకదన్తగణేశస్తోత్రమ్",
+    "title_english": "Ekadantagaṇeśastotram",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-gajananastotram-1",
+    "slug": "brihat-gajananastotram-1",
+    "title_telugu": "గజాననస్తోత్రమ్ ౧",
+    "title_english": "Gajānanastotram 1",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-gajananastotram-2",
+    "slug": "brihat-gajananastotram-2",
+    "title_telugu": "గజాననస్తోత్రమ్ ౨",
+    "title_english": "Gajānanastotram 2",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-gajananastotram-3",
+    "slug": "brihat-gajananastotram-3",
+    "title_telugu": "గజాననస్తోత్రమ్ ౩",
+    "title_english": "Gajānanastotram 3",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-vinayakavinatih",
+    "slug": "brihat-vinayakavinatih",
+    "title_telugu": "వినాయకవినతిః",
+    "title_english": "Vināyakavinatiḥ",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-ganesavahyapuja",
+    "slug": "brihat-ganesavahyapuja",
+    "title_telugu": "గణేశవాహ్యపూజా",
+    "title_english": "Gaṇeśavāhyapūjā",
+    "category": "ganesha",
+    "deity": "Ganesha"
+  },
+  {
+    "id": "brihat-brahmastotram",
+    "slug": "brihat-brahmastotram",
+    "title_telugu": "బ్రహ్మస్తోత్రమ్",
+    "title_english": "Brahmastotram",
+    "category": "tattva-shastra",
+    "deity": "Brahma"
+  },
+  {
+    "id": "brihat-parabrahmastotram",
+    "slug": "brihat-parabrahmastotram",
+    "title_telugu": "పరబ్రహ్మస్తోత్రమ్",
+    "title_english": "Parabrahmastotram",
+    "category": "tattva-shastra",
+    "deity": "Brahma"
+  },
+  {
+    "id": "brihat-narayanahrdayastotram",
+    "slug": "brihat-narayanahrdayastotram",
+    "title_telugu": "నారాయణహృదయస్తోత్రమ్",
+    "title_english": "Nārāyaṇahṛdayastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-narayanastottarasatanamastotram",
+    "slug": "brihat-narayanastottarasatanamastotram",
+    "title_telugu": "నారాయణాష్టోత్తరశతనామస్తోత్రమ్",
+    "title_english": "Nārāyaṇāṣṭottaraśatanāmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnumahimnah-stotram",
+    "slug": "brihat-visnumahimnah-stotram",
+    "title_telugu": "విష్ణుమహిమ్నః స్తోత్రమ్",
+    "title_english": "Viṣṇumahimnaḥ Stotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-sankatanasanam-visnustotram",
+    "slug": "brihat-sankatanasanam-visnustotram",
+    "title_telugu": "సఙ్కటనాశనం విష్ణుస్తోత్రమ్",
+    "title_english": "Saṅkaṭanāśanaṃ Viṣṇustotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnorastanamastotram",
+    "slug": "brihat-visnorastanamastotram",
+    "title_telugu": "విష్ణోరష్టనామస్తోత్రమ్",
+    "title_english": "Viṣṇoraṣṭanāmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnoh-sodasanamastotram",
+    "slug": "brihat-visnoh-sodasanamastotram",
+    "title_telugu": "విష్ణోః షోడశనామస్తోత్రమ్",
+    "title_english": "Viṣṇoḥ Ṣoḍaśanāmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnorastavimsatinamastotram",
+    "slug": "brihat-visnorastavimsatinamastotram",
+    "title_telugu": "విష్ణోరష్టావింశతినామస్తోత్రమ్",
+    "title_english": "Viṣṇoraṣṭāviṃśatināmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnoh-satanamastotram",
+    "slug": "brihat-visnoh-satanamastotram",
+    "title_telugu": "విష్ణోః శతనామస్తోత్రమ్",
+    "title_english": "Viṣṇoḥ Śatanāmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnustavarajah",
+    "slug": "brihat-visnustavarajah",
+    "title_telugu": "విష్ణుస్తవరాజః",
+    "title_english": "Viṣṇustavarājaḥ",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnvastakam",
+    "slug": "brihat-visnvastakam",
+    "title_telugu": "విష్ణ్వష్టకమ్",
+    "title_english": "Viṣṇvaṣṭakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnubhujangaprayatastotram",
+    "slug": "brihat-visnubhujangaprayatastotram",
+    "title_telugu": "విష్ణుభుజఙ్గప్రయాతస్తోత్రమ్",
+    "title_english": "Viṣṇubhujaṅgaprayātastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnustutih",
+    "slug": "brihat-visnustutih",
+    "title_telugu": "విష్ణుస్తుతిః",
+    "title_english": "Viṣṇustutiḥ",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-acyutastakastotram-1",
+    "slug": "brihat-acyutastakastotram-1",
+    "title_telugu": "అచ్యుతాష్టకస్తోత్రమ్ ౧",
+    "title_english": "Acyutāṣṭakastotram 1",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-acyutastakam-2",
+    "slug": "brihat-acyutastakam-2",
+    "title_telugu": "అచ్యుతాష్టకమ్ ౨",
+    "title_english": "Acyutāṣṭakam 2",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-madhusudanastotram",
+    "slug": "brihat-madhusudanastotram",
+    "title_telugu": "మధుసూదనస్తోత్రమ్",
+    "title_english": "Madhusūdanastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-dinabandhvastakam",
+    "slug": "brihat-dinabandhvastakam",
+    "title_telugu": "దీనబన్ధ్వష్టకమ్",
+    "title_english": "Dīnabandhvaṣṭakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-kamalapatyastakam",
+    "slug": "brihat-kamalapatyastakam",
+    "title_telugu": "కమలాపత్యష్టకమ్",
+    "title_english": "Kamalāpatyaṣṭakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-ramapatyastakam",
+    "slug": "brihat-ramapatyastakam",
+    "title_telugu": "రమాపత్యష్టకమ్",
+    "title_english": "Ramāpatyaṣṭakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-satpadistotram",
+    "slug": "brihat-satpadistotram",
+    "title_telugu": "షట్పదీస్తోత్రమ్",
+    "title_english": "Ṣaṭpadīstotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-haristotram",
+    "slug": "brihat-haristotram",
+    "title_telugu": "హరిస్తోత్రమ్",
+    "title_english": "Haristotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-harinamastakam",
+    "slug": "brihat-harinamastakam",
+    "title_telugu": "హరినామాష్టకమ్",
+    "title_english": "Harināmāṣṭakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-harisaranastakam",
+    "slug": "brihat-harisaranastakam",
+    "title_telugu": "హరిశరణాష్టకమ్",
+    "title_english": "Hariśaraṇāṣṭakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-harinamalavastotram",
+    "slug": "brihat-harinamalavastotram",
+    "title_telugu": "హరినామాలావస్తోత్రమ్",
+    "title_english": "Harināmālāvastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-harimidestotram",
+    "slug": "brihat-harimidestotram",
+    "title_telugu": "హరీమీడేస్తోత్రమ్",
+    "title_english": "Harīmīḍestotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-saligramasilastotram",
+    "slug": "brihat-saligramasilastotram",
+    "title_telugu": "శాలిగ్రామశిలాస్తోత్రమ్",
+    "title_english": "Śāligrāmaśilāstotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-kamalesamala",
+    "slug": "brihat-kamalesamala",
+    "title_telugu": "కమలేశమాలా",
+    "title_english": "Kamaleśamālā",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-mukundamala",
+    "slug": "brihat-mukundamala",
+    "title_telugu": "ముకున్దమాలా",
+    "title_english": "Mukundamālā",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-garudadhvajastotram",
+    "slug": "brihat-garudadhvajastotram",
+    "title_telugu": "గరుడధ్వజస్తోత్రమ్",
+    "title_english": "Garuḍadhvajastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-visnustavanam",
+    "slug": "brihat-visnustavanam",
+    "title_telugu": "విష్ణుస్తవనమ్",
+    "title_english": "Viṣṇustavanam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-narayanastadasakam",
+    "slug": "brihat-narayanastadasakam",
+    "title_telugu": "నారాయణాష్టాదశకమ్",
+    "title_english": "Nārāyaṇāṣṭādaśakam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-paramesvarastutisarastotram",
+    "slug": "brihat-paramesvarastutisarastotram",
+    "title_telugu": "పరమేశ్వరస్తుతిసారస్తోత్రమ్",
+    "title_english": "Parameśvarastutisārastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-bhagavaccaranastotram",
+    "slug": "brihat-bhagavaccaranastotram",
+    "title_telugu": "భగవచ్చరణస్తోత్రమ్",
+    "title_english": "Bhagavaccaraṇastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-jaganmangalakavacastotram",
+    "slug": "brihat-jaganmangalakavacastotram",
+    "title_telugu": "జగన్మఙ్గలకవచస్తోత్రమ్",
+    "title_english": "Jaganmaṅgalakavacastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-mangalagitam",
+    "slug": "brihat-mangalagitam",
+    "title_telugu": "మఙ్గలగీతమ్",
+    "title_english": "Maṅgalagītam",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-sivakava-stotram",
+    "slug": "brihat-sivakava-stotram",
+    "title_telugu": "శివకవచస్తోత్రమ్",
+    "title_english": "Śivakavaచstotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivamanasapujastotram",
+    "slug": "brihat-sivamanasapujastotram",
+    "title_telugu": "శివమానసపూజాస్తోత్రమ్",
+    "title_english": "Śivamānasapūjāstotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-vedasarasivastotram",
+    "slug": "brihat-vedasarasivastotram",
+    "title_telugu": "వేదసారశివస్తోత్రమ్",
+    "title_english": "Vedasāraśivastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastottarasatanamastotram-1",
+    "slug": "brihat-sivastottarasatanamastotram-1",
+    "title_telugu": "శివాష్టోత్తరశతనామస్తోత్రమ్ ౧",
+    "title_english": "Śivāṣṭottaraśatanāmastotram 1",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastottarasatanamastotram-2",
+    "slug": "brihat-sivastottarasatanamastotram-2",
+    "title_telugu": "శివాష్టోత్తరశతనామస్తోత్రమ్ ౨",
+    "title_english": "Śivāṣṭottaraśatanāmastotram 2",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivapancaksarastotram",
+    "slug": "brihat-sivapancaksarastotram",
+    "title_telugu": "శివపఞ్చాక్షరస్తోత్రమ్",
+    "title_english": "Śivapañcākṣarastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivasadaksarastotram",
+    "slug": "brihat-sivasadaksarastotram",
+    "title_telugu": "శివషడక్షరస్తోత్రమ్",
+    "title_english": "Śivaṣaḍakṣarastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastotram",
+    "slug": "brihat-sivastotram",
+    "title_telugu": "శివస్తోత్రమ్",
+    "title_english": "Śivastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-visvanathamangalastotram",
+    "slug": "brihat-visvanathamangalastotram",
+    "title_telugu": "విశ్వనాథమఙ్గలస్తోత్రమ్",
+    "title_english": "Viśvanāthamaṅgalastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivanamavalyastakam",
+    "slug": "brihat-sivanamavalyastakam",
+    "title_telugu": "శివనామావల్యాష్టకమ్",
+    "title_english": "Śivanāmāvalyāṣṭakam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-pradosastotrastakam",
+    "slug": "brihat-pradosastotrastakam",
+    "title_telugu": "ప్రదోషస్తోత్రాష్టకమ్",
+    "title_english": "Pradoṣastotrāṣṭakam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-pasupatyastakam",
+    "slug": "brihat-pasupatyastakam",
+    "title_telugu": "పశుపత్యష్టకమ్",
+    "title_english": "Paśupatyaṣṭakam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sankarastakam-1",
+    "slug": "brihat-sankarastakam-1",
+    "title_telugu": "శఙ్కరాష్టకమ్ ౧",
+    "title_english": "Śaṅkarāṣṭakam 1",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sankarastakam-2",
+    "slug": "brihat-sankarastakam-2",
+    "title_telugu": "శఙ్కరాష్టకమ్ ౨",
+    "title_english": "Śaṅkarāṣṭakam 2",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-mahadevastakam",
+    "slug": "brihat-mahadevastakam",
+    "title_telugu": "మహాదేవాష్టకమ్",
+    "title_english": "Mahādevāṣṭakam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-visvanathastakam",
+    "slug": "brihat-visvanathastakam",
+    "title_telugu": "విశ్వనాథాష్టకమ్",
+    "title_english": "Viśvanāthāṣṭakam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-visvanathastakastotram",
+    "slug": "brihat-visvanathastakastotram",
+    "title_telugu": "విశ్వనాథాష్టకస్తోత్రమ్",
+    "title_english": "Viśvanāthāṣṭakastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-visvanathastavah",
+    "slug": "brihat-visvanathastavah",
+    "title_telugu": "విశ్వనాథస్తవః",
+    "title_english": "Viśvanāthastavaḥ",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivaramastakam",
+    "slug": "brihat-sivaramastakam",
+    "title_telugu": "శివరామాష్టకమ్",
+    "title_english": "Śivarāmāṣṭakam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivaraksastotram",
+    "slug": "brihat-sivaraksastotram",
+    "title_telugu": "శివరక్షాస్తోత్రమ్",
+    "title_english": "Śivarakṣāstotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-arddhanarisvarastotram",
+    "slug": "brihat-arddhanarisvarastotram",
+    "title_telugu": "అర్ద్ధనారీశ్వరస్తోత్రమ్",
+    "title_english": "Arddhanārīśvarastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-arddhanarinatesvarastotram",
+    "slug": "brihat-arddhanarinatesvarastotram",
+    "title_telugu": "అర్ద్ధనారీనటేశ్వరస్తోత్రమ్",
+    "title_english": "Arddhanārīnaṭeśvarastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-dvadasajyotirlingasmaranam",
+    "slug": "brihat-dvadasajyotirlingasmaranam",
+    "title_telugu": "ద్వాదశజ్యోతిర్లిఙ్గస్మరణమ్",
+    "title_english": "Dvādaśajyotirliṅgasmaraṇam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-mrtasanjivanakavacam",
+    "slug": "brihat-mrtasanjivanakavacam",
+    "title_telugu": "మృతసఞ్జీవనకవచమ్",
+    "title_english": "Mṛtasañjīvanakavacam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-pradosastotram",
+    "slug": "brihat-pradosastotram",
+    "title_telugu": "ప్రదోషస్తోత్రమ్",
+    "title_english": "Pradoṣastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastutih",
+    "slug": "brihat-sivastutih",
+    "title_telugu": "శివస్తుతిః",
+    "title_english": "Śivastutiḥ",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastotram-1",
+    "slug": "brihat-sivastotram-1",
+    "title_telugu": "శివస్తోత్రమ్ ౧",
+    "title_english": "Śivastotram 1",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastotram-2",
+    "slug": "brihat-sivastotram-2",
+    "title_telugu": "శివస్తోత్రమ్ ౨",
+    "title_english": "Śivastotram 2",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastotram-3",
+    "slug": "brihat-sivastotram-3",
+    "title_telugu": "శివస్తోత్రమ్ ౩",
+    "title_english": "Śivastotram 3",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivamrtyunjayastakastotram",
+    "slug": "brihat-sivamrtyunjayastakastotram",
+    "title_telugu": "శివమృత్యుఞ్జయాష్టకస్తోత్రమ్",
+    "title_english": "Śivamṛtyuñjayāṣṭakastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-mahamrtyunjayadhyanam",
+    "slug": "brihat-mahamrtyunjayadhyanam",
+    "title_telugu": "మహామృత్యుఞ్జయధ్యానమ్",
+    "title_english": "Mahāmṛtyuñjayadhyānam",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-mahamrtyunjayastotram",
+    "slug": "brihat-mahamrtyunjayastotram",
+    "title_telugu": "మహామృత్యుఞ్జయస్తోత్రమ్",
+    "title_english": "Mahāmṛtyuñjayastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-sivastakam-2",
+    "slug": "brihat-sivastakam-2",
+    "title_telugu": "శివాష్టకమ్ ౨",
+    "title_english": "Śivāṣṭakam 2",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-kasivisvesvaradistotram",
+    "slug": "brihat-kasivisvesvaradistotram",
+    "title_telugu": "కాశీవిశ్వేశ్వరాదిస్తోత్రమ్",
+    "title_english": "Kāśīviśveśvarādistotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-atmaviresvarastotram",
+    "slug": "brihat-atmaviresvarastotram",
+    "title_telugu": "ఆత్మావీరేశ్వరస్తోత్రమ్",
+    "title_english": "Ātmāvīreśvarastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-apaduddharakabatukabhairavastotram",
+    "slug": "brihat-apaduddharakabatukabhairavastotram",
+    "title_telugu": "ఆపదుద్ధారకబటుకభైరవస్తోత్రమ్",
+    "title_english": "Āpaduddhārakabaṭukabhairavastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-anadirupesvarastotram",
+    "slug": "brihat-anadirupesvarastotram",
+    "title_telugu": "అనాదిరూపేశ్వరస్తోత్రమ్",
+    "title_english": "Anādirūpeśvarastotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-astamurtistotram",
+    "slug": "brihat-astamurtistotram",
+    "title_telugu": "అష్టమూర్తిస్తోత్రమ్",
+    "title_english": "Aṣṭamūrtistotram",
+    "category": "shiva",
+    "deity": "Shiva"
+  },
+  {
+    "id": "brihat-suryakavacastotram",
+    "slug": "brihat-suryakavacastotram",
+    "title_telugu": "సూర్యకవచస్తోత్రమ్",
+    "title_english": "Sūryakavacastotram",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-suryastotram-1",
+    "slug": "brihat-suryastotram-1",
+    "title_telugu": "సూర్యస్తోత్రమ్ ౧",
+    "title_english": "Sūryastotram 1",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-suryastotram-2",
+    "slug": "brihat-suryastotram-2",
+    "title_telugu": "సూర్యస్తోత్రమ్ ౨",
+    "title_english": "Sūryastotram 2",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-adityahrdayastotram",
+    "slug": "brihat-adityahrdayastotram",
+    "title_telugu": "ఆదిత్యహృదయస్తోత్రమ్",
+    "title_english": "Ādityahṛdayastotram",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-suryastakam-1",
+    "slug": "brihat-suryastakam-1",
+    "title_telugu": "సూర్యాష్టకమ్ ౧",
+    "title_english": "Sūryāṣṭakam 1",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-suryastakam-2",
+    "slug": "brihat-suryastakam-2",
+    "title_telugu": "సూర్యాష్టకమ్ ౨",
+    "title_english": "Sūryāṣṭakam 2",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-suryamandalastakam",
+    "slug": "brihat-suryamandalastakam",
+    "title_telugu": "సూర్యమణ్డలాష్టకమ్",
+    "title_english": "Sūryamaṇḍalāṣṭakam",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-suryaryastotram",
+    "slug": "brihat-suryaryastotram",
+    "title_telugu": "సూర్యార్యాస్తోత్రమ్",
+    "title_english": "Sūryāryāstotram",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-adityastotram",
+    "slug": "brihat-adityastotram",
+    "title_telugu": "ఆదిత్యస్తోత్రమ్",
+    "title_english": "Ādityastotram",
+    "category": "surya",
+    "deity": "Surya"
+  },
+  {
+    "id": "brihat-bharatavijayastotram",
+    "slug": "brihat-bharatavijayastotram",
+    "title_telugu": "భారతవిజయస్తోత్రమ్",
+    "title_english": "Bhāratavijayastotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-devyaparadhaksamapanastotram",
+    "slug": "brihat-devyaparadhaksamapanastotram",
+    "title_telugu": "దేవ్యపరాధక్షమాపనస్తోత్రమ్",
+    "title_english": "Devyaparādhakṣamāpanastotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-bhavanyastakam",
+    "slug": "brihat-bhavanyastakam",
+    "title_telugu": "భవాన్యష్టకమ్",
+    "title_english": "Bhavānyaṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-bhavanistutih",
+    "slug": "brihat-bhavanistutih",
+    "title_telugu": "భవానీస్తుతిః",
+    "title_english": "Bhavānīstutiḥ",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-bhagavatistotram",
+    "slug": "brihat-bhagavatistotram",
+    "title_telugu": "భగవతీస్తోత్రమ్",
+    "title_english": "Bhagavatīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-bhagavatyastakam",
+    "slug": "brihat-bhagavatyastakam",
+    "title_telugu": "భగవత్యష్టకమ్",
+    "title_english": "Bhagavatyaṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-tripurasundaristotram",
+    "slug": "brihat-tripurasundaristotram",
+    "title_telugu": "త్రిపురసున్దరీస్తోత్రమ్",
+    "title_english": "Tripurasundarīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-sankastastakastotram",
+    "slug": "brihat-sankastastakastotram",
+    "title_telugu": "సఙ్కష్టాష్టకస్తోత్రమ్",
+    "title_english": "Saṅkaṣṭāṣṭakastotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-sankastastutih",
+    "slug": "brihat-sankastastutih",
+    "title_telugu": "సఙ్కష్టస్తుతిః",
+    "title_english": "Saṅkaṣṭastutiḥ",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-vindhyesvaristotram",
+    "slug": "brihat-vindhyesvaristotram",
+    "title_telugu": "విన్ధ్యేశ్వరీస్తోత్రమ్",
+    "title_english": "Vindhyeśvarīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-vindhyavasinistotram",
+    "slug": "brihat-vindhyavasinistotram",
+    "title_telugu": "విన్ధ్యవాసినీస్తోత్రమ్",
+    "title_english": "Vindhyavāsinīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-minaksipancaratnam",
+    "slug": "brihat-minaksipancaratnam",
+    "title_telugu": "మీనాక్షీపఞ్చరత్నమ్",
+    "title_english": "Mīnākṣīpañcaratnam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-sitalastakam",
+    "slug": "brihat-sitalastakam",
+    "title_telugu": "శీతలాష్టకమ్",
+    "title_english": "Śītalāṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-varahinigrahastakam",
+    "slug": "brihat-varahinigrahastakam",
+    "title_telugu": "వారాహీనిగ్రహాష్టకమ్",
+    "title_english": "Vārāhīnigrahāṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-varahyanugrahastakam",
+    "slug": "brihat-varahyanugrahastakam",
+    "title_telugu": "వారాహ్యనుగ్రహాష్టకమ్",
+    "title_english": "Vārāhyanugrahāṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-katyayanyastakam",
+    "slug": "brihat-katyayanyastakam",
+    "title_telugu": "కాత్యాయన్యష్టకమ్",
+    "title_english": "Kātyāyanyaṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-kalikakavacam",
+    "slug": "brihat-kalikakavacam",
+    "title_telugu": "కాలికాకవచమ్",
+    "title_english": "Kālikākavacam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-candikastakam",
+    "slug": "brihat-candikastakam",
+    "title_telugu": "చణ్డికాష్టకమ్",
+    "title_english": "Caṇḍikāṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-durgastakam",
+    "slug": "brihat-durgastakam",
+    "title_telugu": "దుర్గాష్టకమ్",
+    "title_english": "Durgāṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-durgapaduddharadastavarajah",
+    "slug": "brihat-durgapaduddharadastavarajah",
+    "title_telugu": "దుర్గాపదుద్ధారదస్తవరాజః",
+    "title_english": "Durgāpaduddhāradastavarājaḥ",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-durgasiddhamantrastotram",
+    "slug": "brihat-durgasiddhamantrastotram",
+    "title_telugu": "దుర్గాసిద్ధమన్త్రస్తోత్రమ్",
+    "title_english": "Durgāsiddhamantrastotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-annapurnastotram-1",
+    "slug": "brihat-annapurnastotram-1",
+    "title_telugu": "అన్నపూర్ణాస్తోత్రమ్ ౧",
+    "title_english": "Annapūrṇāstotram 1",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-annapurnastotram-2",
+    "slug": "brihat-annapurnastotram-2",
+    "title_telugu": "అన్నపూర్ణాస్తోత్రమ్ ౨",
+    "title_english": "Annapūrṇāstotram 2",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-purnastakam",
+    "slug": "brihat-purnastakam",
+    "title_telugu": "పూర్ణాష్టకమ్",
+    "title_english": "Pūrṇāṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-annapurnakavacam",
+    "slug": "brihat-annapurnakavacam",
+    "title_telugu": "అన్నపూర్ణాకవచమ్",
+    "title_english": "Annapūrṇākavacam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-laksmistotram",
+    "slug": "brihat-laksmistotram",
+    "title_telugu": "లక్ష్మీస్తోత్రమ్",
+    "title_english": "Lakṣmīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-mahalaksmyastakam",
+    "slug": "brihat-mahalaksmyastakam",
+    "title_telugu": "మహాలక్ష్మ్యష్టకమ్",
+    "title_english": "Mahālakṣmyaṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-siddhasarasvatistotram-1",
+    "slug": "brihat-siddhasarasvatistotram-1",
+    "title_telugu": "సిద్ధసరస్వతీస్తోత్రమ్ ౧",
+    "title_english": "Siddhasarasvatīstotram 1",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-siddhasarasvatistotram-2",
+    "slug": "brihat-siddhasarasvatistotram-2",
+    "title_telugu": "సిద్ధసరస్వతీస్తోత్రమ్ ౨",
+    "title_english": "Siddhasarasvatīstotram 2",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-sarasvatyastakam",
+    "slug": "brihat-sarasvatyastakam",
+    "title_telugu": "సరస్వత్యష్టకమ్",
+    "title_english": "Sarasvatyaṣṭakam",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-nilasarasvatistotram",
+    "slug": "brihat-nilasarasvatistotram",
+    "title_telugu": "నీలసరస్వతీస్తోత్రమ్",
+    "title_english": "Nīlasarasvatīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-gayatristotram",
+    "slug": "brihat-gayatristotram",
+    "title_telugu": "గాయత్రీస్తోత్రమ్",
+    "title_english": "Gāyatrīstotram",
+    "category": "devi",
+    "deity": "Devi"
+  },
+  {
+    "id": "brihat-gangastakam-1",
+    "slug": "brihat-gangastakam-1",
+    "title_telugu": "గఙ్గాష్టకమ్ ౧",
+    "title_english": "Gaṅgāṣṭakam 1",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-gangastakam-3",
+    "slug": "brihat-gangastakam-3",
+    "title_telugu": "గఙ్గాష్టకమ్ ౩",
+    "title_english": "Gaṅgāṣṭakam 3",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-gangastakam-4",
+    "slug": "brihat-gangastakam-4",
+    "title_telugu": "గఙ్గాష్టకమ్ ౪",
+    "title_english": "Gaṅgāṣṭakam 4",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-gangastavah",
+    "slug": "brihat-gangastavah",
+    "title_telugu": "గఙ్గాస్తవః",
+    "title_english": "Gaṅgāstavaḥ",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-dasaharagangastutih",
+    "slug": "brihat-dasaharagangastutih",
+    "title_telugu": "దశహరాగఙ్గాస్తుతిః",
+    "title_english": "Daśaharāgaṅgāstutiḥ",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-yamunastakam-1",
+    "slug": "brihat-yamunastakam-1",
+    "title_telugu": "యమునాష్టకమ్ ౧",
+    "title_english": "Yamunāṣṭakam 1",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-yamunastakam-2",
+    "slug": "brihat-yamunastakam-2",
+    "title_telugu": "యమునాష్టకమ్ ౨",
+    "title_english": "Yamunāṣṭakam 2",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-narmadastakam-1",
+    "slug": "brihat-narmadastakam-1",
+    "title_telugu": "నర్మదాష్టకమ్ ౧",
+    "title_english": "Narmadāṣṭakam 1",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-narmadastakam-2",
+    "slug": "brihat-narmadastakam-2",
+    "title_telugu": "నర్మదాష్టకమ్ ౨",
+    "title_english": "Narmadāṣṭakam 2",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-puskarastakam",
+    "slug": "brihat-puskarastakam",
+    "title_telugu": "పుష్కరాష్టకమ్",
+    "title_english": "Puṣkarāṣṭakam",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-prayagarajastakam",
+    "slug": "brihat-prayagarajastakam",
+    "title_telugu": "ప్రయాగరాజాష్టకమ్",
+    "title_english": "Prayāgarājāṣṭakam",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-siddhasarayustotrastakam",
+    "slug": "brihat-siddhasarayustotrastakam",
+    "title_telugu": "సిద్ధసరయూస్తోత్రాష్టకమ్",
+    "title_english": "Siddhasarayūstotrāṣṭakam",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-trivenistotram",
+    "slug": "brihat-trivenistotram",
+    "title_telugu": "త్రివేణీస్తోత్రమ్",
+    "title_english": "Triveṇīstotram",
+    "category": "ganga",
+    "deity": "Ganga"
+  },
+  {
+    "id": "brihat-kesavadicaturvimsatyavatarastotram",
+    "slug": "brihat-kesavadicaturvimsatyavatarastotram",
+    "title_telugu": "కేశవాదిచతుర్వింశత్యవతారస్తోత్రమ్",
+    "title_english": "Keśavādicaturviṃśatyavatārastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-matsyastotram",
+    "slug": "brihat-matsyastotram",
+    "title_telugu": "మత్స్యస్తోత్రమ్",
+    "title_english": "Matsyastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-kurmastotram",
+    "slug": "brihat-kurmastotram",
+    "title_telugu": "కూర్మస్తోత్రమ్",
+    "title_english": "Kūrmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-varahastotram",
+    "slug": "brihat-varahastotram",
+    "title_telugu": "వరాహస్తోత్రమ్",
+    "title_english": "Varāhastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-nrsimhastotram",
+    "slug": "brihat-nrsimhastotram",
+    "title_telugu": "నృసింహస్తోత్రమ్",
+    "title_english": "Nṛsiṃhastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-laksminrsimhastotram",
+    "slug": "brihat-laksminrsimhastotram",
+    "title_telugu": "లక్ష్మీనృసింహస్తోత్రమ్",
+    "title_english": "Lakṣmīnṛsiṃhastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-vamanastotram",
+    "slug": "brihat-vamanastotram",
+    "title_telugu": "వామనస్తోత్రమ్",
+    "title_english": "Vāmanastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-dasavatarastotram",
+    "slug": "brihat-dasavatarastotram",
+    "title_telugu": "దశావతారస్తోత్రమ్",
+    "title_english": "Daśāvatārastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-parasuramastavimsatinamastotram",
+    "slug": "brihat-parasuramastavimsatinamastotram",
+    "title_telugu": "పరశురామాష్టావింశతినామస్తోత్రమ్",
+    "title_english": "Paraśurāmāṣṭāviṃśatināmastotram",
+    "category": "vishnu",
+    "deity": "Vishnu"
+  },
+  {
+    "id": "brihat-ramaraksastotram-1",
+    "slug": "brihat-ramaraksastotram-1",
+    "title_telugu": "రామరక్షాస్తోత్రమ్ ౧",
+    "title_english": "Rāmarakṣāstotram 1",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramaraksastotram-2",
+    "slug": "brihat-ramaraksastotram-2",
+    "title_telugu": "రామరక్షాస్తోత్రమ్ ౨",
+    "title_english": "Rāmarakṣāstotram 2",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramastotram-1",
+    "slug": "brihat-ramastotram-1",
+    "title_telugu": "రామస్తోత్రమ్ ౧",
+    "title_english": "Rāmastotram 1",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramastotram-2",
+    "slug": "brihat-ramastotram-2",
+    "title_telugu": "రామస్తోత్రమ్ ౨",
+    "title_english": "Rāmastotram 2",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramastotram-3",
+    "slug": "brihat-ramastotram-3",
+    "title_telugu": "రామస్తోత్రమ్ ౩",
+    "title_english": "Rāmastotram 3",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramastutih",
+    "slug": "brihat-ramastutih",
+    "title_telugu": "రామస్తుతిః",
+    "title_english": "Rāmastutiḥ",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramahrdayam",
+    "slug": "brihat-ramahrdayam",
+    "title_telugu": "రామహృదయమ్",
+    "title_english": "Rāmahṛdayam",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramastakam-1",
+    "slug": "brihat-ramastakam-1",
+    "title_telugu": "రామాష్టకమ్ ౧",
+    "title_english": "Rāmāṣṭakam 1",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramastakam-2",
+    "slug": "brihat-ramastakam-2",
+    "title_telugu": "రామాష్టకమ్ ౨",
+    "title_english": "Rāmāṣṭakam 2",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramacandrastakam",
+    "slug": "brihat-ramacandrastakam",
+    "title_telugu": "రామచన్ద్రాష్టకమ్",
+    "title_english": "Rāmacandrāṣṭakam",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramacandrastutih",
+    "slug": "brihat-ramacandrastutih",
+    "title_telugu": "రామచన్ద్రస్తుతిః",
+    "title_english": "Rāmacandrastutiḥ",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-sitaramastakam",
+    "slug": "brihat-sitaramastakam",
+    "title_telugu": "సీతారామష్టకమ్",
+    "title_english": "Sītārāmaṣṭakam",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-raghunathastakam",
+    "slug": "brihat-raghunathastakam",
+    "title_telugu": "రఘునాథాష్టకమ్",
+    "title_english": "Raghunāthāṣṭakam",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-ramapremastakam",
+    "slug": "brihat-ramapremastakam",
+    "title_telugu": "రామప్రేమాష్టకమ్",
+    "title_english": "Rāmapremāṣṭakam",
+    "category": "rama",
+    "deity": "Sri Rama"
+  },
+  {
+    "id": "brihat-garbhastutih",
+    "slug": "brihat-garbhastutih",
+    "title_telugu": "గర్భస్తుతిః",
+    "title_english": "Garbhastutiḥ",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-1",
+    "slug": "brihat-krsnastotram-1",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౧",
+    "title_english": "Kṛṣṇastotram 1",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-2",
+    "slug": "brihat-krsnastotram-2",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౨",
+    "title_english": "Kṛṣṇastotram 2",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-3",
+    "slug": "brihat-krsnastotram-3",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౩",
+    "title_english": "Kṛṣṇastotram 3",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-4",
+    "slug": "brihat-krsnastotram-4",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౪",
+    "title_english": "Kṛṣṇastotram 4",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-5",
+    "slug": "brihat-krsnastotram-5",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౫",
+    "title_english": "Kṛṣṇastotram 5",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-6",
+    "slug": "brihat-krsnastotram-6",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౬",
+    "title_english": "Kṛṣṇastotram 6",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastotram-7",
+    "slug": "brihat-krsnastotram-7",
+    "title_telugu": "కృష్ణస్తోత్రమ్ ౭",
+    "title_english": "Kṛṣṇastotram 7",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastakam-1",
+    "slug": "brihat-krsnastakam-1",
+    "title_telugu": "కృష్ణాష్టకమ్ ౧",
+    "title_english": "Kṛṣṇāṣṭakam 1",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastakam-2",
+    "slug": "brihat-krsnastakam-2",
+    "title_telugu": "కృష్ణాష్టకమ్ ౨",
+    "title_english": "Kṛṣṇāṣṭakam 2",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastakam-3",
+    "slug": "brihat-krsnastakam-3",
+    "title_telugu": "కృష్ణాష్టకమ్ ౩",
+    "title_english": "Kṛṣṇāṣṭakam 3",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnadvadasanamastotram",
+    "slug": "brihat-krsnadvadasanamastotram",
+    "title_telugu": "కృష్ణద్వాదశనామస్తోత్రమ్",
+    "title_english": "Kṛṣṇadvādaśanāmastotram",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastottarasatanamastotram",
+    "slug": "brihat-krsnastottarasatanamastotram",
+    "title_telugu": "కృష్ణాష్టోత్తరశతనామస్తోత్రమ్",
+    "title_english": "Kṛṣṇāṣṭottaraśatanāmastotram",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-krsnastavarajah",
+    "slug": "brihat-krsnastavarajah",
+    "title_telugu": "కృష్ణస్తవరాజః",
+    "title_english": "Kṛṣṇastavarājaḥ",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-govindastakam-2",
+    "slug": "brihat-govindastakam-2",
+    "title_telugu": "గోవిన్దాష్టకమ్ ౨",
+    "title_english": "Govindāṣṭakam 2",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-gopalastotram",
+    "slug": "brihat-gopalastotram",
+    "title_telugu": "గోపాలస్తోత్రమ్",
+    "title_english": "Gopālastotram",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-gopalavimsatistotram",
+    "slug": "brihat-gopalavimsatistotram",
+    "title_telugu": "గోపాలవింశతిస్తోత్రమ్",
+    "title_english": "Gopālaviṃśatistotram",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-gopalahrdayastotram",
+    "slug": "brihat-gopalahrdayastotram",
+    "title_telugu": "గోపాలహృదయస్తోత్రమ్",
+    "title_english": "Gopālahṛdayastotram",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-gopalastutih",
+    "slug": "brihat-gopalastutih",
+    "title_telugu": "గోపాలస్తుతిః",
+    "title_english": "Gopālastutiḥ",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-gopalaksayakavacam",
+    "slug": "brihat-gopalaksayakavacam",
+    "title_telugu": "గోపాలాక్షయకవచమ్",
+    "title_english": "Gopālākṣayakavacam",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-bindumadhavastakam",
+    "slug": "brihat-bindumadhavastakam",
+    "title_telugu": "బిన్దుమాధవాష్టకమ్",
+    "title_english": "Bindumādhavāṣṭakam",
+    "category": "krishna",
+    "deity": "Sri Krishna"
+  },
+  {
+    "id": "brihat-kalkistotram",
+    "slug": "brihat-kalkistotram",
+    "title_telugu": "కల్కిస్తోత్రమ్",
+    "title_english": "Kalkistotram",
+    "category": "vishnu",
+    "deity": "Kalki"
+  },
+  {
+    "id": "brihat-dattaparadhaksamapanastotram",
+    "slug": "brihat-dattaparadhaksamapanastotram",
+    "title_telugu": "దత్తాపరాధక్షమాపనస్తోత్రమ్",
+    "title_english": "Dattāparādhakṣamāpanastotram",
+    "category": "dattatreya",
+    "deity": "Dattatreya"
+  },
+  {
+    "id": "brihat-guruvaraprarthanapancaratnastotram",
+    "slug": "brihat-guruvaraprarthanapancaratnastotram",
+    "title_telugu": "గురువరప్రార్థనాపఞ్చరత్నస్తోత్రమ్",
+    "title_english": "Guruvaraprārthanāpañcaratnastotram",
+    "category": "dattatreya",
+    "deity": "Dattatreya"
+  },
+  {
+    "id": "brihat-gururajastavah",
+    "slug": "brihat-gururajastavah",
+    "title_telugu": "గురురాజస్తవః",
+    "title_english": "Gururājastavaḥ",
+    "category": "dattatreya",
+    "deity": "Dattatreya"
+  },
+  {
+    "id": "brihat-daksinamurtistotram",
+    "slug": "brihat-daksinamurtistotram",
+    "title_telugu": "దక్షిణామూర్తిస్తోత్రమ్",
+    "title_english": "Dakṣiṇāmūrtistotram",
+    "category": "dattatreya",
+    "deity": "Dattatreya"
+  },
+  {
+    "id": "brihat-hanumatkavacam",
+    "slug": "brihat-hanumatkavacam",
+    "title_telugu": "హనుమత్కవచమ్",
+    "title_english": "Hanumatkavacam",
+    "category": "hanuman",
+    "deity": "Hanuman"
+  },
+  {
+    "id": "brihat-hanumadastakastotram-1",
+    "slug": "brihat-hanumadastakastotram-1",
+    "title_telugu": "హనుమదష్టకస్తోత్రమ్ ౧",
+    "title_english": "Hanumadaṣṭakastotram 1",
+    "category": "hanuman",
+    "deity": "Hanuman"
+  },
+  {
+    "id": "brihat-hanumadastakam-2",
+    "slug": "brihat-hanumadastakam-2",
+    "title_telugu": "హనుమదష్టకమ్ ౨",
+    "title_english": "Hanumadaṣṭakam 2",
+    "category": "hanuman",
+    "deity": "Hanuman"
+  },
+  {
+    "id": "brihat-satrunjayahanumatstotram",
+    "slug": "brihat-satrunjayahanumatstotram",
+    "title_telugu": "శత్రుఞ్జయహనుమత్స్తోత్రమ్",
+    "title_english": "Śatruñjayahanumatstotram",
+    "category": "hanuman",
+    "deity": "Hanuman"
+  },
+  {
+    "id": "brihat-sankatamocanastotram",
+    "slug": "brihat-sankatamocanastotram",
+    "title_telugu": "సఙ్కటమోచనస్తోత్రమ్",
+    "title_english": "Saṅkaṭamocanastotram",
+    "category": "hanuman",
+    "deity": "Hanuman"
+  },
+  {
+    "id": "brihat-hanumatstutih",
+    "slug": "brihat-hanumatstutih",
+    "title_telugu": "హనుమత్స్తుతిః",
+    "title_english": "Hanumatstutiḥ",
+    "category": "hanuman",
+    "deity": "Hanuman"
+  },
+  {
+    "id": "brihat-suryamangalastotram",
+    "slug": "brihat-suryamangalastotram",
+    "title_telugu": "సూర్యమఙ్గలస్తోత్రమ్",
+    "title_english": "Sūryamaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-candrastavimsatinamastotram",
+    "slug": "brihat-candrastavimsatinamastotram",
+    "title_telugu": "చన్ద్రాష్టావింశతినామస్తోత్రమ్",
+    "title_english": "Candrāṣṭāviṃśatināmastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-candramangalastotram",
+    "slug": "brihat-candramangalastotram",
+    "title_telugu": "చన్ద్రమఙ్గలస్తోత్రమ్",
+    "title_english": "Candramaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-mangalakavacam",
+    "slug": "brihat-mangalakavacam",
+    "title_telugu": "మఙ్గలకవచమ్",
+    "title_english": "Maṅgalakavacam",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-rnamocanamangalastotram",
+    "slug": "brihat-rnamocanamangalastotram",
+    "title_telugu": "ఋణమోచనమఙ్గలస్తోత్రమ్",
+    "title_english": "Ṛṇamocanamaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-angarakastotram",
+    "slug": "brihat-angarakastotram",
+    "title_telugu": "అఙ్గారకస్తోత్రమ్",
+    "title_english": "Aṅgārakastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-bhaumamangalastotram",
+    "slug": "brihat-bhaumamangalastotram",
+    "title_telugu": "భౌమమఙ్గలస్తోత్రమ్",
+    "title_english": "Bhaumamaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-budhapancavimsatinamastotram",
+    "slug": "brihat-budhapancavimsatinamastotram",
+    "title_telugu": "బుధపఞ్చవింశతినామస్తోత్రమ్",
+    "title_english": "Budhapañcaviṃśatināmastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-budhamangalastotram",
+    "slug": "brihat-budhamangalastotram",
+    "title_telugu": "బుధమఙ్గలస్తోత్రమ్",
+    "title_english": "Budhamaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-brhaspatikavacam",
+    "slug": "brihat-brhaspatikavacam",
+    "title_telugu": "బృహస్పతికవచమ్",
+    "title_english": "Bṛhaspatikavacam",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-brhaspatistotram",
+    "slug": "brihat-brhaspatistotram",
+    "title_telugu": "బృహస్పతిస్తోత్రమ్",
+    "title_english": "Bṛhaspatistotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-brhaspatimangalastotram",
+    "slug": "brihat-brhaspatimangalastotram",
+    "title_telugu": "బృహస్పతిమఙ్గలస్తోత్రమ్",
+    "title_english": "Bṛhaspatimaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-sukrastavarajah",
+    "slug": "brihat-sukrastavarajah",
+    "title_telugu": "శుక్రస్తవరాజః",
+    "title_english": "Śukrastavarājaḥ",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-sukramangalastotram",
+    "slug": "brihat-sukramangalastotram",
+    "title_telugu": "శుక్రమఙ్గలస్తోత్రమ్",
+    "title_english": "Śukramaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-saniscarapanjarakavacam",
+    "slug": "brihat-saniscarapanjarakavacam",
+    "title_telugu": "శనిశ్చరపఞ్జరకవచమ్",
+    "title_english": "Śaniścarapañjarakavacam",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-sanaiscarastotram",
+    "slug": "brihat-sanaiscarastotram",
+    "title_telugu": "శనైశ్చరస్తోత్రమ్",
+    "title_english": "Śanaiścarastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-sanimangalastotram",
+    "slug": "brihat-sanimangalastotram",
+    "title_telugu": "శనిమఙ్గలస్తోత్రమ్",
+    "title_english": "Śanimaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-rahustotram",
+    "slug": "brihat-rahustotram",
+    "title_telugu": "రాహుస్తోత్రమ్",
+    "title_english": "Rāhustotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-rahumangalastotram",
+    "slug": "brihat-rahumangalastotram",
+    "title_telugu": "రాహుమఙ్గలస్తోత్రమ్",
+    "title_english": "Rāhumaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-ketupancavimsatinamastotram",
+    "slug": "brihat-ketupancavimsatinamastotram",
+    "title_telugu": "కేతుపఞ్చవింశతినామస్తోత్రమ్",
+    "title_english": "Ketupañcaviṃśatināmastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-ketumangalastotram",
+    "slug": "brihat-ketumangalastotram",
+    "title_telugu": "కేతుమఙ్గలస్తోత్రమ్",
+    "title_english": "Ketumaṅgalastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-ekaslokinavagrahastotram",
+    "slug": "brihat-ekaslokinavagrahastotram",
+    "title_telugu": "ఏకశ్లోకీనవగ్రహస్తోత్రమ్",
+    "title_english": "Ekaślokīnavagrahastotram",
+    "category": "navagraha",
+    "deity": "Navagraha"
+  },
+  {
+    "id": "brihat-vedantastotram",
+    "slug": "brihat-vedantastotram",
+    "title_telugu": "వేదాన్తస్తోత్రమ్",
+    "title_english": "Vedāntastotram",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-kaivalyastakam",
+    "slug": "brihat-kaivalyastakam",
+    "title_telugu": "కైవల్యాష్టకమ్",
+    "title_english": "Kaivalyāṣṭakam",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-sadhanapancakam",
+    "slug": "brihat-sadhanapancakam",
+    "title_telugu": "సాధనపఞ్చకమ్",
+    "title_english": "Sādhanapañcakam",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-atmapancakam",
+    "slug": "brihat-atmapancakam",
+    "title_telugu": "ఆత్మపఞ్చకమ్",
+    "title_english": "Ātmapañcakam",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-kaupinapancakam",
+    "slug": "brihat-kaupinapancakam",
+    "title_telugu": "కౌపీనపఞ్చకమ్",
+    "title_english": "Kaupīnapañcakam",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-vijnananauka",
+    "slug": "brihat-vijnananauka",
+    "title_telugu": "విజ్ఞాననౌకా",
+    "title_english": "Vijñānanaukā",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-dvadasapanjarikastotram",
+    "slug": "brihat-dvadasapanjarikastotram",
+    "title_telugu": "ద్వాదశపఞ్జరికాస్తోత్రమ్",
+    "title_english": "Dvādaśapañjarikāstotram",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-carpatapanjarikastotram",
+    "slug": "brihat-carpatapanjarikastotram",
+    "title_telugu": "చర్పటపఞ్జరికాస్తోత్రమ్",
+    "title_english": "Carpaṭapañjarikāstotram",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-parapuja",
+    "slug": "brihat-parapuja",
+    "title_telugu": "పరాపూజా",
+    "title_english": "Parāpūjā",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-sayanastotram",
+    "slug": "brihat-sayanastotram",
+    "title_telugu": "శయనస్తోత్రమ్",
+    "title_english": "Śayanastotram",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-bhrastastakam",
+    "slug": "brihat-bhrastastakam",
+    "title_telugu": "భ్రష్టాష్టకమ్",
+    "title_english": "Bhraṣṭāṣṭakam",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-sistastotram",
+    "slug": "brihat-sistastotram",
+    "title_telugu": "శిష్టస్తోత్రమ్",
+    "title_english": "Śiṣṭastotram",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-kamanapancakam",
+    "slug": "brihat-kamanapancakam",
+    "title_telugu": "కామనాపఞ్చకమ్",
+    "title_english": "Kāmanāpañcakam",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-tattvamasistotram",
+    "slug": "brihat-tattvamasistotram",
+    "title_telugu": "తత్త్వమసిస్తోత్రమ్",
+    "title_english": "Tattvamasistotram",
+    "category": "adi-shankaracharya",
+    "deity": "Shiva / Brahman"
+  },
+  {
+    "id": "brihat-ganesastakam-4",
+    "slug": "brihat-ganesastakam-4",
+    "title_telugu": "గణేశాష్టకమ్ ౪",
+    "title_english": "Gaṇeśāṣṭakam 4",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-visnudevastakam",
+    "slug": "brihat-visnudevastakam",
+    "title_telugu": "విష్ణుదేవాష్టకమ్",
+    "title_english": "Viṣṇudevāṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kartaviryastotram",
+    "slug": "brihat-kartaviryastotram",
+    "title_telugu": "కార్తవీర్యస్తోత్రమ్",
+    "title_english": "Kārtavīryastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bandimocanastotram",
+    "slug": "brihat-bandimocanastotram",
+    "title_telugu": "బన్దీమోచనస్తోత్రమ్",
+    "title_english": "Bandīmocanastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tulasikavacam",
+    "slug": "brihat-tulasikavacam",
+    "title_telugu": "తులసీకవచమ్",
+    "title_english": "Tulasīkavacam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tulasistotram",
+    "slug": "brihat-tulasistotram",
+    "title_telugu": "తులసీస్తోత్రమ్",
+    "title_english": "Tulasīstotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-asvatthastotram",
+    "slug": "brihat-asvatthastotram",
+    "title_telugu": "అశ్వత్థస్తోత్రమ్",
+    "title_english": "Aśvatthastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhagavatpratahsmaranastotram",
+    "slug": "brihat-bhagavatpratahsmaranastotram",
+    "title_telugu": "భగవత్ప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Bhagavatprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-brahmapratahsmaranastotram",
+    "slug": "brihat-brahmapratahsmaranastotram",
+    "title_telugu": "బ్రహ్మప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Brahmaprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-visnupratahsmaranastotram",
+    "slug": "brihat-visnupratahsmaranastotram",
+    "title_telugu": "విష్ణుప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Viṣṇuprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sivapratahsmaranastotram",
+    "slug": "brihat-sivapratahsmaranastotram",
+    "title_telugu": "శివప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Śivaprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ganesapratahsmaranastotram",
+    "slug": "brihat-ganesapratahsmaranastotram",
+    "title_telugu": "గణేశప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Gaṇeśaprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-candipratahsmaranastotram",
+    "slug": "brihat-candipratahsmaranastotram",
+    "title_telugu": "చణ్డీప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Caṇḍīprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-suryapratahsmaranastotram",
+    "slug": "brihat-suryapratahsmaranastotram",
+    "title_telugu": "సూర్యప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Sūryaprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ramapratahsmaranastotram",
+    "slug": "brihat-ramapratahsmaranastotram",
+    "title_telugu": "రామప్రాతఃస్మరణస్తోత్రమ్",
+    "title_english": "Rāmaprātaḥsmaraṇastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pratahsmaranamangalastotram",
+    "slug": "brihat-pratahsmaranamangalastotram",
+    "title_telugu": "ప్రాతఃస్మరణమఙ్గలస్తోత్రమ్",
+    "title_english": "Prātaḥsmaraṇamaṅgalastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-prabhate-karadarsanam",
+    "slug": "brihat-prabhate-karadarsanam",
+    "title_telugu": "ప్రభాతే కరదర్శనమ్",
+    "title_english": "Prabhāte Karadarśanam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhagavadyuktasmaranam",
+    "slug": "brihat-bhagavadyuktasmaranam",
+    "title_telugu": "భగవద్యుక్తస్మరణమ్",
+    "title_english": "Bhagavadyuktasmaraṇam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ekaslokiramayanam",
+    "slug": "brihat-ekaslokiramayanam",
+    "title_telugu": "ఏకశ్లోకీరామాయణమ్",
+    "title_english": "Ekaślokīrāmāyaṇam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ekaslokibhagavatam",
+    "slug": "brihat-ekaslokibhagavatam",
+    "title_telugu": "ఏకశ్లోకీభాగవతమ్",
+    "title_english": "Ekaślokībhāgavatam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ekaslokimahabharatam",
+    "slug": "brihat-ekaslokimahabharatam",
+    "title_telugu": "ఏకశ్లోకీమహాభారతమ్",
+    "title_english": "Ekaślokīmahābhāratam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-catuhslokibhagavatam",
+    "slug": "brihat-catuhslokibhagavatam",
+    "title_telugu": "చతుఃశ్లోకీభాగవతమ్",
+    "title_english": "Catuḥślokībhāgavatam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-saptaslokigita",
+    "slug": "brihat-saptaslokigita",
+    "title_telugu": "సప్తశ్లోకీగీతా",
+    "title_english": "Saptaślokīgītā",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-naradastutih",
+    "slug": "brihat-naradastutih",
+    "title_telugu": "నారదస్తుతిః",
+    "title_english": "Nāradastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-vyasastutih",
+    "slug": "brihat-vyasastutih",
+    "title_telugu": "వ్యాసస్తుతిః",
+    "title_english": "Vyāsastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sukastutih",
+    "slug": "brihat-sukastutih",
+    "title_telugu": "శుకస్తుతిః",
+    "title_english": "Śukastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-gurustutih",
+    "slug": "brihat-gurustutih",
+    "title_telugu": "గురుస్తుతిః",
+    "title_english": "Gurustutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-radhakrsnadhyanam",
+    "slug": "brihat-radhakrsnadhyanam",
+    "title_telugu": "రాధాకృష్ణధ్యానమ్",
+    "title_english": "Rādhākṛṣṇadhyānam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-radhakrsnayugalastotram",
+    "slug": "brihat-radhakrsnayugalastotram",
+    "title_telugu": "రాధాకృష్ణయుగలస్తోత్రమ్",
+    "title_english": "Rādhākṛṣṇayugalastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mangalastotram",
+    "slug": "brihat-mangalastotram",
+    "title_telugu": "మఙ్గలస్తోత్రమ్",
+    "title_english": "Maṅgalastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-rnamocanastotram",
+    "slug": "brihat-rnamocanastotram",
+    "title_telugu": "ఋణమోచనస్తోత్రమ్",
+    "title_english": "Ṛṇamocanastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-hanumadraksa",
+    "slug": "brihat-hanumadraksa",
+    "title_telugu": "హనుమద్రక్షా",
+    "title_english": "Hanumadrakṣā",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ratri-sayanastutih",
+    "slug": "brihat-ratri-sayanastutih",
+    "title_telugu": "రాత్రి శయనస్తుతిః",
+    "title_english": "Rātri Śayanastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pippalastutih",
+    "slug": "brihat-pippalastutih",
+    "title_telugu": "పిప్పలస్తుతిః",
+    "title_english": "Pippalastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-garudastutih",
+    "slug": "brihat-garudastutih",
+    "title_telugu": "గరుడస్తుతిః",
+    "title_english": "Garuḍastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-dipastutih",
+    "slug": "brihat-dipastutih",
+    "title_telugu": "దీపస్తుతిః",
+    "title_english": "Dīpastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tulasistutih",
+    "slug": "brihat-tulasistutih",
+    "title_telugu": "తులసీస్తుతిః",
+    "title_english": "Tulasīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-hanumatstutih-2",
+    "slug": "brihat-hanumatstutih-2",
+    "title_telugu": "హనుమత్స్తుతిః ౨",
+    "title_english": "Hanumatstutiḥ 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kuberastutih",
+    "slug": "brihat-kuberastutih",
+    "title_telugu": "కుబేరస్తుతిః",
+    "title_english": "Kuberastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sankhastutih",
+    "slug": "brihat-sankhastutih",
+    "title_telugu": "శఙ్ఖస్తుతిః",
+    "title_english": "Śaṅkhastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-dattatreyastutih",
+    "slug": "brihat-dattatreyastutih",
+    "title_telugu": "దత్తాత్రేయస్తుతిః",
+    "title_english": "Dattātreyastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhagavatstutih",
+    "slug": "brihat-bhagavatstutih",
+    "title_telugu": "భగవత్స్తుతిః",
+    "title_english": "Bhagavatstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-navanagastutih",
+    "slug": "brihat-navanagastutih",
+    "title_telugu": "నవనాగస్తుతిః",
+    "title_english": "Navanāgastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mukundastutih",
+    "slug": "brihat-mukundastutih",
+    "title_telugu": "ముకున్దస్తుతిః",
+    "title_english": "Mukundastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-annapurnastutih",
+    "slug": "brihat-annapurnastutih",
+    "title_telugu": "అన్నపూర్ణాస్తుతిః",
+    "title_english": "Annapūrṇāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sitalastutih",
+    "slug": "brihat-sitalastutih",
+    "title_telugu": "శీతలాస్తుతిః",
+    "title_english": "Śītalāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-lekhanistutih",
+    "slug": "brihat-lekhanistutih",
+    "title_telugu": "లేఖనీస్తుతిః",
+    "title_english": "Lekhanīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kalistutih",
+    "slug": "brihat-kalistutih",
+    "title_telugu": "కాలీస్తుతిః",
+    "title_english": "Kālīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mahakalistutih",
+    "slug": "brihat-mahakalistutih",
+    "title_telugu": "మహాకాలీస్తుతిః",
+    "title_english": "Mahākālīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mahalaksmistutih",
+    "slug": "brihat-mahalaksmistutih",
+    "title_telugu": "మహాలక్ష్మీస్తుతిః",
+    "title_english": "Mahālakṣmīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mahasarasvatistutih",
+    "slug": "brihat-mahasarasvatistutih",
+    "title_telugu": "మహాసరస్వతీస్తుతిః",
+    "title_english": "Mahāsarasvatīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-janmabhumidarsanaphalam",
+    "slug": "brihat-janmabhumidarsanaphalam",
+    "title_telugu": "జన్మభూమిదర్శనఫలమ్",
+    "title_english": "Janmabhūmidarśanaphalam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ramesastotram",
+    "slug": "brihat-ramesastotram",
+    "title_telugu": "రమేశస్తోత్రమ్",
+    "title_english": "Rameśastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-brahmastotram-2",
+    "slug": "brihat-brahmastotram-2",
+    "title_telugu": "బ్రహ్మస్తోత్రమ్ ౨",
+    "title_english": "Brahmastotram 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhairavastutih",
+    "slug": "brihat-bhairavastutih",
+    "title_telugu": "భైరవస్తుతిః",
+    "title_english": "Bhairavastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pandurangastutih",
+    "slug": "brihat-pandurangastutih",
+    "title_telugu": "పాణ్డురఙ్గస్తుతిః",
+    "title_english": "Pāṇḍuraṅgastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ramacandrastutih-2",
+    "slug": "brihat-ramacandrastutih-2",
+    "title_telugu": "రామచన్ద్రస్తుతిః ౨",
+    "title_english": "Rāmacandrastutiḥ 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-krsnastutih",
+    "slug": "brihat-krsnastutih",
+    "title_telugu": "కృష్ణస్తుతిః",
+    "title_english": "Kṛṣṇastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-visnustutih-2",
+    "slug": "brihat-visnustutih-2",
+    "title_telugu": "విష్ణుస్తుతిః ౨",
+    "title_english": "Viṣṇustutiḥ 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sivastutih-2",
+    "slug": "brihat-sivastutih-2",
+    "title_telugu": "శివస్తుతిః ౨",
+    "title_english": "Śivastutiḥ 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-buddhastutih",
+    "slug": "brihat-buddhastutih",
+    "title_telugu": "బుద్ధస్తుతిః",
+    "title_english": "Buddhastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-jinastutih",
+    "slug": "brihat-jinastutih",
+    "title_telugu": "జినస్తుతిః",
+    "title_english": "Jinastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-jinendrastutih",
+    "slug": "brihat-jinendrastutih",
+    "title_telugu": "జినేన్ద్రస్తుతిః",
+    "title_english": "Jinendrastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mahavirastutih",
+    "slug": "brihat-mahavirastutih",
+    "title_telugu": "మహావీరస్తుతిః",
+    "title_english": "Mahāvīrastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-marutistotram",
+    "slug": "brihat-marutistotram",
+    "title_telugu": "మారుతిస్తోత్రమ్",
+    "title_english": "Mārutistotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-karttikeyastotram",
+    "slug": "brihat-karttikeyastotram",
+    "title_telugu": "కార్త్తికేయస్తోత్రమ్",
+    "title_english": "Kārttikeyastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ganesastutih",
+    "slug": "brihat-ganesastutih",
+    "title_telugu": "గణేశస్తుతిః",
+    "title_english": "Gaṇeśastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-satyarupastutih",
+    "slug": "brihat-satyarupastutih",
+    "title_telugu": "సత్యరూపస్తుతిః",
+    "title_english": "Satyarūpastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-dvadasadevavisesastutih",
+    "slug": "brihat-dvadasadevavisesastutih",
+    "title_telugu": "ద్వాదశదేవవిశేషస్తుతిః",
+    "title_english": "Dvādaśadevaviśeṣastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-duhsvapnanasanasuryastutih",
+    "slug": "brihat-duhsvapnanasanasuryastutih",
+    "title_telugu": "దుఃస్వప్ననాశనసూర్యస్తుతిః",
+    "title_english": "Duḥsvapnanāśanasūryastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-duhsvapnanasanadevasmaranam",
+    "slug": "brihat-duhsvapnanasanadevasmaranam",
+    "title_telugu": "దుఃస్వప్ననాశనదేవస్మరణమ్",
+    "title_english": "Duḥsvapnanāśanadevasmaraṇam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-rsistutih",
+    "slug": "brihat-rsistutih",
+    "title_telugu": "ఋషిస్తుతిః",
+    "title_english": "Ṛṣistutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-saptaciranjivistutih",
+    "slug": "brihat-saptaciranjivistutih",
+    "title_telugu": "సప్తచిరఞ్జీవిస్తుతిః",
+    "title_english": "Saptacirañjīvistutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-puspadantastutih",
+    "slug": "brihat-puspadantastutih",
+    "title_telugu": "పుష్పదన్తస్తుతిః",
+    "title_english": "Puṣpadantastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-hakaradipancadevastutih",
+    "slug": "brihat-hakaradipancadevastutih",
+    "title_telugu": "హకారాదిపఞ్చదేవస్తుతిః",
+    "title_english": "Hakārādipañcadevastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pancadevistutih",
+    "slug": "brihat-pancadevistutih",
+    "title_telugu": "పఞ్చదేవీస్తుతిః",
+    "title_english": "Pañcadevīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pancakanyastutih",
+    "slug": "brihat-pancakanyastutih",
+    "title_telugu": "పఞ్చకన్యాస్తుతిః",
+    "title_english": "Pañcakanyāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-saptarsismaranam",
+    "slug": "brihat-saptarsismaranam",
+    "title_telugu": "సప్తర్షిస్మరణమ్",
+    "title_english": "Saptarṣismaraṇam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-saptapuristutih",
+    "slug": "brihat-saptapuristutih",
+    "title_telugu": "సప్తపురీస్తుతిః",
+    "title_english": "Saptapurīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-rajnistutih",
+    "slug": "brihat-rajnistutih",
+    "title_telugu": "రాజ్ఞీస్తుతిః",
+    "title_english": "Rājñīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-aniruddhadidevastutih",
+    "slug": "brihat-aniruddhadidevastutih",
+    "title_telugu": "అనిరుద్ధాదిదేవస్తుతిః",
+    "title_english": "Aniruddhādidevastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pratarvandaniyastutih",
+    "slug": "brihat-pratarvandaniyastutih",
+    "title_telugu": "ప్రాతర్వన్దనీయస్తుతిః",
+    "title_english": "Prātarvandanīyastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-pratardarsanam",
+    "slug": "brihat-pratardarsanam",
+    "title_telugu": "ప్రాతర్దర్శనమ్",
+    "title_english": "Prātardarśanam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-prthivistutih",
+    "slug": "brihat-prthivistutih",
+    "title_telugu": "పృథివీస్తుతిః",
+    "title_english": "Pṛthivīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-dantadhavanastutih",
+    "slug": "brihat-dantadhavanastutih",
+    "title_telugu": "దన్తధావనస్తుతిః",
+    "title_english": "Dantadhāvanastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kumbhastutih",
+    "slug": "brihat-kumbhastutih",
+    "title_telugu": "కుమ్భస్తుతిః",
+    "title_english": "Kumbhastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sodasamatrkastutih",
+    "slug": "brihat-sodasamatrkastutih",
+    "title_telugu": "షోడశమాతృకాస్తుతిః",
+    "title_english": "Ṣoḍaśamātṛkāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sailaputristutih",
+    "slug": "brihat-sailaputristutih",
+    "title_telugu": "శైలపుత్రీస్తుతిః",
+    "title_english": "Śailaputrīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-brahmacarinistutih",
+    "slug": "brihat-brahmacarinistutih",
+    "title_telugu": "బ్రహ్మచారిణీస్తుతిః",
+    "title_english": "Brahmacāriṇīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-candraghantastutih",
+    "slug": "brihat-candraghantastutih",
+    "title_telugu": "చన్ద్రఘణ్టాస్తుతిః",
+    "title_english": "Candraghaṇṭāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kusmandastutih",
+    "slug": "brihat-kusmandastutih",
+    "title_telugu": "కూష్మాణ్డాస్తుతిః",
+    "title_english": "Kūṣmāṇḍāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-skandamatastutih",
+    "slug": "brihat-skandamatastutih",
+    "title_telugu": "స్కన్దమాతాస్తుతిః",
+    "title_english": "Skandamātāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-katyayanistutih",
+    "slug": "brihat-katyayanistutih",
+    "title_telugu": "కాత్యాయనీస్తుతిః",
+    "title_english": "Kātyāyanīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kalaratristutih",
+    "slug": "brihat-kalaratristutih",
+    "title_telugu": "కాలరాత్రిస్తుతిః",
+    "title_english": "Kālarātristutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mahagauristutih",
+    "slug": "brihat-mahagauristutih",
+    "title_telugu": "మహాగౌరీస్తుతిః",
+    "title_english": "Mahāgaurīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-siddhidatristutih",
+    "slug": "brihat-siddhidatristutih",
+    "title_telugu": "సిద్ధిదాత్రీస్తుతిః",
+    "title_english": "Siddhidātrīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-siddhilaksmistutih",
+    "slug": "brihat-siddhilaksmistutih",
+    "title_telugu": "సిద్ధిలక్ష్మీస్తుతిః",
+    "title_english": "Siddhilakṣmīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sanistutih",
+    "slug": "brihat-sanistutih",
+    "title_telugu": "శనిస్తుతిః",
+    "title_english": "Śanistutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sanipatninamastutih",
+    "slug": "brihat-sanipatninamastutih",
+    "title_telugu": "శనిపత్నీనామస్తుతిః",
+    "title_english": "Śanipatnīnāmastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-grahastutih",
+    "slug": "brihat-grahastutih",
+    "title_telugu": "గ్రహస్తుతిః",
+    "title_english": "Grahastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-gangastutih",
+    "slug": "brihat-gangastutih",
+    "title_telugu": "గఙ్గాస్తుతిః",
+    "title_english": "Gaṅgāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-yamunastutih",
+    "slug": "brihat-yamunastutih",
+    "title_telugu": "యమునాస్తుతిః",
+    "title_english": "Yamunāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-malastutih",
+    "slug": "brihat-malastutih",
+    "title_telugu": "మాలాస్తుతిః",
+    "title_english": "Mālāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-visnorekadasanamastutih",
+    "slug": "brihat-visnorekadasanamastutih",
+    "title_telugu": "విష్ణోరేకాదశనామస్తుతిః",
+    "title_english": "Viṣṇorekādaśanāmastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-satyanarayanastakam",
+    "slug": "brihat-satyanarayanastakam",
+    "title_telugu": "సత్యనారాయణాష్టకమ్",
+    "title_english": "Satyanārāyaṇāṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-satyanarayanastutih",
+    "slug": "brihat-satyanarayanastutih",
+    "title_telugu": "సత్యనారాయణస్తుతిః",
+    "title_english": "Satyanārāyaṇastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-venkatesadvadasanamastotram",
+    "slug": "brihat-venkatesadvadasanamastotram",
+    "title_telugu": "వేఙ్కటేశద్వాదశనామస్తోత్రమ్",
+    "title_english": "Veṅkaṭeśadvādaśanāmastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-suryavaradastotram",
+    "slug": "brihat-suryavaradastotram",
+    "title_telugu": "సూర్యవరదస్తోత్రమ్",
+    "title_english": "Sūryavaradastotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-vighnanasanagauristotram",
+    "slug": "brihat-vighnanasanagauristotram",
+    "title_telugu": "విఘ్ననాశనగౌరీస్తోత్రమ్",
+    "title_english": "Vighnanāśanagaurīstotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-mrtavastakam",
+    "slug": "brihat-mrtavastakam",
+    "title_telugu": "మృతావష్టకమ్",
+    "title_english": "Mṛtāvaṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tulasimahatmyam",
+    "slug": "brihat-tulasimahatmyam",
+    "title_telugu": "తులసీమాహాత్మ్యమ్",
+    "title_english": "Tulasīmāhātmyam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tirthastutih",
+    "slug": "brihat-tirthastutih",
+    "title_telugu": "తీర్థస్తుతిః",
+    "title_english": "Tīrthastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sivasivastutih",
+    "slug": "brihat-sivasivastutih",
+    "title_telugu": "శివశివాస్తుతిః",
+    "title_english": "Śivaśivāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-vamanastutih",
+    "slug": "brihat-vamanastutih",
+    "title_telugu": "వామనస్తుతిః",
+    "title_english": "Vāmanastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-indrastutih",
+    "slug": "brihat-indrastutih",
+    "title_telugu": "ఇన్ద్రస్తుతిః",
+    "title_english": "Indrastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sasankastutih",
+    "slug": "brihat-sasankastutih",
+    "title_telugu": "శశాఙ్కస్తుతిః",
+    "title_english": "Śaśāṅkastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ravistutih",
+    "slug": "brihat-ravistutih",
+    "title_telugu": "రవిస్తుతిః",
+    "title_english": "Ravistutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-candrastutih",
+    "slug": "brihat-candrastutih",
+    "title_telugu": "చన్ద్రస్తుతిః",
+    "title_english": "Candrastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kujastutih",
+    "slug": "brihat-kujastutih",
+    "title_telugu": "కుజస్తుతిః",
+    "title_english": "Kujastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-budhastutih",
+    "slug": "brihat-budhastutih",
+    "title_telugu": "బుధస్తుతిః",
+    "title_english": "Budhastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-gurustutih-2",
+    "slug": "brihat-gurustutih-2",
+    "title_telugu": "గురుస్తుతిః ౨",
+    "title_english": "Gurustutiḥ 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhrgustutih",
+    "slug": "brihat-bhrgustutih",
+    "title_telugu": "భృగుస్తుతిః",
+    "title_english": "Bhṛgustutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sanistutih-2",
+    "slug": "brihat-sanistutih-2",
+    "title_telugu": "శనిస్తుతిః ౨",
+    "title_english": "Śanistutiḥ 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-rahustutih",
+    "slug": "brihat-rahustutih",
+    "title_telugu": "రాహుస్తుతిః",
+    "title_english": "Rāhustutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-ketustutih",
+    "slug": "brihat-ketustutih",
+    "title_telugu": "కేతుస్తుతిః",
+    "title_english": "Ketustutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-saptaslokidurga",
+    "slug": "brihat-saptaslokidurga",
+    "title_telugu": "సప్తశ్లోకీదుర్గా",
+    "title_english": "Saptaślokīdurgā",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sarddhaslokidurga",
+    "slug": "brihat-sarddhaslokidurga",
+    "title_telugu": "సార్ద్ధశ్లోకీదుర్గా",
+    "title_english": "Sārddhaślokīdurgā",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-durgadvatrimsannamamalastutih",
+    "slug": "brihat-durgadvatrimsannamamalastutih",
+    "title_telugu": "దుర్గాద్వాత్రింశన్నామమాలాస్తుతిః",
+    "title_english": "Durgādvātriṃśannāmamālāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-devyastakam",
+    "slug": "brihat-devyastakam",
+    "title_telugu": "దేవ్యష్టకమ్",
+    "title_english": "Devyaṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-devistotram",
+    "slug": "brihat-devistotram",
+    "title_telugu": "దేవీస్తోత్రమ్",
+    "title_english": "Devīstotram",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-astaslokibhagavatam",
+    "slug": "brihat-astaslokibhagavatam",
+    "title_telugu": "అష్టాశ్లోకీభాగవతమ్",
+    "title_english": "Aṣṭāślokībhāgavatam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-gurustvavivecanam",
+    "slug": "brihat-gurustvavivecanam",
+    "title_telugu": "గురుస్త్వవివేచనమ్",
+    "title_english": "Gurustvavivecanam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-anantastutih",
+    "slug": "brihat-anantastutih",
+    "title_telugu": "అనన్తస్తుతిః",
+    "title_english": "Anantastutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-vaisnavidevistutih",
+    "slug": "brihat-vaisnavidevistutih",
+    "title_telugu": "వైష్ణవీదేవీస్తుతిః",
+    "title_english": "Vaiṣṇavīdevīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-siddhasaradastutih",
+    "slug": "brihat-siddhasaradastutih",
+    "title_telugu": "సిద్ధశారదాస్తుతిః",
+    "title_english": "Siddhaśāradāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-aksamalastutih",
+    "slug": "brihat-aksamalastutih",
+    "title_telugu": "అక్షమాలాస్తుతిః",
+    "title_english": "Akṣamālāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tirthastakam",
+    "slug": "brihat-tirthastakam",
+    "title_telugu": "తీర్థాష్టకమ్",
+    "title_english": "Tīrthāṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-gurvastakam-2",
+    "slug": "brihat-gurvastakam-2",
+    "title_telugu": "గుర్వష్టకమ్ ౨",
+    "title_english": "Gurvaṣṭakam 2",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhairavastakam",
+    "slug": "brihat-bhairavastakam",
+    "title_telugu": "భైరవాష్టకమ్",
+    "title_english": "Bhairavāṣṭakam",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhagavatistutih",
+    "slug": "brihat-bhagavatistutih",
+    "title_telugu": "భగవతీస్తుతిః",
+    "title_english": "Bhagavatīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-dasamahavidyanamani",
+    "slug": "brihat-dasamahavidyanamani",
+    "title_telugu": "దశమహావిద్యానామాని",
+    "title_english": "Daśamahāvidyānāmāni",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kalistutih",
+    "slug": "brihat-kalistutih",
+    "title_telugu": "కాలీస్తుతిః",
+    "title_english": "Kālīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tarastutih",
+    "slug": "brihat-tarastutih",
+    "title_telugu": "తారాస్తుతిః",
+    "title_english": "Tārāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-sodasistutih",
+    "slug": "brihat-sodasistutih",
+    "title_telugu": "షోడశీస్తుతిః",
+    "title_english": "Ṣoḍaśīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bhuvanesvaristutih",
+    "slug": "brihat-bhuvanesvaristutih",
+    "title_telugu": "భువనేశ్వరీస్తుతిః",
+    "title_english": "Bhuvaneśvarīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-chinnamastastutih",
+    "slug": "brihat-chinnamastastutih",
+    "title_telugu": "ఛిన్నమస్తాస్తుతిః",
+    "title_english": "Chinnamastāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-tripurabhairavistutih",
+    "slug": "brihat-tripurabhairavistutih",
+    "title_telugu": "త్రిపురభైరవీస్తుతిః",
+    "title_english": "Tripurabhairavīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-dhumavatistutih",
+    "slug": "brihat-dhumavatistutih",
+    "title_telugu": "ధూమావతీస్తుతిః",
+    "title_english": "Dhūmāvatīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-bagalastutih",
+    "slug": "brihat-bagalastutih",
+    "title_telugu": "బగలాస్తుతిః",
+    "title_english": "Bagalāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-matangistutih",
+    "slug": "brihat-matangistutih",
+    "title_telugu": "మాతఙ్గీస్తుతిః",
+    "title_english": "Mātaṅgīstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
+  },
+  {
+    "id": "brihat-kamalatmikastutih",
+    "slug": "brihat-kamalatmikastutih",
+    "title_telugu": "కమలాత్మికాస్తుతిః",
+    "title_english": "Kamalātmikāstutiḥ",
+    "category": "nitya-parayana",
+    "deity": "Sarva Devata"
   }
 ]

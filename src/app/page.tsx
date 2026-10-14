@@ -6,6 +6,7 @@ import { getStotramsIndex } from "@/data/loader";
 import { StotramIndexItem } from "@/types";
 import categoryMappings from "@/data/category-mappings.json";
 import PanchangWidget from "@/components/PanchangWidget";
+import { StotramGridSkeleton } from "@/components/SkeletonLoader";
 
 // Defined Category list
 const SACRED_CATEGORIES = [
@@ -80,14 +81,24 @@ const SACRED_CATEGORIES = [
 function matchesCategory(stotram: StotramIndexItem, catId: string): boolean {
   const mappings = categoryMappings as Record<string, string[]>;
   const slugs = mappings[catId];
-  if (!slugs) return false;
-  return slugs.includes(stotram.slug || stotram.id);
+  if (slugs && slugs.includes(stotram.slug || stotram.id)) return true;
+  return stotram.category === catId;
 }
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isFiltering, setIsFiltering] = useState(false);
+
+  const selectCategory = (catId: string) => {
+    setIsFiltering(true);
+    setActiveCategory(catId);
+    setIsDropdownOpen(false);
+    setTimeout(() => {
+      setIsFiltering(false);
+    }, 150);
+  };
 
   useEffect(() => {
     if (!isDropdownOpen) return;
@@ -135,7 +146,7 @@ export default function Home() {
       backgroundColor: "var(--bg-base)",
       color: "var(--text-primary)",
       minHeight: "100vh",
-      paddingBlock: "6rem",
+      paddingBlock: "clamp(2.5rem, 6vw, 6rem)",
       position: "relative",
       overflow: "hidden",
       transition: "background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s ease"
@@ -172,9 +183,9 @@ export default function Home() {
         <PanchangWidget />
 
         {/* Massive Gold Hero */}
-        <section className="hero" style={{ textAlign: "center", paddingBottom: "4rem" }}>
+        <section className="hero" style={{ textAlign: "center", paddingBottom: "clamp(2rem, 4vw, 4rem)" }}>
           <h1 style={{ 
-            fontSize: "4rem", 
+            fontSize: "clamp(2.1rem, 7vw, 4rem)", 
             fontWeight: "700", 
             letterSpacing: "-0.04em",
             lineHeight: "1.1",
@@ -185,28 +196,28 @@ export default function Home() {
             WebkitTextFillColor: "transparent",
             textShadow: "0 0 50px var(--accent-glow)"
           }}>
-            STOTRA MANJARI
+            STOTRAMANI
           </h1>
           <p className="hero-subtitle" style={{ 
             color: "var(--text-secondary)", 
-            fontSize: "1.25rem", 
+            fontSize: "clamp(0.95rem, 2.5vw, 1.25rem)", 
             marginTop: "1.25rem", 
             maxWidth: "640px", 
             marginInline: "auto",
             lineHeight: "1.6"
           }}>
-            An ultra-premium, distraction-free digital library for sacred Telugu stotrams. 
-            Pre-rendered for lightning-fast reading.
+            A pure, distraction-free digital sanctuary for sacred Telugu & Sanskrit stotrams. 
+            Curated with devotion by Sudheendra Sripada on stotramani.app.
           </p>
         </section>
 
         {/* Search and Filters panel */}
         <div style={{
           maxWidth: "640px",
-          margin: "0 auto 4.5rem auto",
+          margin: "0 auto clamp(2rem, 4vw, 4.5rem) auto",
           display: "flex",
           flexDirection: "column",
-          gap: "1.75rem"
+          gap: "1.5rem"
         }}>
           {/* Glowing input */}
           <div style={{ position: "relative" }}>
@@ -217,12 +228,12 @@ export default function Home() {
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
                 width: "100%",
-                padding: "1.1rem 1.5rem",
+                padding: "clamp(0.85rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.5rem)",
                 borderRadius: "var(--radius-lg)",
                 border: "1px solid var(--border)",
                 backgroundColor: "var(--bg-card)",
                 color: "var(--text-primary)",
-                fontSize: "1.05rem",
+                fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
                 fontFamily: "var(--font-sans)",
                 outline: "none",
                 transition: "var(--transition-cinematic)",
@@ -331,10 +342,7 @@ export default function Home() {
                 }}
               >
                 <div
-                  onClick={() => {
-                    setActiveCategory("all");
-                    setIsDropdownOpen(false);
-                  }}
+                  onClick={() => selectCategory("all")}
                   onMouseEnter={(e) => {
                     e.currentTarget.style.backgroundColor = "var(--accent-light)";
                     e.currentTarget.style.color = "var(--accent)";
@@ -361,10 +369,7 @@ export default function Home() {
                 {SACRED_CATEGORIES.map((category) => (
                   <div
                     key={category.id}
-                    onClick={() => {
-                      setActiveCategory(category.id);
-                      setIsDropdownOpen(false);
-                    }}
+                    onClick={() => selectCategory(category.id)}
                     onMouseEnter={(e) => {
                       e.currentTarget.style.backgroundColor = "var(--accent-light)";
                       e.currentTarget.style.color = "var(--accent)";
@@ -394,8 +399,10 @@ export default function Home() {
           </div>
         </div>
 
-        {/* Responsive Grid of Glassmorphic Cards */}
-        {filteredStotrams.length > 0 ? (
+        {/* Responsive Grid of Glassmorphic Cards with Skeleton Shimmer */}
+        {isFiltering ? (
+          <StotramGridSkeleton count={6} />
+        ) : filteredStotrams.length > 0 ? (
           <div className="grid">
             {filteredStotrams.map((stotram) => (
               <div 
@@ -410,8 +417,7 @@ export default function Home() {
                 <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
                 
                 {/* 
-                  Next.js <Link> handles the configured basePath (/stotramanjari) 
-                  automatically for clean static routing.
+                  Next.js <Link> handles root routing cleanly on stotramani.app
                 */}
                 <Link href={`/readings/${stotram.slug}`} className="stotram-card-link">
                   Read Stotram <span>→</span>

@@ -4,8 +4,6 @@ import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
 import { Stotram, DailyPujaItem } from "@/types";
 import { SupportedScript, transliterate } from "@/lib/sanscript";
-import { getStanzaMeaning } from "@/lib/meanings";
-import AudioDock from "./AudioDock";
 
 interface StotramReaderProps {
   stotram: Stotram;
@@ -34,13 +32,6 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     }
     return "telugu";
   });
-
-  // Word-by-word meanings toggle states
-  const [showAllMeanings, setShowAllMeanings] = useState(false);
-  const [expandedVerses, setExpandedVerses] = useState<Record<number, boolean>>({});
-
-  // Audio & Karaoke state
-  const [activeVerse, setActiveVerse] = useState(0);
 
   // Daily Puja bookmark state
   const [isBookmarked, setIsBookmarked] = useState<boolean>(() => {
@@ -152,19 +143,12 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     } catch {}
   };
 
-  const toggleVerseMeaning = (vIdx: number) => {
-    setExpandedVerses((prev) => ({
-      ...prev,
-      [vIdx]: !prev[vIdx],
-    }));
-  };
-
   // Group lines into stanzas
   const stanzas = useMemo(() => {
     const list: { index: number; lines: string[] }[] = [];
     let current: string[] = [];
 
-    stotram.content_lines.forEach((line) => {
+    (stotram.content_lines || []).forEach((line) => {
       current.push(line);
       const isEnd = line.includes("॥") || line.includes("||") || /\d\s*$/.test(line.trim());
       if (isEnd || current.length >= 4) {
@@ -179,15 +163,6 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
 
     return list;
   }, [stotram.content_lines]);
-
-  // Handle karaoke verse change and auto-scroll
-  const handleVerseChange = (vIdx: number) => {
-    setActiveVerse(vIdx);
-    const element = document.getElementById(`verse-${vIdx}`);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  };
 
   // Dynamic font family for active script
   const scriptFontFamily =
@@ -205,7 +180,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     <div
       className="reader-wrapper"
       style={{
-        paddingBottom: "8rem",
+        paddingBottom: "4.5rem",
         "--reader-font-scale": fontSizeScale,
       } as React.CSSProperties}
     >
@@ -282,18 +257,14 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           )}
         </header>
 
-        {/* Text Area with Stanzas & Accordions */}
+        {/* Text Area with Stanzas */}
         <article className="stotram-content-body" style={{ fontFamily: scriptFontFamily }}>
           {stanzas.map((stanza) => {
-            const isKaraokeActive = activeVerse === stanza.index;
-            const meaning = getStanzaMeaning(stotram.slug || stotram.id, stanza.index, stanza.lines);
-            const isAccordionOpen = showAllMeanings || expandedVerses[stanza.index];
-
             return (
               <div
                 key={stanza.index}
                 id={`verse-${stanza.index}`}
-                className={`stotram-verse-block ${isKaraokeActive ? "karaoke-active" : ""}`}
+                className="stotram-verse-block"
               >
                 {/* Verse Lines */}
                 {stanza.lines.map((line, lIdx) => {
@@ -307,8 +278,8 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                       key={lIdx}
                       className="stotram-line"
                       style={{
-                        marginBottom: isEndOfVerse ? "0.8rem" : "0.3rem",
-                        fontWeight: isKaraokeActive ? "600" : "400",
+                        marginBottom: isEndOfVerse ? "0.9rem" : "0.35rem",
+                        fontWeight: "400",
                         color: isEndOfVerse ? "var(--text-primary)" : "var(--text-secondary)",
                       }}
                     >
@@ -316,65 +287,14 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                     </p>
                   );
                 })}
-
-                {/* Padaccheda & Meaning Accordion */}
-                <div className="meaning-accordion">
-                  <button
-                    onClick={() => toggleVerseMeaning(stanza.index)}
-                    className="meaning-toggle-btn"
-                  >
-                    <span>
-                      {isAccordionOpen ? "▾ Hide Word Meanings" : "▸ Padaccheda & Meaning (పదచ్ఛేదం)"}
-                    </span>
-                    <span style={{ fontSize: "0.75rem", opacity: 0.7 }}>
-                      Verse {stanza.index + 1}
-                    </span>
-                  </button>
-
-                  {isAccordionOpen && (
-                    <div className="meaning-content">
-                      {/* Word by word Padaccheda breakdown */}
-                      <div className="padaccheda-list">
-                        {meaning.padaccheda.map((pw, pwIdx) => (
-                          <div key={pwIdx} className="padaccheda-item">
-                            <span className="padaccheda-word">
-                              {transliterate(pw.word, script)}:
-                            </span>
-                            <span className="padaccheda-meaning">{pw.meaning}</span>
-                          </div>
-                        ))}
-                      </div>
-
-                      {/* Tatparyam & Bhavartha */}
-                      <div style={{ marginTop: "0.85rem", borderTop: "1px solid var(--border)", paddingTop: "0.6rem" }}>
-                        <div style={{ marginBottom: "0.4rem" }}>
-                          <span style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--accent)", textTransform: "uppercase" }}>
-                            తాత్పర్యం (Telugu):
-                          </span>
-                          <p style={{ fontFamily: "var(--font-telugu)", fontSize: "0.95rem", color: "var(--text-primary)", marginTop: "0.2rem" }}>
-                            {meaning.tatparyamTelugu}
-                          </p>
-                        </div>
-                        <div>
-                          <span style={{ fontSize: "0.78rem", fontWeight: 700, color: "var(--accent)", textTransform: "uppercase" }}>
-                            Spiritual Purport (Bhavartha):
-                          </span>
-                          <p style={{ fontSize: "0.92rem", color: "var(--text-secondary)", marginTop: "0.2rem" }}>
-                            {meaning.bhavarthaEnglish}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  )}
-                </div>
               </div>
             );
           })}
         </article>
       </div>
 
-      {/* Floating Control Toolbar (elevated above bottom audio dock) */}
-      <div className="floating-controls" style={{ bottom: "5.5rem" }}>
+      {/* Floating Control Toolbar */}
+      <div className="floating-controls" style={{ bottom: "2rem" }}>
         {/* Back Link */}
         <Link
           href="/"
@@ -416,26 +336,6 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           <option value="tamil" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>தமிழ் (Tamil)</option>
           <option value="iast" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>English (IAST Roman)</option>
         </select>
-
-        <div className="control-divider" />
-
-        {/* Global Show All Meanings Toggle */}
-        <button
-          onClick={() => setShowAllMeanings(!showAllMeanings)}
-          className="btn"
-          style={{
-            padding: "0.35rem 0.75rem",
-            borderRadius: "16px",
-            fontSize: "0.82rem",
-            fontWeight: 600,
-            backgroundColor: showAllMeanings ? "var(--accent-light)" : "transparent",
-            borderColor: showAllMeanings ? "var(--accent)" : "var(--border)",
-            color: showAllMeanings ? "var(--accent)" : "var(--text-secondary)",
-          }}
-          title="Toggle All Word-by-Word Meanings"
-        >
-          {showAllMeanings ? "📖 Meanings ON" : "📖 Meanings"}
-        </button>
 
         <div className="control-divider" />
 
@@ -517,16 +417,6 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           {isDistractionFree ? "Focused" : "Focus"}
         </button>
       </div>
-
-      {/* Docked Sticky Audio Player */}
-      <AudioDock
-        totalVerses={stanzas.length}
-        activeVerse={activeVerse}
-        onVerseChange={handleVerseChange}
-        audioUrl={stotram.audioUrl}
-        timestamps={stotram.timestamps}
-        currentStanzaText={stanzas[activeVerse]?.lines.map((l) => transliterate(l, script)).join(". ")}
-      />
     </div>
   );
 }

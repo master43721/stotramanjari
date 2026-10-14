@@ -259,7 +259,7 @@ export default function AudioDock({
     <div className="audio-dock-container">
       <div className="audio-dock-inner">
         {/* Play/Pause & Bell & Drone controls */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+        <div className="audio-dock-controls-group" style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
           <button
             onClick={togglePlay}
             className="btn"
@@ -370,7 +370,7 @@ export default function AudioDock({
         </div>
 
         {/* Playback speed & Japa repetition picker */}
-        <div style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
+        <div className="audio-speed-japa-group" style={{ display: "flex", alignItems: "center", gap: "0.75rem", flexWrap: "wrap" }}>
           {/* Speed */}
           <div style={{ display: "flex", alignItems: "center", gap: "0.25rem" }}>
             <span style={{ fontSize: "0.75rem", color: "var(--text-secondary)", textTransform: "uppercase" }}>

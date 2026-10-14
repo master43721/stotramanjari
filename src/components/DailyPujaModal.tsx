@@ -85,7 +85,7 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        padding: "1.5rem",
+        padding: "clamp(0.5rem, 3vw, 1.5rem)",
       }}
       onClick={onClose}
     >
@@ -96,22 +96,22 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
           borderRadius: "var(--radius-lg)",
           maxWidth: "580px",
           width: "100%",
-          padding: "2rem",
+          padding: "clamp(1rem, 4vw, 2rem)",
           boxShadow: "0 25px 50px rgba(0, 0, 0, 0.8), 0 0 30px var(--accent-glow)",
           color: "var(--text-primary)",
           position: "relative",
-          maxHeight: "85vh",
+          maxHeight: "88vh",
           overflowY: "auto",
         }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.5rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem", gap: "0.5rem" }}>
           <div>
             <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
               Sacred Ritual Routine
             </span>
-            <h2 style={{ fontSize: "1.75rem", fontWeight: 700, marginTop: "0.2rem" }}>
+            <h2 style={{ fontSize: "clamp(1.2rem, 4vw, 1.75rem)", fontWeight: 700, marginTop: "0.2rem" }}>
               My Daily Puja (నిత్య పూజా విధము)
             </h2>
           </div>

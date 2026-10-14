@@ -38,7 +38,7 @@ export default function PanchangWidget() {
                 Vedic Panchang & Daily Nitya Archana
               </span>
             </div>
-            <h3 style={{ fontSize: "1.35rem", fontWeight: 700, marginTop: "0.25rem" }}>
+            <h3 style={{ fontSize: "clamp(1.1rem, 3.5vw, 1.35rem)", fontWeight: 700, marginTop: "0.25rem" }}>
               {panchang.dayTelugu} ({panchang.dayName}) — {panchang.presidingDeity}
             </h3>
             <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", marginTop: "0.15rem" }}>
@@ -72,8 +72,8 @@ export default function PanchangWidget() {
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-            gap: "0.75rem",
+            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 125px), 1fr))",
+            gap: "clamp(0.5rem, 1.5vw, 0.75rem)",
             marginBottom: "1.25rem",
           }}
         >

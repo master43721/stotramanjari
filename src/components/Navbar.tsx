@@ -33,34 +33,33 @@ export default function Navbar() {
 
   return (
     <header className="header">
-      <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", height: "64px" }}>
-        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+      <div className="container" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", minHeight: "56px", height: "auto", paddingBlock: "0.5rem" }}>
+        <Link href="/" style={{ display: "flex", alignItems: "center", gap: "0.4rem", minWidth: 0 }}>
           <span style={{ 
-            fontSize: "1.45rem", 
+            fontSize: "clamp(1.15rem, 3.8vw, 1.45rem)", 
             fontWeight: "700", 
             color: "var(--accent)", 
             letterSpacing: "-0.03em",
             fontFamily: "var(--font-sans)",
-            textShadow: "0 0 15px rgba(212, 175, 55, 0.25)"
+            textShadow: "0 0 15px rgba(212, 175, 55, 0.25)",
+            whiteSpace: "nowrap"
           }}>
-            Stotra Manjari
+            Stotramani
           </span>
-          <span style={{ 
-            fontSize: "0.95rem", 
-            fontWeight: "500", 
+          <span className="navbar-subtitle" style={{ 
             color: "var(--text-secondary)", 
             fontFamily: "var(--font-telugu)",
             opacity: 0.85
           }}>
-            (స్తోత్ర మంజరి)
+            (స్తోత్రమణి)
           </span>
         </Link>
 
-        <nav style={{ display: "flex", alignItems: "center", gap: "1.5rem" }}>
+        <nav style={{ display: "flex", alignItems: "center", gap: "clamp(0.75rem, 2vw, 1.5rem)", flexShrink: 0 }}>
           <Link 
             href="/" 
             style={{ 
-              fontSize: "0.95rem", 
+              fontSize: "clamp(0.85rem, 2vw, 0.95rem)", 
               fontWeight: "600",
               letterSpacing: "0.05em",
               textTransform: "uppercase",
@@ -76,7 +75,7 @@ export default function Navbar() {
             className="icon-btn" 
             aria-label="Toggle Theme"
             title={`Current Theme: ${theme === "dark" ? "Midnight Gold" : theme === "sepia" ? "Aged Sepia" : "Clean Light"} (Click to cycle)`}
-            style={{ fontSize: "1.1rem" }}
+            style={{ width: "38px", height: "38px", fontSize: "1rem" }}
           >
             {theme === "dark" ? "🌙" : theme === "sepia" ? "📜" : "☀️"}
           </button>

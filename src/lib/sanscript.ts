@@ -400,18 +400,21 @@ function devanagariToIAST(text: string): string {
   return result.join("");
 }
 
+import { sanitizeTeluguText } from "./sanitizeTelugu";
+
 /**
  * Transliterate input text from source script (auto-detected if omitted) to targetScript
  */
 export function transliterate(text: string, targetScript: SupportedScript): string {
   if (!text) return "";
-  const source = detectScript(text);
-  if (source === targetScript) return text;
+  const cleanedText = sanitizeTeluguText(text);
+  const source = detectScript(cleanedText);
+  if (source === targetScript) return cleanedText;
 
   // Step 1: Normalize source to Devanagari intermediate
-  let devText = text;
+  let devText = cleanedText;
   if (source === "telugu") {
-    devText = teluguToDevanagari(text);
+    devText = teluguToDevanagari(cleanedText);
   } else if (source === "kannada") {
     // Convert kannada -> devanagari by reverse mapping
     const res: string[] = [];

@@ -16,20 +16,21 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!stotram) {
     return {
-      title: "Stotram Not Found | Stotra Manjari",
+      title: "Stotram Not Found | Stotramani",
     };
   }
 
   return {
-    title: `${stotram.title_english} - ${stotram.title_telugu} | Stotra Manjari`,
-    description: `Read ${stotram.title_english} (${stotram.title_telugu}) online. Clean layout with adjustable typography and original PDF links.`,
+    title: `${stotram.title_english} - ${stotram.title_telugu} | Stotramani`,
+    description: `Read ${stotram.title_english} (${stotram.title_telugu}) online. Clean layout with adjustable typography and original PDF links on stotramani.app.`,
     keywords: [
       stotram.id, 
       stotram.category, 
       stotram.title_english.toLowerCase(), 
       "telugu stotram", 
       "stotram lyrics", 
-      "stotra manjari"
+      "stotramani",
+      "sudheendra sripada"
     ],
   };
 }

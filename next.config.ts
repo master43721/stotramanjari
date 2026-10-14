@@ -32,7 +32,7 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: "/stotramanjari",
+  basePath: "",
   reactStrictMode: true,
 };
 
