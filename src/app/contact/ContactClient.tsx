@@ -289,7 +289,7 @@ export default function ContactClient() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="e.g. devotee@example.com"
+                    placeholder="e.g. devotee@gmail.com"
                     style={{
                       width: "100%",
                       padding: "0.75rem 1rem",

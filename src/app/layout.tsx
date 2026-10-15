@@ -306,20 +306,7 @@ export default function RootLayout({
                 href={whatsappShareUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "0.4rem",
-                  padding: "0.25rem 0.75rem",
-                  borderRadius: "20px",
-                  backgroundColor: "rgba(37, 211, 102, 0.12)",
-                  border: "1px solid rgba(37, 211, 102, 0.35)",
-                  color: "#25D366",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                  fontSize: "0.85rem",
-                  transition: "all 0.2s ease",
-                }}
+                className="whatsapp-footer-btn"
                 title="Share Stotramani on WhatsApp"
               >
                 <svg

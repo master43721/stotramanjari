@@ -7,7 +7,7 @@ async function compressAll() {
   const images = [
     { file: path.join(root, 'public/app-icon.jpg'), type: 'jpeg', opts: { quality: 82, mozjpeg: true } },
     { file: path.join(root, 'public/og-image.jpg'), type: 'jpeg', opts: { quality: 82, mozjpeg: true } },
-    { file: path.join(root, 'public/og-image.png'), type: 'png', opts: { compressionLevel: 9, quality: 80, effort: 10 } },
+    { file: path.join(root, 'public/og-image.png'), type: 'png', opts: { compressionLevel: 9, quality: 65, colours: 64, palette: true, dither: 0.5 } },
     { file: path.join(root, 'public/icon-512.png'), type: 'png', opts: { compressionLevel: 9, quality: 80, effort: 10 } },
     { file: path.join(root, 'public/icon-192.png'), type: 'png', opts: { compressionLevel: 9, quality: 80, effort: 10 } },
     { file: path.join(root, 'public/apple-touch-icon.png'), type: 'png', opts: { compressionLevel: 9, quality: 80, effort: 10 } },

@@ -243,15 +243,101 @@ h1, h2, h3, h4, h5, h6 {
   border: 1px solid var(--border);
   background-color: var(--bg-card);
   color: var(--text-primary);
-  transition: var(--transition-cinematic);
-  backdrop-filter: blur(8px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
-.icon-btn:hover {
+.icon-btn:hover,
+.icon-btn:focus-visible {
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 0 0 15px var(--accent-light);
+  box-shadow: 0 0 18px var(--accent-glow), 0 0 6px rgba(212, 175, 55, 0.3);
   transform: translateY(-2px) scale(1.05);
 }
+
+/* Ultra-Premium WhatsApp & Devotional Action Buttons */
+.whatsapp-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.14) 0%, rgba(212, 175, 55, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #25D366;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.whatsapp-nav-btn:hover,
+.whatsapp-nav-btn:focus-visible {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.22) 0%, rgba(212, 175, 55, 0.18) 100%);
+  border-color: var(--accent);
+  color: #25D366;
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.45), 0 0 8px rgba(37, 211, 102, 0.35);
+  transform: translateY(-1.5px) scale(1.03);
+}
+.whatsapp-nav-btn svg {
+  filter: drop-shadow(0 0 4px rgba(37, 211, 102, 0.4));
+  transition: transform 0.25s ease;
+}
+.whatsapp-nav-btn:hover svg {
+  transform: scale(1.12);
+}
+
+.whatsapp-mobile-icon-btn {
+  width: 42px;
+  height: 42px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.14) 0%, rgba(212, 175, 55, 0.08) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.35);
+  color: #25D366;
+  border-radius: var(--radius-sm, 10px);
+  text-decoration: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.whatsapp-mobile-icon-btn:hover,
+.whatsapp-mobile-icon-btn:focus-visible,
+.whatsapp-mobile-icon-btn:active {
+  border-color: var(--accent);
+  box-shadow: 0 0 18px rgba(212, 175, 55, 0.45), 0 0 6px rgba(37, 211, 102, 0.3);
+  transform: translateY(-1.5px) scale(1.06);
+}
+.whatsapp-mobile-icon-btn svg {
+  filter: drop-shadow(0 0 4px rgba(37, 211, 102, 0.4));
+}
+
+.whatsapp-footer-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.42rem;
+  padding: 0.32rem 0.85rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.12) 0%, rgba(212, 175, 55, 0.06) 100%);
+  border: 1px solid rgba(212, 175, 55, 0.32);
+  color: #25D366;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.84rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.whatsapp-footer-btn:hover,
+.whatsapp-footer-btn:focus-visible {
+  background: linear-gradient(135deg, rgba(37, 211, 102, 0.2) 0%, rgba(212, 175, 55, 0.15) 100%);
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+  transform: translateY(-1.5px);
+}
+
 
 /* Home view layout & Cards */
 .hero {

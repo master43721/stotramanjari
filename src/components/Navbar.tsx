@@ -164,20 +164,7 @@ export default function Navbar() {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Share Stotramani on WhatsApp"
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.45rem",
-              padding: "0.35rem 0.85rem",
-              borderRadius: "20px",
-              backgroundColor: "rgba(37, 211, 102, 0.15)",
-              border: "1px solid rgba(37, 211, 102, 0.4)",
-              color: "#25D366",
-              fontSize: "0.82rem",
-              fontWeight: 700,
-              textDecoration: "none",
-              transition: "transform 0.2s ease, background-color 0.2s ease",
-            }}
+            className="whatsapp-nav-btn"
             title="Share Stotramani with friends & groups on WhatsApp"
           >
             <svg
@@ -228,21 +215,9 @@ export default function Navbar() {
             href={whatsappShareUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="icon-btn"
+            className="whatsapp-mobile-icon-btn"
             aria-label="Share Stotramani on WhatsApp"
             title="Share Stotramani on WhatsApp"
-            style={{
-              width: "42px",
-              height: "42px",
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              backgroundColor: "rgba(37, 211, 102, 0.15)",
-              border: "1px solid rgba(37, 211, 102, 0.4)",
-              color: "#25D366",
-              borderRadius: "var(--radius-sm, 8px)",
-              textDecoration: "none",
-            }}
           >
             <svg
               width="20"

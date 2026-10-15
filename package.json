@@ -7,6 +7,8 @@
     "build": "node scripts/generate-sitemap.js && next build",
     "start": "next start",
     "lint": "eslint",
+    "backup": "node scripts/backup-data.js",
+    "compress-images": "node scripts/compress-images.js",
     "postinstall": "node scripts/patch-next.js"
   },
   "dependencies": {
