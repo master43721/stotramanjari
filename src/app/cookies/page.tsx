@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Cookie Policy | Stotramani",
+  title: "Cookie Policy",
   description: "Learn how Stotramani uses essential local browser storage for reader preferences and anonymized analytics with full data minimization.",
   alternates: {
     canonical: "https://stotramani.app/cookies",
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 export default function CookiesPage() {
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Cookie Policy" },
+    { label: "Cookie Policy", href: "/cookies" },
   ];
 
   return (

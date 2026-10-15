@@ -272,6 +272,8 @@ export default function Navbar() {
           style={{
             backgroundColor: "var(--bg-card)",
             borderBottom: "1px solid var(--border)",
+            borderBottomLeftRadius: "16px",
+            borderBottomRightRadius: "16px",
             boxShadow: "0 20px 40px var(--shadow)",
             backdropFilter: "blur(30px)",
             WebkitBackdropFilter: "blur(30px)",
@@ -357,20 +359,9 @@ export default function Navbar() {
               href={whatsappShareUrl}
               target="_blank"
               rel="noopener noreferrer"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                padding: "0.75rem 1.25rem",
-                borderRadius: "24px",
-                backgroundColor: "#25D366",
-                color: "#ffffff",
-                fontWeight: 700,
-                fontSize: "0.95rem",
-                textDecoration: "none",
-                boxShadow: "0 4px 15px rgba(37, 211, 102, 0.35)",
-              }}
+              className="whatsapp-drawer-btn"
+              title="Share Stotramani on WhatsApp"
+              aria-label="Share Stotramani on WhatsApp"
             >
               <svg
                 width="18"

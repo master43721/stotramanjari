@@ -17,15 +17,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!stotram || stotram.category !== category) {
     return {
-      title: "Stotram Not Found | Stotramani",
+      title: "Stotram Not Found",
     };
   }
 
   return {
-    title: `${stotram.title_english} - ${stotram.title_telugu} | Stotramani`,
+    title: `${stotram.title_english} - ${stotram.title_telugu}`,
     description: `Read ${stotram.title_english} (${stotram.title_telugu}) in clean Telugu script on stotramani.app. Features comfortable off-white aged paper theme, scaling fonts, and distraction-free mode.`,
     alternates: {
-      canonical: `https://stotramani.app/readings/${slug}`,
+      canonical: `https://stotramani.app/${category}/${slug}`,
     },
     openGraph: {
       title: `${stotram.title_english} (${stotram.title_telugu}) | Stotramani`,
@@ -67,7 +67,7 @@ export async function generateStaticParams() {
   
   return index.map((stotram) => ({
     category: stotram.category,
-    slug: stotram.id,
+    slug: stotram.slug || stotram.id,
   }));
 }
 

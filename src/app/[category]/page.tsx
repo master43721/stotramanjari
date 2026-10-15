@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: CategoryPageProps): Promise<M
   const formatted = formatCategoryName(category);
 
   return {
-    title: `${formatted} | Stotramani`,
+    title: formatted,
     description: `Browse and recite sacred ${formatted} in authentic Telugu and Sanskrit scripts with multi-script transliteration and offline support on Stotramani.`,
     alternates: {
       canonical: `https://stotramani.app/${category}`,
@@ -71,7 +71,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
   const formattedName = formatCategoryName(category);
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: formattedName },
+    { label: formattedName, href: `/${category}` },
   ];
 
   return (

@@ -3,7 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Stotramani",
+  title: "Privacy Policy",
   description: "Stotramani privacy policy. Learn how we adhere to strict data minimization, zero tracking cookies, no selling of personal data, and complete privacy by design.",
   alternates: {
     canonical: "https://stotramani.app/privacy",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function PrivacyPage() {
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Privacy Policy" },
+    { label: "Privacy Policy", href: "/privacy" },
   ];
 
   return (

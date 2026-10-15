@@ -183,7 +183,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: categoryLabel, href: `/${stotram.category}` },
+    ...(stotram.category ? [{ label: categoryLabel, href: `/${stotram.category}` }] : []),
     { label: stotram.title_english, href: `/readings/${stotram.slug || stotram.id}` },
   ];
 

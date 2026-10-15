@@ -3,7 +3,7 @@ import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Stotramani",
+  title: "Terms of Service",
   description: "Terms of service and sacred usage guidelines for Stotramani devotional library by Sudheendra Sripada.",
   alternates: {
     canonical: "https://stotramani.app/terms",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Terms of Service" },
+    { label: "Terms of Service", href: "/terms" },
   ];
 
   return (

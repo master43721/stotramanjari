@@ -164,7 +164,7 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
               </Link>
             </div>
 
-            <div style={{ display: "flex", justifyContent: "space-between", marginTop: "1.5rem" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginTop: "1.5rem", flexWrap: "wrap", gap: "0.5rem" }}>
               <button
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep(activeStep - 1)}
@@ -172,6 +172,14 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
                 style={{ opacity: activeStep === 0 ? 0.4 : 1, fontSize: "0.85rem" }}
               >
                 ← Previous
+              </button>
+              <button
+                onClick={() => setActiveStep(null)}
+                className="btn"
+                style={{ fontSize: "0.8rem", color: "var(--text-secondary)", borderColor: "var(--border)" }}
+                title="Return to routine list"
+              >
+                📋 View Full Routine
               </button>
               <button
                 disabled={activeStep >= routine.length - 1}

@@ -20,7 +20,7 @@ export default function ContactClient() {
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Devotional Contact" },
+    { label: "Devotional Contact", href: "/contact" },
   ];
 
   const validate = () => {
@@ -251,7 +251,7 @@ export default function ContactClient() {
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. Ramesh Sharma"
+                    placeholder="Your Full Name"
                     style={{
                       width: "100%",
                       padding: "0.75rem 1rem",
@@ -289,7 +289,7 @@ export default function ContactClient() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="e.g. devotee@gmail.com"
+                    placeholder="your.email@domain.com"
                     style={{
                       width: "100%",
                       padding: "0.75rem 1rem",

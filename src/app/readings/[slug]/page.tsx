@@ -16,12 +16,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   
   if (!stotram) {
     return {
-      title: "Stotram Not Found | Stotramani",
+      title: "Stotram Not Found",
     };
   }
 
   return {
-    title: `${stotram.title_english} - ${stotram.title_telugu} | Stotramani`,
+    title: `${stotram.title_english} - ${stotram.title_telugu}`,
     description: `Read and chant ${stotram.title_english} (${stotram.title_telugu}) online. Clean layout with multi-script support (Telugu, Sanskrit, Kannada, Tamil, IAST), adjustable typography, and offline support on stotramani.app.`,
     alternates: {
       canonical: `https://stotramani.app/readings/${slug}`,

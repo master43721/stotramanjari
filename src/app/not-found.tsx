@@ -2,7 +2,7 @@ import Link from "next/link";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "404 - Stotram Not Found | Stotramani",
+  title: "404 - Stotram Not Found",
   description: "The requested devotional hymn or page could not be located. Explore over 1,600 sacred Telugu and Sanskrit stotrams on Stotramani.",
 };
 

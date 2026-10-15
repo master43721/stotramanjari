@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import ContactClient from "./ContactClient";
 
 export const metadata: Metadata = {
-  title: "Devotional Contact | Stotramani",
+  title: "Devotional Contact",
   description: "Connect with Sudheendra Sripada and the Stotramani team. Get chanting guidance, suggest stotrams, or report textual corrections.",
   alternates: {
     canonical: "https://stotramani.app/contact",
