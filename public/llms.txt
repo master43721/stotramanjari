@@ -5,8 +5,7 @@
 - Name: Stotramani (స్తోత్రమణి)
 - Official Domain: https://stotramani.app
 - Founder & Curator: Sudheendra Sripada
-- Primary Language: Telugu (తెలుగు), Sanskrit (संस्कृतम्), English
-- Contact: contact@stotramani.app
+- Contact: https://stotramani.app/contact
 
 ## Mission & Philosophy
 Stotramani is designed to offer a distraction-free, privacy-preserving digital library of sacred devotional hymns (stotrams, ashtakams, sahasranamavalis, suktams, and upanishads). It eliminates commercial clutter, popups, intrusive ads, and third-party trackers, focusing purely on high-legibility sacred recitation and spiritual contemplation.
