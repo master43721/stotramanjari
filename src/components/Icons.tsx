@@ -398,3 +398,95 @@ export function SparklesIcon({ size = 18, className = "", style = {} }: IconProp
   );
 }
 
+export function SplitTextIcon({ size = 18, className = "", style = {} }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+      aria-hidden="true"
+    >
+      <line x1="4" y1="6" x2="10" y2="6" />
+      <line x1="14" y1="6" x2="20" y2="6" />
+      <line x1="4" y1="12" x2="9" y2="12" />
+      <line x1="15" y1="12" x2="20" y2="12" />
+      <line x1="4" y1="18" x2="11" y2="18" />
+      <line x1="13" y1="18" x2="20" y2="18" />
+      <line x1="12" y1="3" x2="12" y2="21" strokeDasharray="2 2" strokeOpacity="0.5" />
+    </svg>
+  );
+}
+
+export function FocusIcon({ size = 18, className = "", style = {} }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+      aria-hidden="true"
+    >
+      <circle cx="12" cy="12" r="3" fill="currentColor" fillOpacity="0.2" />
+      <path d="M3 7V5a2 2 0 0 1 2-2h2" />
+      <path d="M17 3h2a2 2 0 0 1 2 2v2" />
+      <path d="M21 17v2a2 2 0 0 1-2 2h-2" />
+      <path d="M7 21H5a2 2 0 0 1-2-2v-2" />
+    </svg>
+  );
+}
+
+export function CounterIcon({ size = 18, className = "", style = {} }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+      aria-hidden="true"
+    >
+      <path d="M21.5 2v6h-6" />
+      <path d="M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-1.19" />
+    </svg>
+  );
+}
+
+export function ChevronDownIcon({ size = 18, className = "", style = {} }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+      aria-hidden="true"
+    >
+      <polyline points="6 9 12 15 18 9" />
+    </svg>
+  );
+}
+
+

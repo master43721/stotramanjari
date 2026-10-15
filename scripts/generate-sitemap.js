@@ -19,6 +19,7 @@ function generateSitemap() {
   const stotramRoutes = [];
   const seenReadings = new Set();
   const seenCategories = new Set();
+  const seenTelugu = new Set();
 
   for (const stotram of stotrams) {
     const slug = stotram.slug || stotram.id;
@@ -27,6 +28,15 @@ function generateSitemap() {
       stotramRoutes.push({
         loc: `${domain}/readings/${slug}`,
         priority: '0.9',
+        changefreq: 'weekly',
+      });
+    }
+
+    if (slug && !seenTelugu.has(slug)) {
+      seenTelugu.add(slug);
+      stotramRoutes.push({
+        loc: `${domain}/telugu/${slug}`,
+        priority: '0.95',
         changefreq: 'weekly',
       });
     }

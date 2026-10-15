@@ -12,13 +12,18 @@ import {
   HomeIcon,
   StarIcon,
   FileTextIcon,
+  SplitTextIcon,
+  CounterIcon,
+  SparklesIcon,
+  ChevronDownIcon,
 } from "./Icons";
 
 interface StotramReaderProps {
   stotram: Stotram;
+  initialScript?: SupportedScript;
 }
 
-export default function StotramReader({ stotram }: StotramReaderProps) {
+export default function StotramReader({ stotram, initialScript }: StotramReaderProps) {
   // Font scale (0.8x to 2.0x), persisted in localStorage
   const [fontSizeScale, setFontSizeScale] = useState<number>(() => {
     if (typeof window === "undefined") return 1.1;
@@ -34,6 +39,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
 
   // Script selection (Telugu, Devanagari, Kannada, Tamil, IAST)
   const [script, setScript] = useState<SupportedScript>(() => {
+    if (initialScript) return initialScript;
     if (typeof window === "undefined") return "telugu";
     const savedScript = localStorage.getItem("reader-script") as SupportedScript | null;
     if (savedScript && ["telugu", "devanagari", "kannada", "tamil", "iast"].includes(savedScript)) {
@@ -41,6 +47,23 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     }
     return "telugu";
   });
+
+  // Word-by-word chanting split toggle (Padaccheda mode)
+  const [isWordByWord, setIsWordByWord] = useState<boolean>(() => {
+    if (typeof window === "undefined") return false;
+    return localStorage.getItem("reader-word-by-word") === "true";
+  });
+  const [activeWordId, setActiveWordId] = useState<string | null>(null);
+
+  // Japa Repetition Counter (1x, 3x, 11x, 21x, 54x, 108x)
+  const [japaCount, setJapaCount] = useState<number>(0);
+  const [japaTarget, setJapaTarget] = useState<number>(11);
+
+  // Active stanza focus spotlight
+  const [activeStanzaIndex, setActiveStanzaIndex] = useState<number | null>(null);
+
+  // FAQ Accordion State
+  const [expandedFaqIndex, setExpandedFaqIndex] = useState<number | null>(null);
 
   // Daily Puja bookmark state
   const [isBookmarked, setIsBookmarked] = useState<boolean>(() => {
@@ -113,6 +136,14 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     localStorage.setItem("reader-script", newScript);
   };
 
+  const toggleWordByWord = () => {
+    setIsWordByWord((prev) => {
+      const next = !prev;
+      localStorage.setItem("reader-word-by-word", String(next));
+      return next;
+    });
+  };
+
   const cycleTheme = () => {
     let next: "dark" | "sepia" | "clean-light" = "dark";
     if (currentTheme === "dark") next = "sepia";
@@ -173,6 +204,32 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     return list;
   }, [stotram.content_lines]);
 
+  // High-intent FAQ items matching Google Schema.org FAQPage structured data
+  const faqItems = useMemo(() => {
+    const titleEn = stotram.title_english || "Sacred Stotram";
+    const titleTe = stotram.title_telugu || "";
+    const deity = stotram.deity || stotram.category || "Divine";
+
+    return [
+      {
+        q: `What is ${titleEn} (${titleTe})?`,
+        a: `${titleEn} (${titleTe}) is an authentic devotional hymn dedicated to ${deity}. Preserved in pure Telugu and Sanskrit scripts on Stotramani, it is traditionally chanted for spiritual peace, focus, and divine blessings.`,
+      },
+      {
+        q: `How to chant ${titleEn} in Telugu with correct pronunciation?`,
+        a: `On Stotramani (https://stotramani.app), you can toggle the 'Word-by-Word' (Padaccheda) mode to recite ${titleEn} with clear compound-word splits. This eliminates pronunciation errors and helps devotees chant slowly and rhythmically.`,
+      },
+      {
+        q: `What are the traditional spiritual benefits of chanting ${titleEn}?`,
+        a: `Daily chanting of ${titleEn} cultivates mental tranquility, spiritual purity, and inner strength. Traditional acharyas recommend reciting it during morning prayers (Pratah Smaranam) or evening sandhya with sincere devotion.`,
+      },
+      {
+        q: `Can I read ${titleEn} offline on mobile?`,
+        a: `Yes. Stotramani is designed as an ultra-fast Progressive Web App (PWA). Once opened, ${titleEn} is cached locally so you can read and chant inside temples or puja rooms without cellular internet.`,
+      },
+    ];
+  }, [stotram]);
+
   // Dynamic font family for active script
   const scriptFontFamily =
     script === "devanagari"
@@ -202,7 +259,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     <div
       className="reader-wrapper"
       style={{
-        paddingBottom: "4.5rem",
+        paddingBottom: "5.5rem",
         "--reader-font-scale": fontSizeScale,
       } as React.CSSProperties}
     >
@@ -233,6 +290,17 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
             </Link>
 
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", flexWrap: "wrap" }}>
+              {/* Word-by-Word Chanting Toggle */}
+              <button
+                onClick={toggleWordByWord}
+                className={`chanting-mode-toggle ${isWordByWord ? "active" : ""}`}
+                title={isWordByWord ? "Switch to natural flowing text" : "Enable Word-by-Word (Padaccheda) split"}
+                aria-label="Toggle Word-by-Word chanting mode"
+              >
+                <SplitTextIcon size={14} />
+                <span>{isWordByWord ? "Word Split: ON" : "Word-by-Word"}</span>
+              </button>
+
               {/* WhatsApp Share Button */}
               <a
                 href={whatsappShareUrl}
@@ -309,14 +377,68 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           )}
         </header>
 
+        {/* Japa Repetition Counter Bar */}
+        <section className="japa-counter-bar" aria-label="Japa Repetition Counter">
+          <div className="japa-count-display">
+            <CounterIcon size={18} />
+            <span>Chant Count:</span>
+            <span style={{ fontSize: "1.1rem", color: "var(--accent)", fontVariantNumeric: "tabular-nums" }}>
+              {japaCount} / {japaTarget}
+            </span>
+            {japaCount >= japaTarget && (
+              <span style={{ fontSize: "0.75rem", background: "var(--accent)", color: "#060606", padding: "0.15rem 0.5rem", borderRadius: "9999px", fontWeight: "bold" }}>
+                Completed
+              </span>
+            )}
+          </div>
+          <div className="japa-actions">
+            <select
+              value={japaTarget}
+              onChange={(e) => setJapaTarget(Number(e.target.value))}
+              className="japa-target-select"
+              title="Set Japa Repetition Target"
+              aria-label="Set Japa Target"
+            >
+              <option value={1}>1x (Single Chant)</option>
+              <option value={3}>3x (Tri-Sandhya)</option>
+              <option value={11}>11x (Ekadasa)</option>
+              <option value={21}>21x (Vratha Sankalpa)</option>
+              <option value={54}>54x (Half Mala)</option>
+              <option value={108}>108x (Maha Mala)</option>
+            </select>
+            <button
+              onClick={() => setJapaCount((prev) => prev + 1)}
+              className="japa-btn"
+              title="Record one completed chant recitation (+1)"
+              aria-label="Record one recitation"
+            >
+              +1 Chanted
+            </button>
+            {japaCount > 0 && (
+              <button
+                onClick={() => setJapaCount(0)}
+                className="btn"
+                style={{ padding: "0.3rem 0.65rem", fontSize: "0.75rem", borderRadius: "8px" }}
+                title="Reset Count"
+                aria-label="Reset Count"
+              >
+                Reset
+              </button>
+            )}
+          </div>
+        </section>
+
         {/* Text Area with Stanzas */}
         <article className="stotram-content-body" style={{ fontFamily: scriptFontFamily }}>
           {stanzas.map((stanza) => {
+            const isFocusActive = activeStanzaIndex === stanza.index;
             return (
               <div
                 key={stanza.index}
                 id={`verse-${stanza.index}`}
-                className="stotram-verse-block"
+                onClick={() => setActiveStanzaIndex((prev) => (prev === stanza.index ? null : stanza.index))}
+                className={`stotram-verse-block ${isFocusActive ? "active-focus" : ""}`}
+                title="Click to spotlight this verse"
               >
                 {/* Verse Lines */}
                 {stanza.lines.map((line, lIdx) => {
@@ -324,6 +446,57 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                     line.includes("॥") ||
                     line.includes("||") ||
                     /\d\s*$/.test(line.trim());
+
+                  if (isWordByWord) {
+                    const words = line.trim().split(/\s+/).filter(Boolean);
+                    return (
+                      <div
+                        key={lIdx}
+                        className="stotram-line"
+                        style={{
+                          marginBottom: isEndOfVerse ? "0.9rem" : "0.35rem",
+                          display: "flex",
+                          flexWrap: "wrap",
+                          alignItems: "center",
+                          lineHeight: "2.2",
+                        }}
+                      >
+                        {words.map((word, wIdx) => {
+                          const wordId = `${stanza.index}-${lIdx}-${wIdx}`;
+                          const isPunctuationOnly = /^[॥|।0-9\s\-]+$/.test(word);
+
+                          if (isPunctuationOnly) {
+                            return (
+                              <span
+                                key={wIdx}
+                                style={{ margin: "0 0.35rem", opacity: 0.7, fontWeight: 600 }}
+                              >
+                                {word}
+                              </span>
+                            );
+                          }
+
+                          return (
+                            <span key={wIdx} style={{ display: "inline-flex", alignItems: "center" }}>
+                              <span
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  setActiveWordId((prev) => (prev === wordId ? null : wordId));
+                                }}
+                                className={`word-token ${activeWordId === wordId ? "word-active" : ""}`}
+                                title="Tap word to focus pronunciation"
+                              >
+                                {transliterate(word, script)}
+                              </span>
+                              {wIdx < words.length - 1 && (
+                                <span className="word-separator">·</span>
+                              )}
+                            </span>
+                          );
+                        })}
+                      </div>
+                    );
+                  }
 
                   return (
                     <p
@@ -343,6 +516,45 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
             );
           })}
         </article>
+
+        {/* Sacred Chanting Guide & High-Intent FAQ Section */}
+        <section className="stotram-faq-section" aria-label="Frequently Asked Questions & Recitation Guide">
+          <h3 className="stotram-faq-title">
+            <SparklesIcon size={18} style={{ color: "var(--accent)" }} />
+            <span>Recitation Guide & Devotional FAQ</span>
+          </h3>
+          <div className="stotram-faq-list">
+            {faqItems.map((item, idx) => {
+              const isOpen = expandedFaqIndex === idx;
+              return (
+                <div key={idx} className="stotram-faq-item">
+                  <button
+                    type="button"
+                    onClick={() => setExpandedFaqIndex(isOpen ? null : idx)}
+                    className="stotram-faq-question"
+                    aria-expanded={isOpen}
+                  >
+                    <span>{item.q}</span>
+                    <ChevronDownIcon
+                      size={16}
+                      style={{
+                        transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
+                        transition: "transform 0.2s ease",
+                        color: "var(--accent)",
+                        flexShrink: 0,
+                      }}
+                    />
+                  </button>
+                  {isOpen && (
+                    <div className="stotram-faq-answer">
+                      <p>{item.a}</p>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+        </section>
       </div>
 
       {/* Floating Control Toolbar */}
@@ -359,6 +571,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
             fontSize: "1rem",
           }}
           title="Return to Library"
+          aria-label="Return to Library"
         >
           <HomeIcon size={16} />
         </Link>
@@ -381,6 +594,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
             outline: "none",
           }}
           title="Select Chanting Script (Transliteration)"
+          aria-label="Select Chanting Script"
         >
           <option value="telugu" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>తెలుగు (Telugu)</option>
           <option value="devanagari" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>देवनागरी (Devanagari)</option>
@@ -388,6 +602,28 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           <option value="tamil" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>தமிழ் (Tamil)</option>
           <option value="iast" style={{ backgroundColor: "var(--bg-base)", color: "var(--text-primary)" }}>English (IAST Roman)</option>
         </select>
+
+        <div className="control-divider" />
+
+        {/* Word-by-Word Split Mode Toggle Button */}
+        <button
+          onClick={toggleWordByWord}
+          className="btn"
+          style={{
+            padding: "0",
+            borderRadius: "50%",
+            width: "32px",
+            height: "32px",
+            fontSize: "0.85rem",
+            borderColor: isWordByWord ? "var(--accent)" : "var(--border)",
+            color: isWordByWord ? "var(--accent)" : "var(--text-secondary)",
+            backgroundColor: isWordByWord ? "var(--accent-light)" : "transparent",
+          }}
+          title={isWordByWord ? "Disable Word Split" : "Enable Word-by-Word Chanting Split"}
+          aria-label="Toggle Word-by-Word Chanting Split"
+        >
+          <SplitTextIcon size={15} />
+        </button>
 
         <div className="control-divider" />
 
@@ -405,6 +641,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
               fontWeight: "600",
             }}
             title="Decrease Font Size"
+            aria-label="Decrease Font Size"
           >
             A-
           </button>
@@ -423,6 +660,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
               fontWeight: "600",
             }}
             title="Increase Font Size"
+            aria-label="Increase Font Size"
           >
             A+
           </button>
@@ -442,6 +680,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
             fontSize: "0.9rem",
           }}
           title={`Theme: ${currentTheme === "dark" ? "Midnight Gold" : currentTheme === "sepia" ? "Aged Sepia" : "Clean Light"} (Click to cycle)`}
+          aria-label="Cycle Devotional Theme"
         >
           {currentTheme === "dark" ? (
             <MoonIcon size={16} />
@@ -471,6 +710,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
             boxShadow: isDistractionFree ? "0 0 15px var(--accent-glow)" : "none",
           }}
           title={isDistractionFree ? "Exit Focus Mode" : "Enter Focus Mode"}
+          aria-label="Toggle Focus Mode"
         >
           {isDistractionFree ? "Focused" : "Focus"}
         </button>

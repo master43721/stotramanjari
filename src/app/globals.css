@@ -1318,3 +1318,221 @@ body.distraction-free .floating-controls:hover {
   }
 }
 
+/* ==========================================================================
+   Word-by-Word Chanting, Japa Repetition Counter & FAQ Guidance Styles
+   ========================================================================== */
+
+/* Word-by-Word Chanting Token & Split View */
+.word-token {
+  display: inline-block;
+  padding: 0.15rem 0.45rem;
+  margin: 0.2rem 0.22rem;
+  border-radius: 8px;
+  background: rgba(212, 175, 55, 0.08);
+  border: 1px solid rgba(212, 175, 55, 0.22);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  word-break: break-word;
+  user-select: none;
+}
+
+.word-token:hover {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.35);
+}
+
+.word-token.word-active {
+  background: var(--accent);
+  color: #060606 !important;
+  border-color: var(--accent);
+  font-weight: 700;
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+.word-separator {
+  color: var(--accent);
+  opacity: 0.35;
+  margin: 0 0.15rem;
+  font-weight: 300;
+  user-select: none;
+}
+
+/* Japa Repetition Counter Bar */
+.japa-counter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.65rem 1.15rem;
+  margin-bottom: 1.75rem;
+  min-height: 52px;
+  contain: layout style;
+  border-radius: 16px;
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.14), rgba(20, 20, 20, 0.75));
+  border: 1px solid rgba(212, 175, 55, 0.4);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 18px rgba(212, 175, 55, 0.12);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  flex-wrap: wrap;
+}
+
+[data-theme="sepia"] .japa-counter-bar {
+  background: linear-gradient(135deg, rgba(196, 123, 28, 0.14), rgba(246, 242, 232, 0.95));
+  border-color: rgba(196, 123, 28, 0.35);
+}
+
+[data-theme="clean-light"] .japa-counter-bar {
+  background: linear-gradient(135deg, rgba(180, 83, 9, 0.1), rgba(255, 255, 255, 0.95));
+  border-color: rgba(180, 83, 9, 0.3);
+}
+
+.japa-count-display {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.japa-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.japa-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--accent), #f3e5ab);
+  color: #060606;
+  border: none;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.4);
+  transition: all 0.2s ease;
+}
+
+.japa-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+}
+
+.japa-target-select {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0.28rem 0.55rem;
+  font-size: 0.8rem;
+  outline: none;
+  cursor: pointer;
+}
+
+/* Stanza Active Spotlight & Zero Layout Shift Core Web Vitals */
+.stotram-verse-block {
+  padding: 1rem 1.25rem;
+  border-radius: var(--radius-md);
+  border: 1px solid transparent;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  content-visibility: auto;
+  contain-intrinsic-size: auto 120px;
+}
+
+.stotram-verse-block:hover {
+  border-color: rgba(212, 175, 55, 0.25);
+  background: rgba(212, 175, 55, 0.03);
+}
+
+.stotram-verse-block.active-focus {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 10px 30px rgba(0, 0, 0, 0.4);
+  transform: scale(1.008);
+}
+
+/* Chanting Mode Control Toggle */
+.chanting-mode-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.4rem 0.95rem;
+  border-radius: 9999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  color: var(--text-secondary);
+}
+
+.chanting-mode-toggle.active {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.22), rgba(212, 175, 55, 0.08));
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 16px rgba(212, 175, 55, 0.3);
+}
+
+/* FAQ Guidance Accordion */
+.stotram-faq-section {
+  margin-top: 4rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--border);
+  text-align: left;
+}
+
+.stotram-faq-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.stotram-faq-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+  transition: border-color 0.25s ease;
+}
+
+.stotram-faq-item:hover {
+  border-color: rgba(212, 175, 55, 0.4);
+}
+
+.stotram-faq-question {
+  width: 100%;
+  padding: 0.95rem 1.25rem;
+  text-align: left;
+  background: none;
+  border: none;
+  color: var(--text-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.stotram-faq-answer {
+  padding: 0 1.25rem 1.15rem 1.25rem;
+  font-size: 0.88rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+

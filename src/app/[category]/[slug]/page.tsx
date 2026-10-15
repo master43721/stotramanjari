@@ -61,6 +61,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
+import { generateStotramStructuredData } from "@/lib/schemaGenerator";
+
 // Pre-render static paths during building (Static Site Generation - SSG)
 export async function generateStaticParams() {
   const index = getStotramsIndex();
@@ -79,5 +81,35 @@ export default async function StotramPage({ params }: PageProps) {
     notFound();
   }
 
-  return <StotramReader stotram={stotram} />;
+  const canonicalUrl = `https://stotramani.app/${category}/${slug}`;
+  const { creativeWorkSchema, articleSchema, breadcrumbSchema, faqSchema } = generateStotramStructuredData(
+    stotram,
+    canonicalUrl,
+    category
+  );
+
+  return (
+    <>
+      {/* Hyper-Structured Semantic Schema (JSON-LD) for Google Rich Snippets & Featured Snippet (#0 Position) */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(creativeWorkSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
+      <StotramReader stotram={stotram} />
+    </>
+  );
 }
+
