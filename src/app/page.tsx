@@ -1,13 +1,28 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import Link from "next/link";
 import { getStotramsIndex } from "@/data/loader";
 import { StotramIndexItem } from "@/types";
 import categoryMappings from "@/data/category-mappings.json";
 import PanchangWidget from "@/components/PanchangWidget";
 import { StotramGridSkeleton } from "@/components/SkeletonLoader";
-import { CloseIcon } from "@/components/Icons";
+import {
+  CloseIcon,
+  SearchIcon,
+  SparklesIcon,
+  ShieldIcon,
+  LotusIcon,
+  SunIcon,
+  ScrollIcon,
+  BookIcon,
+  StarIcon,
+} from "@/components/Icons";
+import {
+  executeSemanticSearch,
+  SACRED_INTENTS,
+  SemanticIntent,
+} from "@/lib/semanticSearch";
 
 // Defined Category list
 const SACRED_CATEGORIES = [
@@ -108,29 +123,57 @@ export default function Home() {
     return () => window.removeEventListener("click", handleClose);
   }, [isDropdownOpen]);
 
-  const stotrams: StotramIndexItem[] = getStotramsIndex();
+  const stotrams: StotramIndexItem[] = useMemo(() => getStotramsIndex(), []);
 
   // Filter database to only include stotrams that belong to our target categories
-  const targetStotrams = stotrams.filter(s => 
-    SACRED_CATEGORIES.some(cat => matchesCategory(s, cat.id))
-  );
+  const targetStotrams = useMemo(() => {
+    return stotrams.filter((s) =>
+      SACRED_CATEGORIES.some((cat) => matchesCategory(s, cat.id))
+    );
+  }, [stotrams]);
 
   // Compute category counts based on target stotrams
-  const categoryCounts = SACRED_CATEGORIES.reduce((acc, cat) => {
-    acc[cat.id] = targetStotrams.filter(s => matchesCategory(s, cat.id)).length;
-    return acc;
-  }, {} as Record<string, number>);
+  const categoryCounts = useMemo(() => {
+    return SACRED_CATEGORIES.reduce((acc, cat) => {
+      acc[cat.id] = targetStotrams.filter((s) => matchesCategory(s, cat.id)).length;
+      return acc;
+    }, {} as Record<string, number>);
+  }, [targetStotrams]);
 
-  const filteredStotrams = targetStotrams.filter((stotram) => {
-    const matchesCat = activeCategory === "all" || matchesCategory(stotram, activeCategory);
-    const searchLower = searchQuery.toLowerCase();
-    const matchesSearch =
-      stotram.title_english.toLowerCase().includes(searchLower) ||
-      stotram.title_telugu.includes(searchQuery) ||
-      stotram.category.toLowerCase().includes(searchLower);
-    
-    return matchesCat && matchesSearch;
-  });
+  // Execute Semantic Information Retrieval Engine
+  const semanticResult = useMemo(() => {
+    return executeSemanticSearch(searchQuery, targetStotrams, activeCategory);
+  }, [searchQuery, targetStotrams, activeCategory]);
+
+  const { scoredResults, analysis } = semanticResult;
+
+  // Render SVG icons for semantic spiritual intent pills
+  const renderIntentIcon = (iconName: string) => {
+    switch (iconName) {
+      case "ShieldIcon":
+        return <ShieldIcon size={14} />;
+      case "LotusIcon":
+        return <LotusIcon size={14} />;
+      case "SunIcon":
+        return <SunIcon size={14} />;
+      case "ScrollIcon":
+        return <ScrollIcon size={14} />;
+      case "BookIcon":
+        return <BookIcon size={14} />;
+      case "StarIcon":
+        return <StarIcon size={14} />;
+      default:
+        return <SparklesIcon size={14} />;
+    }
+  };
+
+  const handlePillClick = (intent: SemanticIntent) => {
+    if (searchQuery.toLowerCase() === intent.label.toLowerCase()) {
+      setSearchQuery("");
+    } else {
+      setSearchQuery(intent.label);
+    }
+  };
 
   // Coordinates-based mouse tracking for card radial glow halos
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -143,142 +186,161 @@ export default function Home() {
   };
 
   return (
-    <div style={{
-      backgroundColor: "var(--bg-base)",
-      color: "var(--text-primary)",
-      minHeight: "100vh",
-      paddingBlock: "clamp(2.5rem, 6vw, 6rem)",
-      position: "relative",
-      overflow: "hidden",
-      transition: "background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s ease"
-    }}>
+    <div
+      style={{
+        backgroundColor: "var(--bg-base)",
+        color: "var(--text-primary)",
+        minHeight: "100vh",
+        paddingBlock: "clamp(2rem, 5vw, 5rem)",
+        position: "relative",
+        overflow: "hidden",
+        transition: "background-color 0.8s cubic-bezier(0.16, 1, 0.3, 1), color 0.5s ease",
+      }}
+    >
       {/* Divine Backlight Ambient Orbs */}
-      <div style={{
-        position: "absolute",
-        top: "-10%",
-        left: "-10%",
-        width: "50%",
-        height: "60%",
-        background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)",
-        filter: "blur(120px)",
-        pointerEvents: "none",
-        zIndex: 0,
-        transition: "var(--transition-cinematic)"
-      }} />
+      <div
+        style={{
+          position: "absolute",
+          top: "-10%",
+          left: "-10%",
+          width: "50%",
+          height: "60%",
+          background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 70%)",
+          filter: "blur(120px)",
+          pointerEvents: "none",
+          zIndex: 0,
+          transition: "var(--transition-cinematic)",
+        }}
+      />
 
-      <div style={{
-        position: "absolute",
-        bottom: "-10%",
-        right: "-10%",
-        width: "60%",
-        height: "60%",
-        background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 75%)",
-        filter: "blur(120px)",
-        pointerEvents: "none",
-        zIndex: 0,
-        transition: "var(--transition-cinematic)"
-      }} />
+      <div
+        style={{
+          position: "absolute",
+          bottom: "-10%",
+          right: "-10%",
+          width: "60%",
+          height: "60%",
+          background: "radial-gradient(circle, var(--accent-glow) 0%, transparent 75%)",
+          filter: "blur(120px)",
+          pointerEvents: "none",
+          zIndex: 0,
+          transition: "var(--transition-cinematic)",
+        }}
+      />
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Vedic Panchang & Routine Banner */}
         <PanchangWidget />
 
         {/* Massive Gold Hero */}
-        <section className="hero" style={{ textAlign: "center", paddingBottom: "clamp(2rem, 4vw, 4rem)" }}>
-          <h1 style={{ 
-            fontSize: "clamp(2.1rem, 7vw, 4rem)", 
-            fontWeight: "700", 
-            letterSpacing: "-0.04em",
-            lineHeight: "1.1",
-            marginInline: "auto",
-            maxWidth: "900px",
-            background: "linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%)",
-            WebkitBackgroundClip: "text",
-            WebkitTextFillColor: "transparent",
-            textShadow: "0 0 50px var(--accent-glow)"
-          }}>
+        <section
+          className="hero"
+          style={{ textAlign: "center", paddingBottom: "clamp(1.75rem, 3.5vw, 3rem)" }}
+        >
+          <h1
+            style={{
+              fontSize: "clamp(2.1rem, 7vw, 4rem)",
+              fontWeight: "700",
+              letterSpacing: "-0.04em",
+              lineHeight: "1.1",
+              marginInline: "auto",
+              maxWidth: "900px",
+              background: "linear-gradient(135deg, var(--text-primary) 30%, var(--accent) 100%)",
+              WebkitBackgroundClip: "text",
+              WebkitTextFillColor: "transparent",
+              textShadow: "0 0 50px var(--accent-glow)",
+            }}
+          >
             STOTRAMANI
           </h1>
-          <p className="hero-subtitle" style={{ 
-            color: "var(--text-secondary)", 
-            fontSize: "clamp(0.95rem, 2.5vw, 1.25rem)", 
-            marginTop: "1.25rem", 
-            maxWidth: "640px", 
-            marginInline: "auto",
-            lineHeight: "1.6"
-          }}>
-            A pure, distraction-free digital sanctuary for sacred Telugu & Sanskrit stotrams. 
+          <p
+            className="hero-subtitle"
+            style={{
+              color: "var(--text-secondary)",
+              fontSize: "clamp(0.95rem, 2.5vw, 1.25rem)",
+              marginTop: "1.25rem",
+              maxWidth: "640px",
+              marginInline: "auto",
+              lineHeight: "1.6",
+            }}
+          >
+            A pure, distraction-free digital sanctuary for sacred Telugu & Sanskrit stotrams.
             Curated with devotion by Sudheendra Sripada on stotramani.app.
           </p>
         </section>
 
-        {/* Search and Filters panel */}
-        <div style={{
-          maxWidth: "640px",
-          margin: "0 auto clamp(2rem, 4vw, 4.5rem) auto",
-          display: "flex",
-          flexDirection: "column",
-          gap: "1.5rem"
-        }}>
-          {/* Glowing input */}
-          <div style={{ position: "relative" }}>
+        {/* Semantic Search and Filters panel */}
+        <div className="semantic-search-box">
+          {/* Active Semantic Mode Indicator */}
+          <div
+            className="semantic-mode-indicator"
+            title="Semantic search engine understands meaning, context, and spiritual intent behind your search"
+          >
+            <SparklesIcon size={14} />
+            <span>Semantic Intent Search Active</span>
+          </div>
+
+          {/* Glowing Semantic Search Input */}
+          <div className="semantic-input-wrapper">
+            <div className="semantic-input-icon">
+              <SearchIcon size={19} />
+            </div>
             <input
               type="text"
-              placeholder="Search stotrams by title (English or తెలుగు)..."
+              placeholder="Search by spiritual intent, deity, or title (e.g. 'wealth', 'protection', 'ఆరోగ్యం', 'హనుమాన్')..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: "100%",
-                padding: "clamp(0.85rem, 2vw, 1.1rem) clamp(1rem, 2.5vw, 1.5rem)",
-                borderRadius: "var(--radius-lg)",
-                border: "1px solid var(--border)",
-                backgroundColor: "var(--bg-card)",
-                color: "var(--text-primary)",
-                fontSize: "clamp(0.95rem, 2vw, 1.05rem)",
-                fontFamily: "var(--font-sans)",
-                outline: "none",
-                transition: "var(--transition-cinematic)",
-                boxShadow: "0 10px 30px var(--shadow)",
-                backdropFilter: "blur(16px)",
-                WebkitBackdropFilter: "blur(16px)"
-              }}
-              onFocus={(e) => {
-                e.target.style.borderColor = "var(--accent)";
-                e.target.style.boxShadow = "0 0 25px var(--accent-glow), 0 10px 30px var(--shadow)";
-              }}
-              onBlur={(e) => {
-                e.target.style.borderColor = "var(--border)";
-                e.target.style.boxShadow = "0 10px 30px var(--shadow)";
-              }}
+              className="semantic-input"
+              aria-label="Search stotrams by meaning, context, or title"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery("")}
-                style={{
-                  position: "absolute",
-                  right: "20px",
-                  top: "50%",
-                  transform: "translateY(-50%)",
-                  background: "none",
-                  border: "none",
-                  color: "var(--text-secondary)",
-                  cursor: "pointer",
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  transition: "var(--transition-fast)"
-                }}
+                className="semantic-clear-btn"
                 aria-label="Clear search query"
-                onMouseOver={(e) => e.currentTarget.style.color = "var(--accent)"}
-                onMouseOut={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
               >
                 <CloseIcon size={16} />
               </button>
             )}
           </div>
 
-          {/* Custom Dropdown Selector */}
-          <div style={{ position: "relative", width: "100%", maxWidth: "28rem", marginInline: "auto" }}>
+          {/* Quick Spiritual Intent Pills */}
+          <div className="semantic-pills-container">
+            <div className="semantic-pills-label">
+              Browse by Spiritual Need &amp; Intent:
+            </div>
+            <div
+              className="semantic-pills-scroll"
+              role="tablist"
+              aria-label="Spiritual Intent Filters"
+            >
+              {SACRED_INTENTS.map((intent) => {
+                const isActive = searchQuery.toLowerCase() === intent.label.toLowerCase();
+                return (
+                  <button
+                    key={intent.id}
+                    type="button"
+                    onClick={() => handlePillClick(intent)}
+                    className={`semantic-intent-pill ${isActive ? "active" : ""}`}
+                    title={intent.description}
+                  >
+                    {renderIntentIcon(intent.iconName)}
+                    <span>{intent.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* Custom Dropdown Selector for Collections */}
+          <div
+            style={{
+              position: "relative",
+              width: "100%",
+              maxWidth: "28rem",
+              marginInline: "auto",
+            }}
+          >
             <button
               onClick={(e) => {
                 e.stopPropagation();
@@ -310,23 +372,27 @@ export default function Home() {
                 alignItems: "center",
                 cursor: "pointer",
                 transition: "all 0.3s cubic-bezier(0.4, 0, 0.2, 1)",
-                outline: "none"
+                outline: "none",
               }}
             >
               <span style={{ textTransform: "uppercase", letterSpacing: "0.05em" }}>
-                {activeCategory === "all" ? "Select Sacred Chants / Text" : SACRED_CATEGORIES.find(c => c.id === activeCategory)?.name || activeCategory}
+                {activeCategory === "all"
+                  ? "Select Sacred Chants / Collection"
+                  : SACRED_CATEGORIES.find((c) => c.id === activeCategory)?.name || activeCategory}
               </span>
-              <span style={{ 
-                fontSize: "0.75rem", 
-                transition: "transform 0.3s ease",
-                transform: isDropdownOpen ? "rotate(180deg)" : "rotate(0deg)"
-              }}>
+              <span
+                style={{
+                  fontSize: "0.75rem",
+                  transition: "transform 0.3s ease",
+                  transform: isDropdownOpen ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              >
                 ▼
               </span>
             </button>
 
             {isDropdownOpen && (
-              <div 
+              <div
                 onClick={(e) => e.stopPropagation()}
                 style={{
                   position: "absolute",
@@ -342,7 +408,7 @@ export default function Home() {
                   overflowY: "auto",
                   maxHeight: "20rem",
                   marginTop: "0.5rem",
-                  zIndex: 50
+                  zIndex: 50,
                 }}
               >
                 <div
@@ -353,7 +419,8 @@ export default function Home() {
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.backgroundColor = "transparent";
-                    e.currentTarget.style.color = activeCategory === "all" ? "var(--accent)" : "var(--text-primary)";
+                    e.currentTarget.style.color =
+                      activeCategory === "all" ? "var(--accent)" : "var(--text-primary)";
                   }}
                   style={{
                     padding: "0.75rem 1.25rem",
@@ -365,7 +432,7 @@ export default function Home() {
                     color: activeCategory === "all" ? "var(--accent)" : "var(--text-primary)",
                     backgroundColor: activeCategory === "all" ? "var(--accent-light)" : "transparent",
                     transition: "all 0.2s ease",
-                    borderBottom: "1px solid var(--border)"
+                    borderBottom: "1px solid var(--border)",
                   }}
                 >
                   ALL CHANTS ({targetStotrams.length})
@@ -380,7 +447,8 @@ export default function Home() {
                     }}
                     onMouseLeave={(e) => {
                       e.currentTarget.style.backgroundColor = "transparent";
-                      e.currentTarget.style.color = activeCategory === category.id ? "var(--accent)" : "var(--text-primary)";
+                      e.currentTarget.style.color =
+                        activeCategory === category.id ? "var(--accent)" : "var(--text-primary)";
                     }}
                     style={{
                       padding: "0.75rem 1.25rem",
@@ -389,10 +457,12 @@ export default function Home() {
                       fontSize: "0.85rem",
                       fontWeight: activeCategory === category.id ? "600" : "400",
                       letterSpacing: "0.05em",
-                      color: activeCategory === category.id ? "var(--accent)" : "var(--text-primary)",
-                      backgroundColor: activeCategory === category.id ? "var(--accent-light)" : "transparent",
+                      color:
+                        activeCategory === category.id ? "var(--accent)" : "var(--text-primary)",
+                      backgroundColor:
+                        activeCategory === category.id ? "var(--accent-light)" : "transparent",
                       transition: "all 0.2s ease",
-                      borderBottom: "1px solid var(--border)"
+                      borderBottom: "1px solid var(--border)",
                     }}
                   >
                     {category.name.toUpperCase()} ({categoryCounts[category.id]})
@@ -403,26 +473,123 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Semantic Insight Banner (Shown when semantic query is recognized) */}
+        {analysis.isSemantic && searchQuery.trim().length > 0 && (
+          <div className="semantic-insight-banner">
+            <div
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "space-between",
+                flexWrap: "wrap",
+                gap: "0.5rem",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "0.5rem",
+                  color: "var(--accent)",
+                }}
+              >
+                <SparklesIcon size={18} />
+                <span
+                  style={{
+                    fontWeight: 700,
+                    fontSize: "0.86rem",
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                  }}
+                >
+                  Semantic Intent Understood
+                </span>
+              </div>
+              <span style={{ fontSize: "0.82rem", color: "var(--text-secondary)", opacity: 0.9 }}>
+                {scoredResults.length} {scoredResults.length === 1 ? "chant" : "chants"} matched
+              </span>
+            </div>
+
+            {analysis.summaryLabel && (
+              <h2
+                style={{
+                  fontSize: "1.2rem",
+                  fontWeight: 700,
+                  marginTop: "0.45rem",
+                  color: "var(--text-primary)",
+                  letterSpacing: "-0.01em",
+                }}
+              >
+                {analysis.summaryLabel}
+              </h2>
+            )}
+
+            {analysis.summarySubtitle && (
+              <p
+                style={{
+                  fontSize: "0.88rem",
+                  color: "var(--text-secondary)",
+                  marginTop: "0.25rem",
+                  lineHeight: 1.5,
+                }}
+              >
+                {analysis.summarySubtitle}
+              </p>
+            )}
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: "0.45rem",
+                marginTop: "0.75rem",
+              }}
+            >
+              {analysis.matchedIntents.map((intent) => (
+                <span key={intent.id} className="semantic-pill-tag">
+                  Intent: {intent.label} ({intent.labelTelugu})
+                </span>
+              ))}
+              {analysis.matchedDeities.map((deity) => (
+                <span key={deity.canonical} className="semantic-pill-tag">
+                  Deity: {deity.name} ({deity.nameTelugu})
+                </span>
+              ))}
+              {analysis.matchedForms.map((form) => (
+                <span key={form.key} className="semantic-pill-tag">
+                  Form: {form.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Responsive Grid of Glassmorphic Cards with Skeleton Shimmer */}
         {isFiltering ? (
           <StotramGridSkeleton count={6} />
-        ) : filteredStotrams.length > 0 ? (
+        ) : scoredResults.length > 0 ? (
           <div className="grid">
-            {filteredStotrams.map((stotram) => (
-              <div 
-                key={stotram.id} 
+            {scoredResults.map(({ item: stotram, primaryTag }) => (
+              <div
+                key={stotram.id}
                 className="stotram-card"
                 onMouseMove={handleMouseMove}
               >
+                {/* Contextual Semantic Tag if matching an intent or deity */}
+                {primaryTag && searchQuery.trim().length > 0 && (
+                  <span className="stotram-semantic-badge">
+                    <SparklesIcon size={12} />
+                    <span>{primaryTag}</span>
+                  </span>
+                )}
+
                 <span className="stotram-card-category">
-                  {SACRED_CATEGORIES.find(c => matchesCategory(stotram, c.id))?.name || stotram.category}
+                  {SACRED_CATEGORIES.find((c) => matchesCategory(stotram, c.id))?.name ||
+                    stotram.category}
                 </span>
                 <h2 className="stotram-card-title-english">{stotram.title_english}</h2>
                 <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
-                
-                {/* 
-                  Next.js <Link> handles root routing cleanly on stotramani.app
-                */}
+
                 <Link href={`/readings/${stotram.slug}`} className="stotram-card-link">
                   Read Stotram <span>→</span>
                 </Link>
@@ -430,25 +597,96 @@ export default function Home() {
             ))}
           </div>
         ) : (
-          <div style={{
-            textAlign: "center",
-            padding: "6rem 2rem",
-            color: "var(--text-secondary)",
-            backgroundColor: "var(--bg-card)",
-            borderRadius: "var(--radius-lg)",
-            border: "1px solid var(--border)",
-            backdropFilter: "blur(16px)",
-            WebkitBackdropFilter: "blur(16px)",
-            maxWidth: "600px",
-            margin: "0 auto 6rem auto",
-            boxShadow: "0 10px 40px var(--shadow)"
-          }}>
-            <p style={{ fontSize: "1.4rem", fontWeight: "600", color: "var(--text-primary)" }}>
-              No stotrams found
+          <div
+            style={{
+              textAlign: "center",
+              padding: "clamp(3rem, 6vw, 5rem) 1.5rem",
+              color: "var(--text-secondary)",
+              backgroundColor: "var(--bg-card)",
+              borderRadius: "var(--radius-lg)",
+              border: "1px solid var(--border)",
+              backdropFilter: "blur(20px)",
+              WebkitBackdropFilter: "blur(20px)",
+              maxWidth: "640px",
+              margin: "0 auto 4rem auto",
+              boxShadow: "0 10px 40px var(--shadow)",
+            }}
+          >
+            <div
+              style={{
+                display: "inline-flex",
+                padding: "1rem",
+                borderRadius: "50%",
+                background: "rgba(212, 175, 55, 0.1)",
+                color: "var(--accent)",
+                marginBottom: "1rem",
+              }}
+            >
+              <SearchIcon size={32} />
+            </div>
+            <p
+              style={{
+                fontSize: "1.35rem",
+                fontWeight: "700",
+                color: "var(--text-primary)",
+              }}
+            >
+              No Stotrams Found for &ldquo;{searchQuery}&rdquo;
             </p>
-            <p style={{ fontSize: "0.95rem", marginTop: "0.6rem", opacity: 0.85 }}>
-              Check your search keywords or filter pills.
+            <p
+              style={{
+                fontSize: "0.92rem",
+                marginTop: "0.6rem",
+                opacity: 0.9,
+                lineHeight: 1.6,
+              }}
+            >
+              Try searching by spiritual intent like <em>wealth</em>, <em>health</em>,{" "}
+              <em>protection</em>, or deities like <em>Lord Shiva</em>, <em>Hanuman</em>,{" "}
+              <em>Sri Rama</em>.
             </p>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent: "center",
+                gap: "0.5rem",
+                marginTop: "1.5rem",
+              }}
+            >
+              <button
+                type="button"
+                onClick={() => setSearchQuery("Wealth & Prosperity")}
+                className="semantic-intent-pill"
+              >
+                <LotusIcon size={14} /> Wealth &amp; Prosperity
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchQuery("Health & Healing")}
+                className="semantic-intent-pill"
+              >
+                <SunIcon size={14} /> Health &amp; Healing
+              </button>
+              <button
+                type="button"
+                onClick={() => setSearchQuery("Protection & Courage")}
+                className="semantic-intent-pill"
+              >
+                <ShieldIcon size={14} /> Protection &amp; Courage
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setSearchQuery("");
+                  setActiveCategory("all");
+                }}
+                className="btn"
+                style={{ padding: "0.4rem 1rem", fontSize: "0.85rem" }}
+              >
+                Reset Filters
+              </button>
+            </div>
           </div>
         )}
       </div>

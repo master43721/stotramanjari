@@ -355,3 +355,46 @@ export function SendIcon({ size = 18, className = "", style = {} }: IconProps) {
     </svg>
   );
 }
+
+export function SearchIcon({ size = 18, className = "", style = {} }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+      aria-hidden="true"
+    >
+      <circle cx="11" cy="11" r="8" />
+      <line x1="21" y1="21" x2="16.65" y2="16.65" />
+    </svg>
+  );
+}
+
+export function SparklesIcon({ size = 18, className = "", style = {} }: IconProps) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      style={{ display: "inline-block", verticalAlign: "middle", ...style }}
+      aria-hidden="true"
+    >
+      <path d="M12 3c0 4.5 3.5 8 8 8-4.5 0-8 3.5-8 8 0-4.5-3.5-8-8-8 4.5 0 8-3.5 8-8z" fill="currentColor" fillOpacity="0.18" />
+      <path d="M5 3v4M3 5h4M19 17v4M17 19h4" />
+    </svg>
+  );
+}
+

@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { CookieIcon } from "./Icons";
 
 export default function CookieConsent() {
   const [isVisible, setIsVisible] = useState(false);
@@ -56,7 +57,7 @@ export default function CookieConsent() {
       }}
     >
       <div style={{ display: "flex", alignItems: "flex-start", gap: "0.6rem" }}>
-        <span style={{ fontSize: "1.2rem", lineHeight: 1 }}>🪔</span>
+        <CookieIcon size={20} style={{ color: "var(--accent)", flexShrink: 0, marginTop: "2px" }} />
         <div style={{ flex: 1 }}>
           <p style={{ fontSize: "0.86rem", color: "var(--text-primary)", lineHeight: 1.5 }}>
             <strong>Devotional Privacy & Data Minimization:</strong> Stotramani uses local browser storage solely to remember your chanting script, font size, and visual theme. We never sell your data or serve commercial advertisements.

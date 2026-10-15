@@ -83,7 +83,11 @@ export default function Navbar() {
   const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappShareText)}`;
 
   return (
-    <header className={`header ${isScrolled ? "header-scrolled" : ""}`}>
+    <header
+      className={`header ${isScrolled ? "header-scrolled" : ""} ${
+        isMobileMenuOpen ? "header-menu-open" : ""
+      }`}
+    >
       <div
         className="container"
         style={{
