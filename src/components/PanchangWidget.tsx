@@ -5,6 +5,7 @@ import Link from "next/link";
 import { calculatePanchang, PanchangInfo } from "@/lib/panchang";
 import DailyPujaModal from "./DailyPujaModal";
 import StotramaniLogo from "./StotramaniLogo";
+import { LotusIcon } from "./Icons";
 
 export default function PanchangWidget() {
   const [panchang] = useState<PanchangInfo>(() => calculatePanchang());
@@ -65,7 +66,7 @@ export default function PanchangWidget() {
               gap: "0.45rem",
             }}
           >
-            <span>📿</span> My Daily Puja Routine
+            <LotusIcon size={16} /> My Daily Puja Routine
           </button>
         </div>
 

@@ -138,7 +138,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const whatsappShareText =
-    "🕉️ Namaste! Discover Stotramani (స్తోత్రమణి) – A sacred, distraction-free digital sanctuary for authentic Telugu & Sanskrit stotrams, Vedic chants, and daily puja slokas.\n\nExplore and recite here:\nhttps://stotramani.app";
+    "Namaste! Discover Stotramani (స్తోత్రమణి) – A sacred, distraction-free digital sanctuary for authentic Telugu & Sanskrit stotrams, Vedic chants, and daily puja slokas.\n\nExplore and recite here:\nhttps://stotramani.app";
   const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappShareText)}`;
 
   return (

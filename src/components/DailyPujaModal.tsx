@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { DailyPujaItem } from "@/types";
 import StotramaniLogo from "./StotramaniLogo";
+import { CloseIcon, LotusIcon } from "./Icons";
 
 interface DailyPujaModalProps {
   isOpen: boolean;
@@ -122,10 +123,11 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
           <button
             onClick={onClose}
             className="btn"
-            style={{ width: "36px", height: "36px", padding: 0, borderRadius: "50%" }}
+            style={{ width: "36px", height: "36px", padding: 0, borderRadius: "50%", display: "inline-flex", alignItems: "center", justifyContent: "center" }}
             title="Close"
+            aria-label="Close"
           >
-            ✕
+            <CloseIcon size={16} />
           </button>
         </div>
 
@@ -162,9 +164,13 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
                   padding: "0.6rem 1.4rem",
                   fontWeight: 700,
                   borderRadius: "24px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.45rem",
                 }}
               >
-                Chant Now 📿
+                <LotusIcon size={16} />
+                <span>Chant Now</span>
               </Link>
             </div>
 
@@ -183,7 +189,7 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
                 style={{ fontSize: "0.8rem", color: "var(--text-secondary)", borderColor: "var(--border)" }}
                 title="Return to routine list"
               >
-                📋 View Full Routine
+                View Full Routine
               </button>
               <button
                 disabled={activeStep >= routine.length - 1}
@@ -198,7 +204,7 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
         ) : (
           <div>
             <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "1.5rem", lineHeight: 1.6 }}>
-              Add stotrams to your daily routine by clicking the sacred star ⭐ icon on any stotram.
+              Add stotrams to your daily routine by clicking the sacred star icon on any stotram.
               Follow this sequence daily in your prayer altar.
             </p>
 
@@ -258,12 +264,15 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
                         border: "none",
                         color: "var(--text-secondary)",
                         cursor: "pointer",
-                        fontSize: "0.9rem",
                         padding: "0.4rem",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
                       }}
                       title="Remove from routine"
+                      aria-label="Remove from routine"
                     >
-                      ✕
+                      <CloseIcon size={14} />
                     </button>
                   </div>
                 ))}
@@ -289,9 +298,14 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
                   boxShadow: "0 0 20px var(--accent-glow)",
                   letterSpacing: "0.05em",
                   textTransform: "uppercase",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  gap: "0.5rem",
                 }}
               >
-                📿 Start Daily Puja Mode ({routine.length} Stotras)
+                <LotusIcon size={18} />
+                <span>Start Daily Puja Mode ({routine.length} Stotras)</span>
               </button>
             )}
           </div>

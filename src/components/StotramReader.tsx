@@ -5,6 +5,14 @@ import Link from "next/link";
 import { Stotram, DailyPujaItem } from "@/types";
 import { SupportedScript, transliterate } from "@/lib/sanscript";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import {
+  MoonIcon,
+  SunIcon,
+  ScrollIcon,
+  HomeIcon,
+  StarIcon,
+  FileTextIcon,
+} from "./Icons";
 
 interface StotramReaderProps {
   stotram: Stotram;
@@ -187,7 +195,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
     { label: stotram.title_english, href: `/readings/${stotram.slug || stotram.id}` },
   ];
 
-  const whatsappShareText = `🕉️ Discover and chant ${stotram.title_english} (${stotram.title_telugu}) on Stotramani:\nhttps://stotramani.app/readings/${stotram.slug || stotram.id}`;
+  const whatsappShareText = `Discover and chant ${stotram.title_english} (${stotram.title_telugu}) on Stotramani:\nhttps://stotramani.app/readings/${stotram.slug || stotram.id}`;
   const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappShareText)}`;
 
   return (
@@ -261,7 +269,8 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                 }}
                 title={isBookmarked ? "Starred in My Daily Puja" : "Add to My Daily Puja routine"}
               >
-                {isBookmarked ? "⭐ Starred in Daily Puja" : "☆ Add to Daily Puja"}
+                <StarIcon size={15} filled={isBookmarked} style={{ color: isBookmarked ? "var(--accent)" : "currentColor" }} />
+                <span>{isBookmarked ? "Starred in Daily Puja" : "Add to Daily Puja"}</span>
               </button>
             </div>
           </div>
@@ -288,9 +297,13 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
                   letterSpacing: "0.08em",
                   padding: "0.5rem 1.25rem",
                   borderRadius: "20px",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "0.45rem",
                 }}
               >
-                📄 View Original PDF
+                <FileTextIcon size={16} />
+                <span>View Original PDF</span>
               </a>
             </div>
           )}
@@ -347,7 +360,7 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           }}
           title="Return to Library"
         >
-          🏠
+          <HomeIcon size={16} />
         </Link>
 
         <div className="control-divider" />
@@ -430,7 +443,13 @@ export default function StotramReader({ stotram }: StotramReaderProps) {
           }}
           title={`Theme: ${currentTheme === "dark" ? "Midnight Gold" : currentTheme === "sepia" ? "Aged Sepia" : "Clean Light"} (Click to cycle)`}
         >
-          {currentTheme === "dark" ? "🌙" : currentTheme === "sepia" ? "📜" : "☀️"}
+          {currentTheme === "dark" ? (
+            <MoonIcon size={16} />
+          ) : currentTheme === "sepia" ? (
+            <ScrollIcon size={16} />
+          ) : (
+            <SunIcon size={16} />
+          )}
         </button>
 
         <div className="control-divider" />

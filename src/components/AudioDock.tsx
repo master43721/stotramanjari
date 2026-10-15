@@ -295,7 +295,7 @@ export default function AudioDock({
             }}
             title="Ring Temple Bell (Ganta)"
           >
-            🔔 Bell
+            Bell
           </button>
 
           <button
@@ -312,7 +312,7 @@ export default function AudioDock({
             }}
             title="Toggle 136.1Hz Meditative Tanpura Drone"
           >
-            🪕 Tanpura {tanpuraOn ? "ON" : "OFF"}
+            Tanpura {tanpuraOn ? "ON" : "OFF"}
           </button>
 
           {/* Voice Recitation Toggle (Web Speech API) */}
@@ -331,7 +331,7 @@ export default function AudioDock({
               }}
               title="Toggle Live Vocal Chanting (Web Speech Recitation)"
             >
-              🎙️ Voice {speechRecitationOn ? "ON" : "OFF"}
+              Voice {speechRecitationOn ? "ON" : "OFF"}
             </button>
           )}
         </div>

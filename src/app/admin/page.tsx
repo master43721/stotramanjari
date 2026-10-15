@@ -211,16 +211,16 @@ export default function AdminPage() {
         </div>
         <div style={{ display: "flex", gap: "0.75rem" }}>
           <button onClick={handleCreateNew} className="btn btn-primary" style={{ fontSize: "0.85rem" }}>
-            ➕ Create New
+            Create New
           </button>
           <button onClick={handleSaveDatabase} className="btn" style={{ borderColor: "var(--accent)", color: "var(--accent)", fontSize: "0.85rem" }}>
-            💾 Save Database
+            Save Database
           </button>
           <button onClick={handleExportJSON} className="btn" style={{ fontSize: "0.85rem" }}>
-            📤 Export JSON
+            Export JSON
           </button>
           <button onClick={() => fileInputRef.current?.click()} className="btn" style={{ fontSize: "0.85rem" }}>
-            📥 Import JSON
+            Import JSON
           </button>
           <input
             type="file"

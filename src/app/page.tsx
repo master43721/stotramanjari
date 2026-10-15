@@ -7,6 +7,7 @@ import { StotramIndexItem } from "@/types";
 import categoryMappings from "@/data/category-mappings.json";
 import PanchangWidget from "@/components/PanchangWidget";
 import { StotramGridSkeleton } from "@/components/SkeletonLoader";
+import { CloseIcon } from "@/components/Icons";
 
 // Defined Category list
 const SACRED_CATEGORIES = [
@@ -262,13 +263,16 @@ export default function Home() {
                   border: "none",
                   color: "var(--text-secondary)",
                   cursor: "pointer",
-                  fontSize: "1.2rem",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                   transition: "var(--transition-fast)"
                 }}
+                aria-label="Clear search query"
                 onMouseOver={(e) => e.currentTarget.style.color = "var(--accent)"}
                 onMouseOut={(e) => e.currentTarget.style.color = "var(--text-secondary)"}
               >
-                ✕
+                <CloseIcon size={16} />
               </button>
             )}
           </div>

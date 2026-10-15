@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
 import StotramaniLogo from "@/components/StotramaniLogo";
+import { MailIcon, PencilIcon, LotusIcon, SendIcon } from "@/components/Icons";
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
@@ -143,7 +144,9 @@ export default function ContactClient() {
             boxShadow: "0 10px 30px var(--shadow)",
           }}
         >
-          <div style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>✉️</div>
+          <div style={{ marginBottom: "0.5rem" }}>
+            <MailIcon size={32} style={{ color: "var(--accent)" }} />
+          </div>
           <h2 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.35rem" }}>
             Official Domain Email
           </h2>
@@ -175,7 +178,8 @@ export default function ContactClient() {
               gap: "0.5rem",
             }}
           >
-            <span>✍️</span> Send a Devotional Note
+            <PencilIcon size={20} style={{ color: "var(--accent)" }} />
+            <span>Send a Devotional Note</span>
           </h2>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginBottom: "1.5rem" }}>
             We adhere to strict data minimization. We only collect the details provided below to answer your inquiry.
@@ -197,7 +201,7 @@ export default function ContactClient() {
               }}
             >
               <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-                <span style={{ fontSize: "1.3rem" }}>🙏</span>
+                <LotusIcon size={22} style={{ color: "#4ade80" }} />
                 <strong style={{ color: "#4ade80", fontSize: "1.05rem" }}>
                   Dhanyavadamulu, {submittedData.name}!
                 </strong>
@@ -419,7 +423,8 @@ export default function ContactClient() {
                     gap: "0.5rem",
                   }}
                 >
-                  {isSubmitting ? "Transmitting..." : "🕊️ Submit Devotional Note"}
+                  <SendIcon size={16} />
+                  <span>{isSubmitting ? "Transmitting..." : "Submit Devotional Note"}</span>
                 </button>
               </div>
             </form>

@@ -90,3 +90,4 @@ generateLogos().catch(err => {
   console.error('Error generating logo assets:', err);
   process.exit(1);
 });
+
