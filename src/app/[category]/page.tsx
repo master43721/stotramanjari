@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getStotramsIndex } from "@/data/loader";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import StotramaniLogo from "@/components/StotramaniLogo";
 
 interface CategoryPageProps {
   params: Promise<{
@@ -88,7 +89,9 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
         <Breadcrumbs items={breadcrumbs} />
 
         <header style={{ textAlign: "center", marginBottom: "clamp(2rem, 4vw, 3.5rem)" }}>
-          <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🕉️</div>
+          <div style={{ marginBottom: "0.75rem" }}>
+            <StotramaniLogo size={48} />
+          </div>
           <h1
             style={{
               fontSize: "clamp(2rem, 5vw, 3.2rem)",

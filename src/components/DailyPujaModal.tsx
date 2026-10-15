@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { DailyPujaItem } from "@/types";
+import StotramaniLogo from "./StotramaniLogo";
 
 interface DailyPujaModalProps {
   isOpen: boolean;
@@ -108,9 +109,12 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
         {/* Header */}
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "1.25rem", gap: "0.5rem" }}>
           <div>
-            <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
-              Sacred Ritual Routine
-            </span>
+            <div style={{ display: "flex", alignItems: "center", gap: "0.4rem", marginBottom: "0.2rem" }}>
+              <StotramaniLogo size={18} />
+              <span style={{ fontSize: "0.8rem", color: "var(--accent)", fontWeight: 700, letterSpacing: "0.1em", textTransform: "uppercase" }}>
+                Sacred Ritual Routine
+              </span>
+            </div>
             <h2 style={{ fontSize: "clamp(1.2rem, 4vw, 1.75rem)", fontWeight: 700, marginTop: "0.2rem" }}>
               My Daily Puja (నిత్య పూజా విధము)
             </h2>

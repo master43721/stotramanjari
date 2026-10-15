@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Metadata } from "next";
+import StotramaniLogo from "@/components/StotramaniLogo";
 
 export const metadata: Metadata = {
   title: "404 - Stotram Not Found",
@@ -76,14 +77,8 @@ export default function NotFound() {
           404
         </div>
 
-        <div
-          style={{
-            fontSize: "1.75rem",
-            marginBottom: "1rem",
-            color: "var(--accent)",
-          }}
-        >
-          🕉️
+        <div style={{ marginBottom: "1.25rem" }}>
+          <StotramaniLogo size={48} />
         </div>
 
         <h1

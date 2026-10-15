@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { calculatePanchang, PanchangInfo } from "@/lib/panchang";
 import DailyPujaModal from "./DailyPujaModal";
+import StotramaniLogo from "./StotramaniLogo";
 
 export default function PanchangWidget() {
   const [panchang] = useState<PanchangInfo>(() => calculatePanchang());
@@ -25,7 +26,7 @@ export default function PanchangWidget() {
         >
           <div>
             <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-              <span style={{ fontSize: "1.2rem" }}>🕉️</span>
+              <StotramaniLogo size={20} />
               <span
                 style={{
                   fontSize: "0.8rem",

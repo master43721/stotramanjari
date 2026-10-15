@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CookieConsent from "@/components/CookieConsent";
+import StotramaniLogo from "@/components/StotramaniLogo";
 import Link from "next/link";
 import Script from "next/script";
 import {
@@ -274,7 +275,7 @@ export default function RootLayout({
               }}
               aria-label="Stotramani Homepage"
             >
-              <span style={{ fontSize: "1.4rem" }}>🕉️</span>
+              <StotramaniLogo size={32} />
               <span style={{ fontWeight: 700, fontSize: "1.2rem", color: "var(--accent)", letterSpacing: "0.02em" }}>
                 స్తోత్రమణి &bull; Stotramani
               </span>

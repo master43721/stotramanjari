@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import StotramaniLogo from "@/components/StotramaniLogo";
 
 export default function ContactClient() {
   const [formData, setFormData] = useState({
@@ -99,7 +100,9 @@ export default function ContactClient() {
         <Breadcrumbs items={breadcrumbs} />
 
         <div style={{ textAlign: "center", marginBottom: "clamp(2rem, 4vw, 3.5rem)" }}>
-          <div style={{ fontSize: "2rem", marginBottom: "0.5rem" }}>🕉️</div>
+          <div style={{ marginBottom: "0.75rem" }}>
+            <StotramaniLogo size={48} />
+          </div>
           <h1
             style={{
               fontSize: "clamp(2rem, 5vw, 3.2rem)",

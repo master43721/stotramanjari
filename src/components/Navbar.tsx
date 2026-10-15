@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import StotramaniLogo from "./StotramaniLogo";
 
 export default function Navbar() {
   type ThemeType = "dark" | "sepia" | "clean-light";
@@ -94,14 +95,7 @@ export default function Navbar() {
           }}
           aria-label="Stotramani Home"
         >
-          <span
-            style={{
-              fontSize: "1.25rem",
-              lineHeight: 1,
-            }}
-          >
-            🕉️
-          </span>
+          <StotramaniLogo size={30} />
           <span
             style={{
               fontSize: "clamp(1.2rem, 4vw, 1.5rem)",
