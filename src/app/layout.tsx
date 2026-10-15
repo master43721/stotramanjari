@@ -132,6 +132,10 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const whatsappShareText =
+    "🕉️ Namaste! Discover Stotramani (స్తోత్రమణి) – A sacred, distraction-free digital sanctuary for authentic Telugu & Sanskrit stotrams, Vedic chants, and daily puja slokas.\n\nExplore and recite here:\nhttps://stotramani.app";
+  const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappShareText)}`;
+
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -195,9 +199,8 @@ export default function RootLayout({
                   },
                   "contactPoint": {
                     "@type": "ContactPoint",
-                    "email": "contact@stotramani.app",
-                    "telephone": "+91-98860-12345",
-                    "contactType": "Devotional & Chanting Support",
+                    "url": "https://stotramani.app/contact",
+                    "contactType": "Devotional Inquiries",
                     "availableLanguage": ["Telugu", "Sanskrit", "English", "Hindi"]
                   }
                 },
@@ -210,8 +213,6 @@ export default function RootLayout({
                   "logo": "https://stotramani.app/icon-512.png",
                   "image": "https://stotramani.app/og-image.png",
                   "description": "Distraction-free digital sanctuary for sacred Telugu & Sanskrit stotrams, Vedic chants, and daily puja guidance curated by Sudheendra Sripada.",
-                  "telephone": "+91-98860-12345",
-                  "email": "contact@stotramani.app",
                   "priceRange": "Free / Seva",
                   "currenciesAccepted": "INR",
                   "paymentAccepted": "Free",
@@ -290,7 +291,7 @@ export default function RootLayout({
                 Sacred Library
               </Link>
               <Link href="/contact" style={{ color: "var(--text-primary)", textDecoration: "none", fontWeight: 500, transition: "color 0.2s ease" }}>
-                Devotional Support & Contact
+                Devotional Contact
               </Link>
               <Link href="/privacy" style={{ color: "var(--text-secondary)", textDecoration: "none", transition: "color 0.2s ease" }}>
                 Privacy Policy
@@ -302,22 +303,20 @@ export default function RootLayout({
                 Cookie Policy
               </Link>
               <a
-                href="https://wa.me/919886012345?text=Namaste%20Sudheendra%20ji!%20Reaching%20out%20from%20Stotramani%20regarding%20sacred%20chanting."
+                href={whatsappShareUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{ color: "#25D366", textDecoration: "none", fontWeight: 600 }}
+                title="Share Stotramani on WhatsApp"
               >
-                WhatsApp Chanting Support
+                Share on WhatsApp
               </a>
             </nav>
 
             <div style={{ fontSize: "0.82rem", color: "var(--text-secondary)", display: "flex", flexDirection: "column", gap: "0.35rem" }}>
               <p>
                 Curated and handcrafted with devotion by{" "}
-                <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sudheendra Sripada</span> &bull;{" "}
-                <a href="mailto:contact@stotramani.app" style={{ color: "var(--accent)", textDecoration: "none" }}>
-                  contact@stotramani.app
-                </a>
+                <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>Sudheendra Sripada</span>
               </p>
               <p style={{ opacity: 0.8 }}>
                 &copy; {new Date().getFullYear()} Stotramani. All sacred stotrams belong to the timeless spiritual heritage of Sanatana Dharma.

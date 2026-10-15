@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
@@ -105,7 +106,7 @@ export default function TermsPage() {
               4. Accuracy & Devotional Disclaimers
             </h2>
             <p style={{ color: "var(--text-secondary)" }}>
-              While extreme diligence is exercised in verifying Sanskrit and Telugu manuscripts, regional variations and grammatical nuances may exist in different traditions. Content is provided &ldquo;as is&rdquo; without warranties of any kind. If you spot a typographical or transliteration oversight, we eagerly invite you to notify us at <a href="mailto:contact@stotramani.app" style={{ color: "var(--accent)" }}>contact@stotramani.app</a>.
+              While extreme diligence is exercised in verifying Sanskrit and Telugu manuscripts, regional variations and grammatical nuances may exist in different traditions. Content is provided &ldquo;as is&rdquo; without warranties of any kind. If you spot a typographical or transliteration oversight, we eagerly invite you to notify us via our <Link href="/contact" style={{ color: "var(--accent)" }}>Devotional Contact Page</Link>.
             </p>
           </section>
 

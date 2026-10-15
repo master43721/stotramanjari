@@ -1,4 +1,5 @@
 import { Metadata } from "next";
+import Link from "next/link";
 import Breadcrumbs from "@/components/Breadcrumbs";
 
 export const metadata: Metadata = {
@@ -127,7 +128,7 @@ export default function PrivacyPage() {
               6. Contact & Data Rights
             </h2>
             <p style={{ color: "var(--text-secondary)" }}>
-              If you have any questions regarding this Privacy Policy or wish to request deletion of any correspondence sent to us, please contact curator <strong>Sudheendra Sripada</strong> at <a href="mailto:contact@stotramani.app" style={{ color: "var(--accent)" }}>contact@stotramani.app</a>.
+              If you have any questions regarding this Privacy Policy or wish to request deletion of any correspondence sent to us, please contact curator <strong>Sudheendra Sripada</strong> via our <Link href="/contact" style={{ color: "var(--accent)" }}>Devotional Contact Page</Link>.
             </p>
           </section>
         </div>

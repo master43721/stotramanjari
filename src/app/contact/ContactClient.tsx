@@ -20,7 +20,7 @@ export default function ContactClient() {
 
   const breadcrumbs = [
     { label: "Home", href: "/" },
-    { label: "Contact & Chanting Support" },
+    { label: "Devotional Contact" },
   ];
 
   const validate = () => {
@@ -69,11 +69,6 @@ export default function ContactClient() {
     }, 600);
   };
 
-  const whatsappMessage = encodeURIComponent(
-    "Namaste Sudheendra ji! I am reaching out from Stotramani (stotramani.app) regarding sacred chanting support and devotional guidance."
-  );
-  const whatsappUrl = `https://wa.me/919886012345?text=${whatsappMessage}`;
-
   return (
     <div
       style={{
@@ -116,7 +111,7 @@ export default function ContactClient() {
               marginBottom: "0.75rem",
             }}
           >
-            Devotional Support & Contact
+            Devotional Contact
           </h1>
           <p
             style={{
@@ -132,150 +127,26 @@ export default function ContactClient() {
           </p>
         </div>
 
-        {/* Quick Contact Methods Grid */}
+        {/* Official Domain Email Section */}
         <div
           style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 260px), 1fr))",
-            gap: "1.25rem",
-            marginBottom: "3rem",
+            backgroundColor: "var(--bg-card)",
+            border: "1px solid var(--border)",
+            borderRadius: "var(--radius-md)",
+            padding: "1.75rem",
+            maxWidth: "540px",
+            margin: "0 auto 3rem auto",
+            textAlign: "center",
+            boxShadow: "0 10px 30px var(--shadow)",
           }}
         >
-          {/* WhatsApp Support Card */}
-          <div
-            style={{
-              backgroundColor: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius-md)",
-              padding: "1.5rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              boxShadow: "0 10px 30px var(--shadow)",
-              transition: "transform 0.2s ease, border-color 0.2s ease",
-            }}
-          >
-            <div>
-              <div style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>💬</div>
-              <h2 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.3rem" }}>
-                WhatsApp Chanting Support
-              </h2>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, marginBottom: "1.25rem" }}>
-                Instant devotional support, audio clip pronunciation verification, and community queries.
-              </p>
-            </div>
-            <a
-              href={whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                padding: "0.65rem 1.25rem",
-                borderRadius: "24px",
-                backgroundColor: "#25D366",
-                color: "#ffffff",
-                fontWeight: 700,
-                fontSize: "0.88rem",
-                textDecoration: "none",
-                boxShadow: "0 4px 15px rgba(37, 211, 102, 0.35)",
-                border: "none",
-              }}
-            >
-              <span>📲</span> Open WhatsApp Chat
-            </a>
-          </div>
-
-          {/* Email Card */}
-          <div
-            style={{
-              backgroundColor: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius-md)",
-              padding: "1.5rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              boxShadow: "0 10px 30px var(--shadow)",
-            }}
-          >
-            <div>
-              <div style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>✉️</div>
-              <h2 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.3rem" }}>
-                Official Domain Email
-              </h2>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, marginBottom: "1.25rem" }}>
-                Send manuscript scans, editorial suggestions, and in-depth devotional correspondence.
-              </p>
-            </div>
-            <a
-              href="mailto:contact@stotramani.app"
-              className="btn"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                padding: "0.65rem 1.25rem",
-                borderRadius: "24px",
-                borderColor: "var(--accent)",
-                color: "var(--accent)",
-                backgroundColor: "var(--accent-light)",
-                fontWeight: 700,
-                fontSize: "0.88rem",
-                textDecoration: "none",
-              }}
-            >
-              <span>📧</span> contact@stotramani.app
-            </a>
-          </div>
-
-          {/* Devotional Helpline */}
-          <div
-            style={{
-              backgroundColor: "var(--bg-card)",
-              border: "1px solid var(--border)",
-              borderRadius: "var(--radius-md)",
-              padding: "1.5rem",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-              boxShadow: "0 10px 30px var(--shadow)",
-            }}
-          >
-            <div>
-              <div style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>📞</div>
-              <h2 style={{ fontSize: "1.1rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.3rem" }}>
-                Chanting Helpline
-              </h2>
-              <p style={{ fontSize: "0.85rem", color: "var(--text-secondary)", lineHeight: 1.5, marginBottom: "1.25rem" }}>
-                Available Monday - Saturday, 9 AM - 6 PM IST for personal spiritual recitation assistance.
-              </p>
-            </div>
-            <a
-              href="tel:+919886012345"
-              className="btn"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                gap: "0.5rem",
-                padding: "0.65rem 1.25rem",
-                borderRadius: "24px",
-                borderColor: "var(--border)",
-                color: "var(--text-primary)",
-                backgroundColor: "transparent",
-                fontWeight: 700,
-                fontSize: "0.88rem",
-                textDecoration: "none",
-              }}
-            >
-              <span>📱</span> +91 98860 12345
-            </a>
-          </div>
+          <div style={{ fontSize: "1.75rem", marginBottom: "0.5rem" }}>✉️</div>
+          <h2 style={{ fontSize: "1.15rem", fontWeight: 700, color: "var(--text-primary)", marginBottom: "0.35rem" }}>
+            Official Domain Email
+          </h2>
+          <p style={{ fontSize: "0.88rem", color: "var(--text-secondary)", lineHeight: 1.5, margin: 0 }}>
+            Send manuscript scans, editorial suggestions, and in-depth devotional correspondence.
+          </p>
         </div>
 
         {/* Interactive Devotional Contact Form */}
@@ -547,16 +418,6 @@ export default function ContactClient() {
                 >
                   {isSubmitting ? "Transmitting..." : "🕊️ Submit Devotional Note"}
                 </button>
-
-                <span style={{ fontSize: "0.85rem", color: "var(--text-secondary)" }}>
-                  or email directly to{" "}
-                  <a
-                    href="mailto:contact@stotramani.app"
-                    style={{ color: "var(--accent)", textDecoration: "underline" }}
-                  >
-                    contact@stotramani.app
-                  </a>
-                </span>
               </div>
             </form>
           )}
