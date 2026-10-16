@@ -1,5 +1,7 @@
 import { Metadata } from "next";
-import { notFound } from "next/navigation";
+import { cookies } from "next/headers";
+import { redirect } from "next/navigation";
+import { hasValidAdminSession } from "@/lib/adminAuth";
 
 export const metadata: Metadata = {
   title: "Stotram Curation Console",
@@ -10,15 +12,14 @@ export const metadata: Metadata = {
   },
 };
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  // GitHub Pages is a static host: it cannot enforce authentication. Do not
-  // publish the curation console until the site is moved behind real auth.
-  if (process.env.NODE_ENV === "production") {
-    notFound();
+  const cookieStore = await cookies();
+  if (!hasValidAdminSession(cookieStore.get("stotramani_admin_session")?.value)) {
+    redirect("/admin-login");
   }
 
   return <>{children}</>;

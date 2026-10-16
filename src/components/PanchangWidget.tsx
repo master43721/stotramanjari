@@ -1,15 +1,45 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
-import { calculatePanchang, PanchangInfo } from "@/lib/panchang";
+import { PanchangInfo } from "@/lib/panchang";
 import DailyPujaModal from "./DailyPujaModal";
 import StotramaniLogo from "./StotramaniLogo";
 import { LotusIcon } from "./Icons";
 
 export default function PanchangWidget() {
-  const [panchang] = useState<PanchangInfo>(() => calculatePanchang());
+  const [panchang, setPanchang] = useState<PanchangInfo | null>(null);
+  const [panchangError, setPanchangError] = useState("");
   const [isPujaModalOpen, setIsPujaModalOpen] = useState(false);
+
+  useEffect(() => {
+    fetch("/api/panchang?city_id=hyderabad")
+      .then(async (response) => {
+        if (!response.ok) throw new Error("unavailable");
+        return response.json();
+      })
+      .then((result) => {
+        const data = result.data;
+        const tithi = data?.tithi?.[0];
+        const nakshatra = data?.nakshatra?.[0];
+        if (!data || !tithi || !nakshatra) throw new Error("invalid response");
+        setPanchang({
+          date: data.date,
+          dayName: new Intl.DateTimeFormat("en-IN", { weekday: "long", timeZone: "Asia/Kolkata" }).format(new Date()),
+          dayTelugu: "నేటి పంచాంగం",
+          presidingDeity: data.city || "Hyderabad",
+          deityCategory: "",
+          tithi: { name: tithi.name, paksha: tithi.paksha, telugu: `${tithi.paksha} ${tithi.name}` },
+          nakshatra: { name: nakshatra.name, telugu: nakshatra.name },
+          rahuKalam: data.muhurat?.rahu_kaal ? `${data.muhurat.rahu_kaal.start} – ${data.muhurat.rahu_kaal.end}` : "Not available",
+          abhijitMuhurtam: data.muhurat?.abhijit_muhurat ? `${data.muhurat.abhijit_muhurat.start} – ${data.muhurat.abhijit_muhurat.end}` : "Not available",
+          recommendedStotra: { deity: "Daily practice", titleEnglish: "Explore the Sacred Library", titleTelugu: "పవిత్ర గ్రంథాలయం", slug: "", description: "Choose a stotram for today’s recitation." },
+        });
+      })
+      .catch(() => setPanchangError("Today’s Panchang is temporarily unavailable. Please try again shortly."));
+  }, []);
+
+  if (!panchang) return <div className="panchang-banner" role="status">{panchangError || "Loading today’s Panchang…"}</div>;
 
   return (
     <>
@@ -178,7 +208,7 @@ export default function PanchangWidget() {
           </div>
 
           <Link
-            href={`/readings/${panchang.recommendedStotra.slug}`}
+            href={panchang.recommendedStotra.slug ? `/readings/${panchang.recommendedStotra.slug}` : "/"}
             className="btn"
             style={{
               backgroundColor: "var(--accent)",
