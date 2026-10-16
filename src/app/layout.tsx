@@ -5,13 +5,9 @@ import CookieConsent from "@/components/CookieConsent";
 import StotramaniLogo from "@/components/StotramaniLogo";
 import Link from "next/link";
 import Script from "next/script";
+import localFont from "next/font/local";
 import {
   Outfit,
-  Noto_Sans_Telugu,
-  Noto_Serif_Telugu,
-  Tiro_Devanagari_Sanskrit,
-  Noto_Sans_Kannada,
-  Noto_Sans_Tamil,
 } from "next/font/google";
 
 export const viewport: Viewport = {
@@ -97,38 +93,12 @@ const outfit = Outfit({
   display: "swap",
 });
 
-const notoSansTelugu = Noto_Sans_Telugu({
-  subsets: ["telugu"],
-  weight: ["400", "700"],
+const notoSansTelugu = localFont({
+  src: [
+    { path: "./fonts/NotoSansTelugu-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./fonts/NotoSansTelugu-Bold.ttf", weight: "700", style: "normal" },
+  ],
   variable: "--font-noto-sans-telugu",
-  display: "swap",
-});
-
-const notoSerifTelugu = Noto_Serif_Telugu({
-  subsets: ["telugu"],
-  weight: ["400", "700"],
-  variable: "--font-noto-serif-telugu",
-  display: "swap",
-});
-
-const tiroDevanagariSanskrit = Tiro_Devanagari_Sanskrit({
-  subsets: ["devanagari"],
-  weight: "400",
-  variable: "--font-tiro-devanagari",
-  display: "swap",
-});
-
-const notoSansKannada = Noto_Sans_Kannada({
-  subsets: ["kannada"],
-  weight: ["400", "700"],
-  variable: "--font-noto-kannada",
-  display: "swap",
-});
-
-const notoSansTamil = Noto_Sans_Tamil({
-  subsets: ["tamil"],
-  weight: ["400", "700"],
-  variable: "--font-noto-tamil",
   display: "swap",
 });
 
@@ -175,7 +145,7 @@ export default function RootLayout({
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
       </head>
       <body
-        className={`${outfit.variable} ${notoSansTelugu.variable} ${notoSerifTelugu.variable} ${tiroDevanagariSanskrit.variable} ${notoSansKannada.variable} ${notoSansTamil.variable}`}
+        className={`${outfit.variable} ${notoSansTelugu.variable}`}
       >
         {/* JSON-LD Structured Data: WebSite & Organization */}
         <script

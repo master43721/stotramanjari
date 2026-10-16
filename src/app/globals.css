@@ -18,10 +18,10 @@
   --selection-color: #f4f0e6;
   
   --font-sans: var(--font-sans), 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-telugu: 'Noto Sans Telugu', 'Noto Serif Telugu', var(--font-noto-sans-telugu), var(--font-noto-serif-telugu), 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', 'Gautami', 'Vani', sans-serif;
-  --font-devanagari: var(--font-tiro-devanagari), 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', 'Mangal', serif;
-  --font-kannada: var(--font-noto-kannada), 'Noto Sans Kannada', 'Tunga', sans-serif;
-  --font-tamil: var(--font-noto-tamil), 'Noto Sans Tamil', 'Latha', sans-serif;
+  --font-telugu: var(--font-noto-sans-telugu), 'Noto Sans Telugu', 'Noto Serif Telugu', 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', 'Gautami', 'Vani', sans-serif;
+  --font-devanagari: 'Tiro Devanagari Sanskrit', 'Noto Sans Devanagari', 'Mangal', serif;
+  --font-kannada: 'Noto Sans Kannada', 'Tunga', sans-serif;
+  --font-tamil: 'Noto Sans Tamil', 'Latha', sans-serif;
   --font-iast: var(--font-sans), 'Outfit', Georgia, serif;
   --reader-font-scale: 1.1;
 }
@@ -1457,6 +1457,44 @@ body.distraction-free .floating-controls:hover {
   background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(212, 175, 55, 0.02));
   box-shadow: 0 0 30px rgba(212, 175, 55, 0.2), 0 10px 30px rgba(0, 0, 0, 0.4);
   transform: scale(1.008);
+}
+
+/* Admin console: retain a usable editor layout on narrow screens. */
+.admin-header-actions {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.admin-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 320px) minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+@media (max-width: 768px) {
+  .admin-page-header {
+    align-items: flex-start !important;
+    flex-direction: column;
+  }
+
+  .admin-header-actions {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .admin-workspace,
+  .admin-form-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 }
 
 /* Chanting Mode Control Toggle */

@@ -202,14 +202,14 @@ export default function AdminPage() {
   return (
     <div className="container" style={{ paddingBlock: "3rem", minHeight: "90vh" }}>
       {/* Admin Title */}
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1.5rem" }}>
+      <div className="admin-page-header" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "2rem", borderBottom: "1px solid var(--border)", paddingBottom: "1.5rem", gap: "1rem" }}>
         <div>
           <h1 style={{ fontSize: "2rem", color: "var(--accent)" }}>Stotram Curation Console</h1>
           <p style={{ color: "var(--text-secondary)", fontSize: "0.9rem", marginTop: "0.25rem" }}>
             Add, edit, or delete items in the database.
           </p>
         </div>
-        <div style={{ display: "flex", gap: "0.75rem" }}>
+        <div className="admin-header-actions">
           <button onClick={handleCreateNew} className="btn btn-primary" style={{ fontSize: "0.85rem" }}>
             Create New
           </button>
@@ -250,7 +250,7 @@ export default function AdminPage() {
       )}
 
       {/* Main Two Column workspace */}
-      <div style={{ display: "grid", gridTemplateColumns: "320px 1fr", gap: "2rem", alignItems: "start" }}>
+      <div className="admin-workspace">
         
         {/* Left list Panel */}
         <div style={{
@@ -356,7 +356,7 @@ export default function AdminPage() {
             </h2>
 
             {/* Core Form Fields */}
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "1.25rem" }}>
+            <div className="admin-form-grid">
               <div>
                 <label style={{ display: "block", fontSize: "0.85rem", fontWeight: "600", color: "var(--text-secondary)", marginBottom: "0.4rem" }}>
                   Unique ID
