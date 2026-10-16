@@ -124,7 +124,7 @@ export default async function CategoryPage({ params }: CategoryPageProps) {
               <h2 className="stotram-card-title-english">{stotram.title_english}</h2>
               <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
               <Link
-                href={`/readings/${stotram.slug || stotram.id}`}
+                href={`/${category}/${stotram.slug || stotram.id}`}
                 className="stotram-card-link"
                 aria-label={`Read ${stotram.title_english}`}
               >

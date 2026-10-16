@@ -18,12 +18,30 @@ interface RawStotramItem {
 let cachedStotrams: Stotram[] | null = null;
 let cachedSlugMap: Map<string, Stotram> | null = null;
 
+const TELUGU_CATEGORY_MAP: Record<string, string> = {
+  bilvaashtakam: "shiva",
+  rudrashtakam: "shiva",
+  totakashtakam: "guru",
+  madhurashtakam: "krishna",
+  suryashtakam: "surya",
+  govindashtakam: "krishna",
+  achyutashtakam: "krishna",
+  harivarasanam: "ayyappa",
+  dhanyashtakam: "ashtakas",
+  gurvashtakam: "guru",
+};
+
 // Return lightweight ~120KB index for fast homepage search, filters, and panchang
 export function getStotramsIndex(): StotramIndexItem[] {
-  return (indexData as StotramIndexItem[]).map((item) => ({
-    ...item,
-    title_telugu: sanitizeTeluguText(item.title_telugu || ""),
-  }));
+  return (indexData as StotramIndexItem[]).map((item) => {
+    const slug = item.slug || item.id;
+    const cat = item.category === "telugu" ? TELUGU_CATEGORY_MAP[slug] || "devotional" : item.category;
+    return {
+      ...item,
+      category: cat,
+      title_telugu: sanitizeTeluguText(item.title_telugu || ""),
+    };
+  });
 }
 
 export function getAllStotrams(): Stotram[] {
@@ -40,15 +58,22 @@ export function getAllStotrams(): Stotram[] {
   const slugMap = new Map<string, Stotram>();
 
   // Helper to map and sanitize stotram objects
-  const mapItem = (item: RawStotramItem): Stotram => ({
-    id: item.id || "",
-    slug: item.slug || item.id,
-    title_telugu: sanitizeTeluguText(item.title_telugu || ""),
-    title_english: item.title_english || item.title || "",
-    category: item.category || "devotional",
-    content_lines: sanitizeLines(item.content_lines || item.contentLines || []),
-    pdfLink: item.pdfLink || null
-  });
+  const mapItem = (item: RawStotramItem): Stotram => {
+    const slug = item.slug || item.id || "";
+    let category = item.category || "devotional";
+    if (category === "telugu") {
+      category = TELUGU_CATEGORY_MAP[slug] || "devotional";
+    }
+    return {
+      id: item.id || "",
+      slug: slug,
+      title_telugu: sanitizeTeluguText(item.title_telugu || ""),
+      title_english: item.title_english || item.title || "",
+      category,
+      content_lines: sanitizeLines(item.content_lines || item.contentLines || []),
+      pdfLink: item.pdfLink || null,
+    };
+  };
 
   // 1. Initialize with default stotrams
   defaultStotrams.forEach((item) => {

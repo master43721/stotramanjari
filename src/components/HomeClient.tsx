@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, type ReactNode } from "react";
 import Link from "next/link";
 import { StotramIndexItem } from "@/types";
-import PanchangWidget from "@/components/PanchangWidget";
+import { stotramPath } from "@/lib/stotramRoutes";
 import { StotramGridSkeleton } from "@/components/SkeletonLoader";
 import {
   CloseIcon,
@@ -105,11 +105,13 @@ function matchesCategory(
 interface HomeClientProps {
   stotrams: StotramIndexItem[];
   categoryMappings: Record<string, string[]>;
+  panchang: ReactNode;
 }
 
 export default function HomeClient({
   stotrams,
   categoryMappings,
+  panchang,
 }: HomeClientProps) {
   const [searchQuery, setSearchQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<string>("all");
@@ -237,7 +239,7 @@ export default function HomeClient({
 
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
         {/* Vedic Panchang & Routine Banner */}
-        <PanchangWidget />
+        {panchang}
 
         {/* Massive Gold Hero */}
         <section
@@ -597,7 +599,7 @@ export default function HomeClient({
                 <h2 className="stotram-card-title-english">{stotram.title_english}</h2>
                 <h3 className="stotram-card-title-telugu">{stotram.title_telugu}</h3>
 
-                <Link href={`/readings/${stotram.slug}`} className="stotram-card-link">
+                <Link href={stotramPath(stotram)} className="stotram-card-link">
                   Read Stotram <span>→</span>
                 </Link>
               </div>

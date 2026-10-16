@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 
 export default function NotFound() {
   const quickLinks = [
-    { title: "Sri Ganesha Stotrams", href: "/readings/ganesha-pancharatnam" },
-    { title: "Shiva Panchakshari", href: "/readings/shiva-panchakshari-stotram" },
-    { title: "Sri Rudram Namakam", href: "/readings/sri-rudram-namakam" },
-    { title: "Vishnu Sahasranamam", href: "/readings/sree-vishnu-sahasra-nama-stotram" },
-    { title: "Hanuman Chalisa", href: "/readings/hanuman-chalisa" },
+    { title: "Sri Ganesha Stotrams", href: "/ganesha/ganesha-pancharatnam" },
+    { title: "Shiva Panchakshari", href: "/shiva/shiva-panchakshari-stotram" },
+    { title: "Sri Rudram Namakam", href: "/shiva/sri-rudram-namakam" },
+    { title: "Vishnu Sahasranamam", href: "/vishnu/sree-vishnu-sahasra-nama-stotram" },
+    { title: "Hanuman Chalisa", href: "/hanuman/hanuman-chalisa" },
   ];
 
   return (

@@ -16,44 +16,38 @@ function generateSitemap() {
     { loc: `${domain}/cookies`, priority: '0.5', changefreq: 'monthly' },
   ];
 
+  // Dedicated Panchang Routes
+  const panchangCities = ['hyderabad', 'vijayawada', 'visakhapatnam', 'tirupati', 'bengaluru', 'chennai'];
+  const panchangRoutes = [
+    { loc: `${domain}/panchang`, priority: '0.9', changefreq: 'daily' },
+    ...panchangCities.map((city) => ({
+      loc: `${domain}/panchang/${city}/${currentDate}`,
+      priority: '0.9',
+      changefreq: 'daily',
+    })),
+  ];
+
+  // Canonical Stotram Routes ONLY (No duplicate /readings/ or /telugu/ URLs)
   const stotramRoutes = [];
-  const seenReadings = new Set();
-  const seenCategories = new Set();
-  const seenTelugu = new Set();
+  const seenCanonicalStotrams = new Set();
 
   for (const stotram of stotrams) {
     const slug = stotram.slug || stotram.id;
-    if (slug && !seenReadings.has(slug)) {
-      seenReadings.add(slug);
-      stotramRoutes.push({
-        loc: `${domain}/readings/${slug}`,
-        priority: '0.9',
-        changefreq: 'weekly',
-      });
-    }
-
-    if (slug && !seenTelugu.has(slug)) {
-      seenTelugu.add(slug);
-      stotramRoutes.push({
-        loc: `${domain}/telugu/${slug}`,
-        priority: '0.95',
-        changefreq: 'weekly',
-      });
-    }
-
-    if (stotram.category && slug) {
-      const catKey = `${stotram.category}/${slug}`;
-      if (!seenCategories.has(catKey)) {
-        seenCategories.add(catKey);
+    const category = stotram.category || 'devotional';
+    if (category && slug) {
+      const canonicalKey = `${category}/${slug}`;
+      if (!seenCanonicalStotrams.has(canonicalKey)) {
+        seenCanonicalStotrams.add(canonicalKey);
         stotramRoutes.push({
-          loc: `${domain}/${stotram.category}/${slug}`,
-          priority: '0.8',
+          loc: `${domain}/${category}/${slug}`,
+          priority: '0.9',
           changefreq: 'weekly',
         });
       }
     }
   }
 
+  // Category Index Pages
   const uniqueCategories = Array.from(new Set(stotrams.map((s) => s.category).filter(Boolean)));
   const categoryListingRoutes = uniqueCategories.map((cat) => ({
     loc: `${domain}/${cat}`,
@@ -61,7 +55,7 @@ function generateSitemap() {
     changefreq: 'weekly',
   }));
 
-  const allUrls = [...staticRoutes, ...categoryListingRoutes, ...stotramRoutes];
+  const allUrls = [...staticRoutes, ...panchangRoutes, ...categoryListingRoutes, ...stotramRoutes];
 
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -80,7 +74,7 @@ ${allUrls
 
   const outputPath = path.resolve(__dirname, '../public/sitemap.xml');
   fs.writeFileSync(outputPath, xml, 'utf8');
-  console.log(`Successfully generated public/sitemap.xml with ${allUrls.length} URLs`);
+  console.log(`Successfully generated public/sitemap.xml with ${allUrls.length} canonical URLs`);
 }
 
 generateSitemap();

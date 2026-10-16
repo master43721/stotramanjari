@@ -1,9 +1,24 @@
 import type { NextConfig } from "next";
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   productionBrowserSourceMaps: false,
   compress: true,
   poweredByHeader: false,
+  async redirects() {
+    return [
+      {
+        source: "/readings",
+        destination: "/",
+        permanent: true,
+      },
+      {
+        source: "/telugu",
+        destination: "/",
+        permanent: true,
+      },
+    ];
+  },
   async headers() {
     return [
       {
@@ -20,5 +35,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-

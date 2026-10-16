@@ -907,6 +907,29 @@ body.distraction-free .floating-controls:hover {
   background: linear-gradient(180deg, var(--accent) 0%, transparent 100%);
 }
 
+.panchang-heading-row,
+.panchang-actions,
+.panchang-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.panchang-eyebrow { color: var(--accent); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; margin: 0 0 0.3rem; text-transform: uppercase; }
+.panchang-banner h2 { font-size: clamp(1.05rem, 3vw, 1.35rem); margin: 0; }
+.panchang-copy { color: var(--text-secondary); margin: 0.6rem 0 1rem; max-width: 44rem; }
+.panchang-link { color: var(--accent); font-size: 0.86rem; font-weight: 700; text-decoration: none; }
+.panchang-puja-button { background: var(--accent-light); border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); cursor: pointer; display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.48rem 0.8rem; font: inherit; font-size: 0.82rem; font-weight: 700; }
+.panchang-facts { display: grid; gap: 0.65rem; grid-template-columns: repeat(3, minmax(0, 1fr)); margin: 1.15rem 0; }
+.panchang-fact { background: color-mix(in srgb, var(--bg-card) 90%, transparent); border: 1px solid var(--border); border-radius: var(--radius-sm); min-width: 0; padding: 0.7rem 0.8rem; }
+.panchang-fact span { color: var(--text-secondary); display: block; font-size: 0.7rem; letter-spacing: 0.03em; text-transform: uppercase; }
+.panchang-fact strong { display: block; font-size: 0.9rem; margin-top: 0.25rem; overflow-wrap: anywhere; }
+.panchang-fact strong[data-tone="warning"] { color: #f87171; }
+.panchang-fact strong[data-tone="success"] { color: #34d399; }
+.panchang-footer { border-top: 1px solid var(--border); color: var(--text-secondary); font-size: 0.78rem; padding-top: 0.85rem; }
+
 /* ==========================================================================
    Comprehensive Screen Resolution Optimizations:
    Mobile (320px–480px), Tablet (768px), Laptop (1024px–1440px), Ultra-Wide (1920px+)
@@ -1000,6 +1023,7 @@ body.distraction-free .floating-controls:hover {
     border-radius: 16px;
     margin-bottom: 2rem;
   }
+  .panchang-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 /* 2. Tablet Portrait & Landscape (481px to 768px) */
@@ -1572,5 +1596,216 @@ body.distraction-free .floating-controls:hover {
   color: var(--text-secondary);
   line-height: 1.6;
 }
+
+/* Editorial Content Block & High-Intent SEO Hierarchy */
+.stotram-editorial-block {
+  margin-top: 3.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.editorial-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent 0%, var(--accent) 50%, transparent 100%);
+  opacity: 0.35;
+  margin-bottom: 2rem;
+}
+
+.editorial-section {
+  margin-bottom: 2.5rem;
+}
+
+.editorial-heading {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.editorial-paragraph {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  font-family: var(--font-telugu), var(--font-sans);
+  margin-bottom: 0.35rem;
+}
+
+.editorial-subtext {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.editorial-metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.editorial-meta-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1rem;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.72rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.meta-value {
+  display: block;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.editorial-benefits-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.75rem 0 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.editorial-benefits-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.85rem 1.1rem;
+}
+
+.benefit-bullet {
+  color: var(--accent);
+  font-weight: 800;
+  font-size: 1.1rem;
+  line-height: 1.2;
+}
+
+.benefit-en {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+.padaccheda-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.65rem;
+  margin-top: 0.75rem;
+}
+
+.padaccheda-item {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 0.65rem 0.85rem;
+}
+
+.padaccheda-word {
+  display: block;
+  font-family: var(--font-telugu);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 0.2rem;
+}
+
+.padaccheda-meaning {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.tatparyam-box {
+  background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, var(--bg-card) 100%);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.25rem;
+  margin-top: 0.85rem;
+}
+
+.tatparyam-te {
+  font-family: var(--font-telugu);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: var(--text-primary);
+  margin-bottom: 0.4rem;
+}
+
+.tatparyam-en {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.related-stotrams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.85rem;
+}
+
+.related-stotram-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.15rem;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.related-stotram-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.related-cat {
+  font-size: 0.7rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 700;
+  margin-bottom: 0.3rem;
+}
+
+.related-title-en {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+
+.related-title-te {
+  font-family: var(--font-telugu);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  flex-grow: 1;
+  margin-bottom: 0.6rem;
+}
+
+.related-link-action {
+  font-size: 0.82rem;
+  color: var(--accent);
+  font-weight: 700;
+}
+
 
 

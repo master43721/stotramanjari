@@ -88,6 +88,13 @@ export default async function StotramPage({ params }: PageProps) {
     category
   );
 
+  const allIndexed = getStotramsIndex();
+  const currentSlug = stotram.slug || stotram.id;
+  const sameCategory = allIndexed.filter(
+    (s) => s.category === category && (s.slug || s.id) !== currentSlug
+  );
+  const relatedStotrams = sameCategory.slice(0, 6);
+
   return (
     <>
       {/* Hyper-Structured Semantic Schema (JSON-LD) for Google Rich Snippets & Featured Snippet (#0 Position) */}
@@ -108,7 +115,7 @@ export default async function StotramPage({ params }: PageProps) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <StotramReader stotram={stotram} />
+      <StotramReader stotram={stotram} relatedStotrams={relatedStotrams} />
     </>
   );
 }

@@ -2,9 +2,11 @@
 
 import { useEffect, useState, useMemo } from "react";
 import Link from "next/link";
-import { Stotram, DailyPujaItem } from "@/types";
+import { Stotram, DailyPujaItem, StotramIndexItem } from "@/types";
+import { stotramPath } from "@/lib/stotramRoutes";
 import { SupportedScript, transliterate } from "@/lib/sanscript";
 import Breadcrumbs from "@/components/Breadcrumbs";
+import StotramEditorialContent from "./StotramEditorialContent";
 import {
   MoonIcon,
   SunIcon,
@@ -21,9 +23,10 @@ import {
 interface StotramReaderProps {
   stotram: Stotram;
   initialScript?: SupportedScript;
+  relatedStotrams?: StotramIndexItem[];
 }
 
-export default function StotramReader({ stotram, initialScript }: StotramReaderProps) {
+export default function StotramReader({ stotram, initialScript, relatedStotrams }: StotramReaderProps) {
   // Font scale (0.8x to 2.0x), persisted in localStorage
   const [fontSizeScale, setFontSizeScale] = useState<number>(() => {
     if (typeof window === "undefined") return 1.1;
@@ -246,13 +249,14 @@ export default function StotramReader({ stotram, initialScript }: StotramReaderP
     ? stotram.category.replace(/-/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
     : "Sacred Chants";
 
+  const canonicalUrl = stotramPath(stotram);
   const breadcrumbs = [
     { label: "Home", href: "/" },
     ...(stotram.category ? [{ label: categoryLabel, href: `/${stotram.category}` }] : []),
-    { label: stotram.title_english, href: `/readings/${stotram.slug || stotram.id}` },
+    { label: stotram.title_english, href: canonicalUrl },
   ];
 
-  const whatsappShareText = `Discover and chant ${stotram.title_english} (${stotram.title_telugu}) on Stotramani:\nhttps://stotramani.app/readings/${stotram.slug || stotram.id}`;
+  const whatsappShareText = `Discover and chant ${stotram.title_english} (${stotram.title_telugu}) on Stotramani:\nhttps://stotramani.app${canonicalUrl}`;
   const whatsappShareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(whatsappShareText)}`;
 
   return (
@@ -555,6 +559,9 @@ export default function StotramReader({ stotram, initialScript }: StotramReaderP
             })}
           </div>
         </section>
+
+        {/* Reusable Editorial Content: Meaning, Significance, How to Chant & Related Stotras */}
+        <StotramEditorialContent stotram={stotram} relatedStotrams={relatedStotrams} />
       </div>
 
       {/* Floating Control Toolbar */}

@@ -76,7 +76,7 @@
     "slug": "bilvaashtakam",
     "title_telugu": "బిల్వాష్టకం",
     "title_english": "Bilvaashtakam",
-    "category": "telugu",
+    "category": "shiva",
     "deity": "shiva"
   },
   {
@@ -108,7 +108,7 @@
     "slug": "rudrashtakam",
     "title_telugu": "రుద్రాష్టకం",
     "title_english": "Rudrashtakam",
-    "category": "telugu",
+    "category": "shiva",
     "deity": "shiva"
   },
   {
@@ -132,7 +132,7 @@
     "slug": "totakashtakam",
     "title_telugu": "తోటకాష్టకం",
     "title_english": "Totakashtakam",
-    "category": "telugu",
+    "category": "guru",
     "deity": "general"
   },
   {
@@ -780,7 +780,7 @@
     "slug": "madhurashtakam",
     "title_telugu": "మధురాష్టకం",
     "title_english": "Madhurashtakam",
-    "category": "telugu",
+    "category": "krishna",
     "deity": "general"
   },
   {
@@ -788,7 +788,7 @@
     "slug": "suryashtakam",
     "title_telugu": "సూర్యాష్టకం",
     "title_english": "Suryashtakam",
-    "category": "telugu",
+    "category": "surya",
     "deity": "surya"
   },
   {
@@ -796,7 +796,7 @@
     "slug": "govindashtakam",
     "title_telugu": "గోవిందాష్టకం",
     "title_english": "Govindashtakam",
-    "category": "telugu",
+    "category": "krishna",
     "deity": "general"
   },
   {
@@ -1012,7 +1012,7 @@
     "slug": "achyutashtakam",
     "title_telugu": "అచ్యుతాష్టకం",
     "title_english": "Achyutashtakam",
-    "category": "telugu",
+    "category": "krishna",
     "deity": "general"
   },
   {
@@ -1052,7 +1052,7 @@
     "slug": "harivarasanam",
     "title_telugu": "హరివరాసనం",
     "title_english": "Harivarasanam",
-    "category": "telugu",
+    "category": "ayyappa",
     "deity": "general"
   },
   {
@@ -1116,7 +1116,7 @@
     "slug": "dhanyashtakam",
     "title_telugu": "ధన్యాష్టకం",
     "title_english": "Dhanyashtakam",
-    "category": "telugu",
+    "category": "ashtakas",
     "deity": "general"
   },
   {
@@ -1644,7 +1644,7 @@
     "slug": "gurvashtakam",
     "title_telugu": "శ్రీ గుర్వష్టకం (గురు అష్టకం)",
     "title_english": "Gurvashtakam",
-    "category": "telugu",
+    "category": "guru",
     "deity": "general"
   },
   {

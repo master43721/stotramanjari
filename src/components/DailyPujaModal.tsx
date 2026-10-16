@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { DailyPujaItem } from "@/types";
+import { stotramPath } from "@/lib/stotramRoutes";
 import StotramaniLogo from "./StotramaniLogo";
 import { CloseIcon, LotusIcon } from "./Icons";
 
@@ -156,7 +157,7 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
 
             <div style={{ display: "flex", justifyContent: "center", gap: "1rem", marginTop: "1.5rem" }}>
               <Link
-                href={`/readings/${routine[activeStep].slug || routine[activeStep].id}`}
+                href={stotramPath(routine[activeStep])}
                 className="btn"
                 style={{
                   backgroundColor: "var(--accent)",
@@ -242,7 +243,7 @@ export default function DailyPujaModal({ isOpen, onClose }: DailyPujaModalProps)
                       </span>
                       <div>
                         <Link
-                          href={`/readings/${item.slug || item.id}`}
+                          href={stotramPath(item)}
                           style={{
                             fontSize: "1rem",
                             fontWeight: 600,
