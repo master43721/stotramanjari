@@ -5,6 +5,8 @@ import CookieConsent from "@/components/CookieConsent";
 import StotramaniLogo from "@/components/StotramaniLogo";
 import Link from "next/link";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
 import {
   Outfit,
@@ -315,6 +317,8 @@ export default function RootLayout({
           </div>
         </footer>
         <CookieConsent />
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

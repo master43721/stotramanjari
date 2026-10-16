@@ -91,10 +91,7 @@ async function main() {
   const p16 = await sharp(srcImage).resize(16, 16).png({ compressionLevel: 9 }).toBuffer();
   const p32 = await sharp(srcImage).resize(32, 32).png({ compressionLevel: 9 }).toBuffer();
   const p48 = await sharp(srcImage).resize(48, 48).png({ compressionLevel: 9 }).toBuffer();
-  const p64 = await sharp(srcImage).resize(64, 64).png({ compressionLevel: 9 }).toBuffer();
-  const p128 = await sharp(srcImage).resize(128, 128).png({ compressionLevel: 9 }).toBuffer();
   const p180 = await sharp(srcImage).resize(180, 180).png({ compressionLevel: 9 }).toBuffer();
-  const p256 = await sharp(srcImage).resize(256, 256).png({ compressionLevel: 9 }).toBuffer();
 
   fs.writeFileSync(path.join(rootDir, 'public', 'favicon-16x16.png'), p16);
   fs.writeFileSync(path.join(rootDir, 'public', 'favicon-32x32.png'), p32);
@@ -122,27 +119,27 @@ async function main() {
   fs.writeFileSync(publicIcoPath, icoBuffer);
   fs.writeFileSync(appIcoPath, icoBuffer);
 
-  // 3. Generate crisp SVG favicon with embedded high-resolution gold Om
-  const b64_256 = p256.toString('base64');
+  // 3. Generate a compact vector favicon. At tab size, a simple sacred flame
+  // reads more clearly than a raster image embedded in SVG.
   const svgContent = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
   <defs>
-    <radialGradient id="goldGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.3"/>
-      <stop offset="100%" stop-color="#070707" stop-opacity="0"/>
-    </radialGradient>
+    <linearGradient id="gold" x1="104" y1="72" x2="408" y2="440" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFF1A8"/>
+      <stop offset="0.42" stop-color="#E4B94E"/>
+      <stop offset="1" stop-color="#9B6819"/>
+    </linearGradient>
   </defs>
-  <rect width="512" height="512" rx="100" fill="#070707"/>
-  <circle cx="256" cy="256" r="240" fill="url(#goldGlow)"/>
-  <circle cx="256" cy="256" r="236" fill="none" stroke="#D4AF37" stroke-width="4" opacity="0.6"/>
-  <circle cx="256" cy="256" r="224" fill="none" stroke="#D4AF37" stroke-width="1.5" opacity="0.35"/>
-  <image href="data:image/png;base64,${b64_256}" x="32" y="32" width="448" height="448" preserveAspectRatio="xMidYMid meet"/>
+  <rect width="512" height="512" rx="112" fill="#100D08"/>
+  <rect x="20" y="20" width="472" height="472" rx="96" fill="none" stroke="#D4AF37" stroke-width="12"/>
+  <path fill="url(#gold)" d="M257 82c-9 59-65 85-65 156 0 43 28 72 64 72 45 0 74-35 74-81 0-34-17-61-39-84 50 23 91 78 91 143 0 84-56 144-126 144s-126-59-126-137c0-91 58-164 127-213Zm-7 143c-19 22-29 43-29 67 0 20 14 36 34 36 23 0 39-18 39-41 0-20-9-40-44-62Z"/>
+  <circle cx="256" cy="432" r="10" fill="#F7D66E"/>
 </svg>
 `;
   fs.writeFileSync(path.join(rootDir, 'public', 'icon.svg'), svgContent);
   fs.writeFileSync(path.join(rootDir, 'public', 'favicon.svg'), svgContent);
 
   console.log('✓ Successfully created:');
-  console.log('  - public/favicon.ico (' + icoBuffer.length + ' bytes, 6 resolutions: 16, 32, 48, 64, 128, 256)');
+  console.log('  - public/favicon.ico (' + icoBuffer.length + ' bytes, 3 resolutions: 16, 32, 48)');
   console.log('  - src/app/favicon.ico');
   console.log('  - public/favicon-16x16.png');
   console.log('  - public/favicon-32x32.png');
