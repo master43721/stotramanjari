@@ -40,11 +40,11 @@ export function sanitizeTeluguText(text: string): string {
   // 4. Map Devanagari candrabindu U+0901 to Telugu candrabindu U+0C01
   cleaned = cleaned.replace(/\u0901/g, "\u0C01");
 
-  // 5. Replace Vedic double svarita U+1CDA with standard double udatta U+0951\u0951
-  cleaned = cleaned.replace(/\u1CDA/g, "\u0951\u0951");
-
-  // 6. Replace Devanagari Atisvara U+A8F3 with standard Telugu Vedic gum anusvara
-  cleaned = cleaned.replace(/\uA8F3/g, "గ్ం");
+  // 5. The corpus contains Devanagari Vedic pitch accents (U+0951/U+0952)
+  // attached to Telugu letters. Redmi/Android Chrome renders these cross-script
+  // combining marks as square boxes. Preserve the readable Telugu text and omit
+  // only the pitch notation in the default mobile-safe reading view.
+  cleaned = cleaned.replace(/[\u0951\u0952\u1CDA\uA8F3]/gu, "");
 
   // 7. Fix known leading anusvara corruptions
   cleaned = cleaned.replace(/^\u0C02ధకార/g, "అంధకార");
