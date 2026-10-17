@@ -100,7 +100,11 @@ const notoSansTelugu = localFont({
     { path: "./fonts/NotoSansTelugu-Bold.ttf", weight: "700", style: "normal" },
   ],
   variable: "--font-noto-sans-telugu",
-  display: "swap",
+  // Do not briefly paint Telugu with a Latin fallback. On some Android builds
+  // that fallback appears as square glyphs before the real font arrives.
+  display: "block",
+  adjustFontFallback: false,
+  preload: true,
 });
 
 export default function RootLayout({

@@ -3,7 +3,7 @@
  * Ensures devotees can chant and read stotras inside puja rooms or temples without cellular connectivity.
  */
 
-const CACHE_NAME = "stotramani-v3";
+const CACHE_NAME = "stotramani-v4";
 
 // Resolve scope/base path dynamically so sw works seamlessly on root domain stotramani.app
 const scopeUrl = new URL(self.registration.scope);
