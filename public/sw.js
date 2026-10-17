@@ -3,7 +3,7 @@
  * Ensures devotees can chant and read stotras inside puja rooms or temples without cellular connectivity.
  */
 
-const CACHE_NAME = "stotramani-v2";
+const CACHE_NAME = "stotramani-v3";
 
 // Resolve scope/base path dynamically so sw works seamlessly on root domain stotramani.app
 const scopeUrl = new URL(self.registration.scope);
@@ -49,26 +49,27 @@ self.addEventListener("fetch", (event) => {
   // Only handle GET requests
   if (request.method !== "GET") return;
 
-  // Stale-While-Revalidate caching strategy for stotram pages and resources
+  const url = new URL(request.url);
+
+  // Never cache third-party requests or API responses. In particular, this
+  // prevents a stale Panchang response or analytics request being replayed.
+  if (url.origin !== self.location.origin || url.pathname.startsWith(`${BASE_PATH}/api/`)) {
+    return;
+  }
+
+  // Prefer the current network version. The previous cache-first strategy
+  // could keep old HTML/CSS/font references alive after a deployment, which
+  // is especially visible as missing Telugu glyphs on mobile browsers.
   event.respondWith(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.match(request).then((cachedResponse) => {
-        const fetchPromise = fetch(request)
-          .then((networkResponse) => {
-            if (networkResponse && networkResponse.status === 200 && request.url.startsWith("http")) {
-              // Cache a copy of the response for offline reading
-              cache.put(request, networkResponse.clone());
-            }
-            return networkResponse;
-          })
-          .catch(() => {
-            // Network failed - return cached response if available
-            return cachedResponse;
-          });
-
-        // Return cached immediately if available, otherwise wait for network
-        return cachedResponse || fetchPromise;
-      });
+      return fetch(request)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            cache.put(request, networkResponse.clone());
+          }
+          return networkResponse;
+        })
+        .catch(async () => (await cache.match(request)) || Response.error());
     })
   );
 });

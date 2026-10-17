@@ -15,6 +15,7 @@ export default function ContactClient() {
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submissionError, setSubmissionError] = useState("");
   const [submittedData, setSubmittedData] = useState<{
     name: string;
     email: string;
@@ -45,7 +46,7 @@ export default function ContactClient() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!validate()) {
@@ -53,9 +54,19 @@ export default function ContactClient() {
     }
 
     setIsSubmitting(true);
+    setSubmissionError("");
 
-    // Simulate reliable dispatch
-    setTimeout(() => {
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      const payload = await response.json().catch(() => ({}));
+      if (!response.ok) {
+        setSubmissionError(payload.message || "We could not send your note. Please try again later.");
+        return;
+      }
       setIsSubmitting(false);
       setSubmittedData({
         name: formData.name.trim(),
@@ -68,7 +79,11 @@ export default function ContactClient() {
         message: "",
       });
       setErrors({});
-    }, 600);
+    } catch {
+      setSubmissionError("We could not send your note. Please check your connection and try again.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -231,6 +246,11 @@ export default function ContactClient() {
 
           {!submittedData && (
             <form onSubmit={handleSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: "1.25rem" }}>
+              {submissionError && (
+                <p role="alert" style={{ color: "#fca5a5", lineHeight: 1.5, margin: 0 }}>
+                  {submissionError}
+                </p>
+              )}
               {/* Name & Email Row */}
               <div
                 style={{

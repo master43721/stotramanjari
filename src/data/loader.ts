@@ -33,14 +33,20 @@ const TELUGU_CATEGORY_MAP: Record<string, string> = {
 
 // Return lightweight ~120KB index for fast homepage search, filters, and panchang
 export function getStotramsIndex(): StotramIndexItem[] {
-  return (indexData as StotramIndexItem[]).map((item) => {
+  const seen = new Set<string>();
+
+  return (indexData as StotramIndexItem[]).flatMap((item) => {
     const slug = item.slug || item.id;
+    // A canonical slug is the public identity of an entry. Do not render the
+    // same chant twice when source datasets overlap.
+    if (!slug || seen.has(slug)) return [];
+    seen.add(slug);
     const cat = item.category === "telugu" ? TELUGU_CATEGORY_MAP[slug] || "devotional" : item.category;
-    return {
+    return [{
       ...item,
       category: cat,
       title_telugu: sanitizeTeluguText(item.title_telugu || ""),
-    };
+    }];
   });
 }
 

@@ -102,6 +102,36 @@ function matchesCategory(
   return stotram.category === catId;
 }
 
+/**
+ * The source index is grouped by import batch, so its first entries are often
+ * several chants for the same deity. Interleave the curated categories for the
+ * unfiltered library without randomising it (SSR and hydration stay stable).
+ */
+function variedLibraryOrder(
+  stotrams: StotramIndexItem[],
+  mappings: Record<string, string[]>,
+): StotramIndexItem[] {
+  const groups = SACRED_CATEGORIES.map((category) =>
+    stotrams.filter((stotram) => matchesCategory(stotram, category.id, mappings)),
+  );
+  const result: StotramIndexItem[] = [];
+  const used = new Set<string>();
+  const identity = (stotram: StotramIndexItem) => stotram.slug || stotram.id;
+  const longestGroup = Math.max(0, ...groups.map((group) => group.length));
+
+  for (let index = 0; index < longestGroup; index += 1) {
+    for (const group of groups) {
+      const stotram = group[index];
+      if (stotram && !used.has(identity(stotram))) {
+        used.add(identity(stotram));
+        result.push(stotram);
+      }
+    }
+  }
+
+  return result;
+}
+
 interface HomeClientProps {
   stotrams: StotramIndexItem[];
   categoryMappings: Record<string, string[]>;
@@ -141,6 +171,18 @@ export default function HomeClient({
     );
   }, [stotrams, categoryMappings]);
 
+  const initialLibraryOrder = useMemo(
+    () => variedLibraryOrder(targetStotrams, categoryMappings),
+    [targetStotrams, categoryMappings],
+  );
+
+  const visibleStotrams = useMemo(() => {
+    if (activeCategory === "all") return initialLibraryOrder;
+    return targetStotrams.filter((stotram) =>
+      matchesCategory(stotram, activeCategory, categoryMappings),
+    );
+  }, [activeCategory, categoryMappings, initialLibraryOrder, targetStotrams]);
+
   // Compute category counts based on target stotrams
   const categoryCounts = useMemo(() => {
     return SACRED_CATEGORIES.reduce((acc, cat) => {
@@ -151,8 +193,11 @@ export default function HomeClient({
 
   // Execute Semantic Information Retrieval Engine
   const semanticResult = useMemo(() => {
-    return executeSemanticSearch(searchQuery, targetStotrams, activeCategory);
-  }, [searchQuery, targetStotrams, activeCategory]);
+    // The category mapping has already been applied above. Passing "all" here
+    // avoids losing entries whose editorial category is mapped to a curated
+    // display category.
+    return executeSemanticSearch(searchQuery, visibleStotrams, "all");
+  }, [searchQuery, visibleStotrams]);
 
   const { scoredResults, analysis } = semanticResult;
 

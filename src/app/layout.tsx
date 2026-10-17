@@ -4,7 +4,6 @@ import Navbar from "@/components/Navbar";
 import CookieConsent from "@/components/CookieConsent";
 import StotramaniLogo from "@/components/StotramaniLogo";
 import Link from "next/link";
-import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import localFont from "next/font/local";
@@ -129,7 +128,9 @@ export default function RootLayout({
               })();
               if ('serviceWorker' in navigator) {
                 window.addEventListener('load', function() {
-                  navigator.serviceWorker.register('/sw.js').catch(function(e) {});
+                  navigator.serviceWorker.register('/sw.js')
+                    .then(function(registration) { return registration.update(); })
+                    .catch(function() {});
                 });
               }
             `,
@@ -140,8 +141,6 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
         <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <meta name="theme-color" content="#070707" />
         <meta name="referrer" content="strict-origin-when-cross-origin" />
         <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
@@ -208,22 +207,6 @@ export default function RootLayout({
             })
           }}
         />
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-D1RV3K86RW"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-D1RV3K86RW', {
-              'anonymize_ip': true,
-              'allow_google_signals': false
-            });
-          `}
-        </Script>
         <Navbar />
         <main style={{ flex: 1, minHeight: "calc(100vh - 120px)" }}>{children}</main>
         <footer style={{ 
